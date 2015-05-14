@@ -1,0 +1,37 @@
+#!/bin/sh
+
+eval $(grep "^DEFAULT_PLATFORMS=" /synosrc/curr/ds.base/lnxscripts/BatchAll)
+
+rootdir="/synosrc"
+for f in $@; do
+	if [ -z "`echo $f | cut -d'/' -f1`" ]; then
+		list=$f
+	else
+		dirname=`dirname $f`
+		basename=`basename $f`
+		path=`pwd`
+		if [ "$dirname" != "." ]; then
+			path="$path/$dirname"
+		fi
+		list=`find -H $path -name $basename`
+	fi
+	for file in $list; do
+		echo -n "cpal '$file'?[Y/n] "
+		read ANS
+		if [ "$ANS" = "N" -o "$ANS" = "n" ]; then
+			continue;
+		fi
+		filepath=`echo $file | sed -s 's,/synosrc,,g' | sed -s 's,/ds.base,,g'`
+		branch=`echo $filepath | cut -d'/' -f1`
+		echo "ds.base$filepath"
+		for p in $DEFAULT_PLATFORMS; do
+			if [ ! -d "${rootdir}/ds.$p$branch" -o "$p" = "base" ]; then
+				continue;
+			fi
+			echo "-> $p$filepath"
+			rm -rf ${rootdir}/ds.$p$filepath
+			cp -al ${rootdir}/ds.base$filepath ${rootdir}/ds.$p$filepath
+		done
+		echo ""
+	done
+done

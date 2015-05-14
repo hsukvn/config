@@ -1,0 +1,148 @@
+#!/bin/bash
+
+SYNO_ADD_OPT="f:ha"
+ScriptPath=$(dirname `readlink -f $0`)
+. $ScriptPath/syno.common ""
+BasePath=$(syno_get_basepath "$@")
+
+syno_git_status() { # <project name>
+	local Project=$1
+	local ColorStatus=${tt_COLOR+-c color.status=always}
+	local IgnoreDir=
+	local pattern=
+
+	case "$Project" in
+		dsm)    IgnoreDir="texts/,mapp/texts/" ;;
+		lnxman) IgnoreDir="phpsrc/photo/language/" ;;
+		*)
+	esac
+
+	if [ "$IgnoreDir" ]; then
+		pattern=\\\($(echo -n $IgnoreDir | sed 's/,/\\|/g')\\\)
+		git $ColorStatus status -sb | grep -v ".. $pattern"
+		if git status -sb | grep -q ".. $pattern"; then
+			echo "$(tt_color red)--$(tt_color) $IgnoreDir $(tt_color lightblack)(changed but ignore)$(tt_color)";
+		fi
+	else
+		git status -sb
+	fi
+}
+syno_git_list_one() { # <project name>
+	local Project=$1
+
+	if [ "$(whoami)" != "root" -a -n "$(whoami)" ]; then
+		git log --author=$(whoami) --oneline --name-status --no-merges -1
+	else
+		git log --oneline --name-status --no-merges -1
+	fi
+}
+syno_get_current_project() {
+	if git rev-parse --show-cdup 2>/dev/null >&2; then
+		readlink -f ./`git rev-parse --show-cdup`
+	else
+		tt_warn "not a git directory"
+		false
+	fi
+}
+usage() {
+	cat >&2 <<EOF
+show information of projecs.
+
+USAGE: $(basename $0) [options] [action] [project name...]
+ACTION:
+	br|branch|log|li|la
+OPTION:
+$(syno_get_basepath_usage)
+	-a                   use all projects
+	-f <list>            load project names from list file
+	-h                   show this help message
+EOF
+	exit 0
+}
+while getopts "$(syno_get_basepath_opt)" opt; do
+	case "$opt" in
+		f) List=${OPTARG} ;;
+		a) ListAll=on ;;
+		h) usage ;;
+	esac
+done
+shift $(($OPTIND - 1))
+
+Action="my-status"
+case "$1" in
+	li)        Action="my-li" ; shift ;;
+	br|branch) Action=branch ; shift ;;
+	diff|df)   Action=diff ; shift ;;
+	log|la)    Action=$1 ; shift ;;
+esac
+while [ ${1+isset} ]; do
+	case "$1" in
+		-*) Action="$Action $1" ;;
+		--) shift ; break ;;
+		*) break ;;
+	esac
+	shift
+done
+
+# allow global env to change project list
+if [ -n "$SYNO_CURR_PROJ_LIST" -a $# -eq 0 ]; then
+	List=${List:-$SYNO_CURR_PROJ_LIST}
+fi
+
+if [ "$ListAll" ]; then
+	set -- $(syno_enum_project -w $BasePath)
+elif [ -n "$List" ]; then
+	if [ -r "$List" ]; then
+		# FIXME project listed in file can not contend space
+		set -- $(grep -v "^#" "$List")
+	else
+		tt_warn "read: '$List' failed"
+		exit 1
+	fi
+elif [ $# -eq 0 ]; then
+	if git rev-parse --show-cdup 2>/dev/null >&2; then
+		set -- $(readlink -f ./`git rev-parse --show-cdup`)
+	fi
+fi
+
+[ $# -eq 0 ] && usage
+
+for proj in "$@"; do
+	if [ "$proj" = "." ]; then
+		if Project=$(syno_get_current_project); then
+			Project=$(basename $Project)
+		else
+			continue;
+		fi
+	else
+		Project=$(basename $proj)
+	fi
+	ProjectPath="$BasePath/source/$Project"
+
+	if [ "$Project" = "lnxscripts" ]; then
+		ProjectPath="$BasePath/$Project"
+	fi
+
+	tt_debug "$ProjectPath"
+
+	if [ ! -d "$ProjectPath" ]; then
+		if [ -d "$proj" ]; then
+			ProjectPath=$proj
+		else
+			tt_warn "$ProjectPath($proj) does not exist"
+			continue;
+		fi
+	fi
+	(
+		cd "$ProjectPath" || exit 1
+		echo "$(tt_color yellow)[$Project]$(tt_color)"
+		case "$Action" in
+			my-status)
+				syno_git_status "$Project" ;;
+			my-li)
+				syno_git_list_one "$Project" ;;
+			*)
+				git $Action
+		esac
+	)
+done

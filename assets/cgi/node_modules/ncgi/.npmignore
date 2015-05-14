@@ -1,0 +1,16 @@
+*.so
+*.o
+*.lo
+*.Makefile
+*.target.gyp.mk
+build
+out
+Release
+Debug
+node_modules
+.deps
+Makefile.gyp
+gyp-mac-tool
+.dirstamp
+npm-debug.log
+

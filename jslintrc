@@ -1,0 +1,10 @@
+{
+	"evil": false,
+	"vars": true,
+	"white": true,
+	"stupid": true,
+	"unparam": true,
+	"todo": true,
+	"continue": true,
+	"syno": true
+}

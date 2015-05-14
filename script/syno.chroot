@@ -1,0 +1,31 @@
+#!/bin/bash
+
+ScriptPath=$(dirname `readlink -f $0`)
+. $ScriptPath/syno.common "$@"
+BasePath=$(syno_get_basepath "$@")
+shift $((OPTIND - 1))
+
+if [ $# -gt 0 ]; then
+	Platform=$1
+	shift
+else
+	Platform=$(syno_get_platform "$BasePath")
+	if [ -z "$Platform" -o "$Platform" = "base" ]; then
+		Platform=${SYNO_CURR_PLATFORM:-base}
+	fi
+fi
+
+tt_debug BasePath=$BasePath
+tt_debug Platform=$Platform
+BasePath=$(syno_get_basepath -w "$BasePath" -p "$Platform")
+
+if [ ! -d "$BasePath" -o -z "$Platform" -o "$Platform" = "base" ]; then
+	tt_warn "can not chroot to $BasePath"
+	exit 1
+fi
+
+tt_log "chroot $BasePath"
+[ "$TERM" = screen ] && echo -e "\ekchroot:$Platform\e\\"
+# sudo env HOME=/root/ chroot $BasePath
+# use sudo -H to avoid we need add `env` command to sudoer
+sudo -H chroot $BasePath

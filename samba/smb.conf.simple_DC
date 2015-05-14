@@ -1,0 +1,63 @@
+[global]
+        workgroup         = TH
+        netbios name      = THLU-DESKTOP
+        server string     = test samba DC
+        unix charset      = utf8
+        display charset   = utf8
+        dos charset       = cp950
+        log file          = /var/log/samba/dc_test.%m.log
+        max log size      = 50
+        socket options    = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192
+        dns proxy         = no
+        template shell    = /bin/false
+        winbind use default domain = no
+        security          = user
+        encrypt passwords = yes
+        smb passwd file   = /etc/samba/smbpasswd
+
+        # 與 PDC 有關的一些設定值：
+        # 底下幾個設定值處理成為本區域網路內的主要名稱解析器
+        preferred master = yes
+        domain master    = yes
+        local master     = yes
+        wins support     = yes
+
+        # 作業系統 (OS) 等級越高才能成為主網域的控制者，一般 NT 為 32,
+        # Windows 2000 為 64 ，所以這裡我們設定高一點，但不可超過 255
+        os level = 200
+
+        # 底下則是設定能否利用 PDC 登入，且登入需要進行哪些動作：
+        domain logons = yes
+
+	# 登入後家目錄掛載成 Windows 哪一槽
+        logon drive   = K:
+
+	# 每個使用者登入後會自動執行的程式
+        logon script  = startup.bat
+
+	# 自動調整 Windows 時間與 Samba 同步
+        time server   = yes
+
+	# 預設的管理員帳號！預設為 root 
+        admin users   = root
+
+[netlogon]
+	# 這個在指定登入者能夠進行的工作，裡面主要是具有許多執行程式：
+	comment         = Network Logon Service
+
+	# 你要自己主動建立此目錄
+	path            = /home/samba/netlogon
+
+	writable        = no
+	write list      = root
+	follow symlinks = yes
+	guest ok        = yes
+
+[homes]
+	comment = Home directories
+	browseable = no
+	writable = yes
+	valid users = %S
+	create mode = 0664
+	directory mode = 0775
+

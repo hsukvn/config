@@ -1,0 +1,83 @@
+#!/bin/bash
+#
+# Copyright (C) 2005-2006,
+#   Stefano Zacchiroli  <zack@cs.unibo.it>
+#   Enrico Tassi    <tassi@cs.unibo.it>
+#
+# This is free software, you can redistribute it and/or modify it under the
+# terms of the GNU General Public License version 2 as published by the Free
+# Software Foundation.
+#
+# -o, horizontal split 
+vimdiff="vimdiff"
+suffix="vimcvsdiff"
+#Declare array
+declare -a version
+count=0
+CVSCMD="cvs up -p -r"
+
+if [ $# == 0 ]; then
+    cat << EOF 
+    vimcvsdiff [option] [version]+ filename
+    option: -o, use vimdiff with horizontal split.
+    version: -r [CVS version]. *NO version means to compare with HEAD version.
+EOF
+exit;
+fi 
+
+if [ "$1" == "-o" ] ; then
+  vimdiff="vimdiff -o"
+  shift 1
+fi
+
+version[$count]="local"
+((count++))
+while [ "$1" == "-r" ]; do 
+    version[$count]=$2
+    ((count++))
+    shift 2
+done
+
+if [ "$#" -ge 1 ]; then
+    files=$1
+else
+    echo "WRONG Usage."
+    exit;
+fi
+
+# -z STRING : the length of STRING is 0
+#if [ -z "$files" ]; then
+#  files=$(cvs -n update -r HEAD 2> /dev/null | grep -e "^[MU]" | cut -c 3-)
+#fi
+
+for f in $files; do
+    if ! [ -f $f ]; then break; fi
+    if [ $count -eq 1 ]; then
+        version[$count]="HEAD"
+        ((count++))
+    fi
+# gen tmp file names
+    declare -a tmp
+    for (( i=0; i<$count; ++i )); do
+        tmp[$i]=${f%.*}-${version[i]}.${f/*./}
+    done
+    
+    cp $f ${tmp[0]}
+# fetch CVS copies
+    for (( i=1; i<$count; ++i )); do
+        $CVSCMD ${version[i]} $f > ${tmp[i]}
+    done
+    
+    # old code.
+    #cp "$f" $orig
+    #echo $orig
+    #cut -d '/' -f 2 < CVS/Entries | grep "^$f\$" > /dev/null || break
+    #cvs diff -r $rev1 -u "$f" > $patch
+    #if ! [ $? -eq 1 ]; then break; fi
+    #cp "$f" $orig
+    #patch -R -p0 $orig $patch
+    #$vimdiff $orig $f
+done
+
+$vimdiff ${tmp[@]}
+rm -rf ${tmp[@]}

@@ -1,0 +1,20 @@
+[global]
+	workgroup=SIG
+	local master=no
+	realm=SIG.W2K8R2.COM
+	printing=lprng
+	winbind enum groups=yes
+	idmap gid=96000-196000
+	passdb backend=smbpasswd
+	password server=192.168.16.44
+	server string=Disk Station
+	security=ads
+	idmap uid=10000-110000
+	winbind enum users=yes
+[web]
+	valid users=thlu
+	comment="System default shared folder"
+	path=/home/thlu/public_html
+	guest ok=yes
+	browseable=yes
+	writeable=yes

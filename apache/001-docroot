@@ -1,0 +1,14 @@
+	DocumentRoot /home/thlu/public_html
+	<Directory /home/thlu/public_html>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+	<Directory /home/thlu/public_html/SynologyAssistant/>
+		AddType application/x-chrome-extension crx
+	</Directory>
+	<Directory /home/thlu/public_html/website/>
+		AddType application/x-chrome-extension crx
+	</Directory>
+

@@ -1,0 +1,15 @@
+AddHandler cgi-script .cgi .pl
+
+<Directory "/home/*/public_html/cgi_bin">
+	AllowOverride ALL
+	Options ExecCGI
+	Order allow,deny
+	Allow from all
+</Directory>
+
+<Directory "/home/thlu/public_html/build_info">
+	AllowOverride ALL
+	Options ExecCGI
+	Order allow,deny
+	Allow from all
+</Directory>

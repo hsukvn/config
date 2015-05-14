@@ -1,0 +1,525 @@
+#!/bin/bash
+
+tt_DEBUG=${tt_DEBUG:-}
+tt_WARN=${tt_WARN:-on}
+if ! [ "${tt_COLOR+isset}" ]; then
+	[ -t 1 ] && tt_COLOR=on
+fi
+tt_color() { # <fg color> <bg color>
+	local fg=${1:-none}
+	local bg=${2:-none}
+	local code= i= c=
+	local cmap="black red green yellow blue purple cyan white"
+
+	if [ -z "$tt_COLOR" ]; then
+		return 0
+	fi
+
+	case "$fg" in
+		light*)
+			code="1"
+			fg="${fg#light}" ;;
+	esac
+	i=0;for c in $cmap; do
+		if [ "$fg" = "$c" ]; then
+			code="$code${code:+;}3$i"
+			break
+		fi
+		i=$((i+1))
+	done
+	i=0;for c in $cmap; do
+		if [ "$bg" = "$c" ]; then
+			code="$code${code:+;}4$i"
+			break
+		fi
+		i=$((i+1))
+	done
+
+	echo -n "[${code}m"
+}
+tt_WARN_COLOR=${tt_WARN_COLOR:-red}
+tt_warn() {
+	local ret=$? 
+	local no_new_line=
+
+	[ "$tt_WARN" ] || return $ret
+
+	if [ "$1" = "-n" ]; then
+		no_new_line='-n'
+		shift
+	fi
+
+	if [ "$tt_DEBUG" ] && type caller >/dev/null; then
+		echo $no_new_line "$(tt_color $tt_WARN_COLOR)[$(caller 0)] $@$(tt_color)" >&2
+	else
+		echo $no_new_line "$(tt_color $tt_WARN_COLOR)$@$cce$(tt_color)" >&2
+	fi
+	return $ret
+}
+tt_debug() {
+	local ret=$?
+	local color=yellow
+	local no_new_line=
+
+	[ "$tt_DEBUG" ] || return $ret
+
+	if [ "$1" = "-n" ]; then
+		no_new_line='-n'
+		shift
+	fi
+
+	if type caller >/dev/null; then
+		echo $no_new_line "$(tt_color $color)[$(caller 0)] $@$(tt_color)" >&2
+	else
+		echo $no_new_line "$(tt_color $color)$@$(tt_color)" >&2
+	fi
+	return $ret
+}
+tt_log() {
+	local ret=$?
+	echo "$@" >&2
+	return $ret
+}
+tt_SYSLOG_TAG=${tt_SYSLOG_TAG:-debug}
+tt_syslog() {
+	local ret=$?
+	local flags="-p user.err"
+	[ -t 2 ] && flags="$flags -s"
+	logger $flags -t "$tt_SYSLOG_TAG" -- "$@"
+	return $ret
+}
+
+tt_get_work_dir() {
+	if type pwd >/dev/null; then
+		pwd -P | sed "s,^$HOME,,"
+	elif type readlink >/dev/null; then
+		readlink -f . | sed "s,^$HOME,,"
+	fi
+}
+tt_check_and_create_dir() { # <dir>
+	local dir=$1
+
+	if [ -d "$dir" ]; then
+		tt_debug "$dir is already existed"
+		return 0
+	fi
+
+	if [ -e "$dir" ]; then
+		tt_warn "'$dir' is not a dir"
+		return 1
+	fi
+
+	mkdir -p "$dir"
+}
+
+tt_test_case() { # <answer> <return value> <execute commands...>
+	local answer=$1
+	local return_value=$2
+	local result=
+	local tt_WARN_COLOR="1"
+	local ccs=${tt_COLOR:+[34m}
+	local cce=${tt_COLOR:+[0m}
+
+	shift 2
+
+	echo -n "${ccs}eval:$cce$@$ccs] return:$cce" >&2
+	result=$(eval "$@")
+	ret=$?
+	echo "$ret$ccs) output:$cce$result$ccs<$cce" >&2
+	if ! [ "$answer" = "$result" -a "$ret" = "$return_value" ]; then
+		echo "----> [31mfailed[0m" >&2
+	fi
+}
+
+SYNO_SRCPATH="/synosrc"
+SYNO_DEFAULT_PLATFORM="base"
+SYNO_DEFAULT_BRANCH="curr"
+syno_get_platform() { # [work_dir] [synosrc]
+	local work_dir=${1:-$(tt_get_work_dir)}
+	local synosrc=${2:-$SYNO_SRCPATH}
+
+	set -- $(echo -n $work_dir | sed 's,/, ,g')
+	while [ x"$1" != x"${synosrc#/}" -a $# -gt 0 ]; do
+		shift
+	done
+	if [ "$1" = "${synosrc#/}" -a x"${3:0:3}" = x"ds." ]; then
+		echo -n "${3#*ds.}"
+	elif [ x"$1/$3" = x"${synosrc#/}/build_env" -a x"${4:0:3}" = x"ds." ]; then
+		local a="${4#*ds.}"
+		echo -n "${a%-*}"
+	elif [ x"$1/" = x"${synosrc#/}/" -a $# -ge 2 ]; then
+		echo -n "base"
+	else
+		tt_warn "get platform from '$work_dir' failed. use default"
+		echo -n "$SYNO_DEFAULT_PLATFORM"
+	fi
+}
+syno_get_branch() { # [work_dir] [synosrc]
+	local work_dir=${1:-$(tt_get_work_dir)}
+	local synosrc=${2:-$SYNO_SRCPATH}
+
+	set -- $(echo -n $work_dir | sed 's,/, ,g')
+	while [ x"$1" != x"${synosrc#/}" -a $# -gt 0 ]; do
+		shift
+	done
+	if [ x"$1/$3" = x"${synosrc#/}/source" ]; then
+		#FIXME
+		tt_debug "branch: $2"
+		echo -n "$2"
+	elif [ x"$1/$3" = x"${synosrc#/}/build_env" -a x"${4:0:3}" = x"ds." ]; then
+		tt_debug "branch: $2"
+		#FIXME
+		#echo -n "${4#*-}"
+		echo -n "$2"
+	elif [ "$1" = "${synosrc#/}" -a "$2" ]; then
+		tt_debug "branch: $2"
+		echo -n "$2"
+	else
+		tt_warn "get branch from '$work_dir' failed. use default"
+		echo -n "$SYNO_DEFAULT_BRANCH"
+	fi
+}
+syno_get_dsm_version() { # [work_dir] [synosrc]
+	local work_dir=${1:-$(tt_get_work_dir)}
+	local synosrc=${2:-$SYNO_SRCPATH}
+
+	set -- $(echo -n $work_dir | sed 's,/, ,g')
+	while [ x"$1" != x"${synosrc#/}" -a $# -gt 0 ]; do
+		shift
+	done
+	if [ x"$1/$3" = x"${synosrc#/}/build_env" -a x"${4:0:3}" = x"ds." ]; then
+		echo -n "${4#*-}"
+	else
+		echo -n ""
+	fi
+}
+syno_get_project() { # [work_dir] [synosrc]
+	local opt OPTARG OPTIND
+
+	while getopts `syno_get_basepath_opt` opt; do :; done
+	shift $((OPTIND-1))
+
+	local work_dir=${1:-$(tt_get_work_dir)}
+	local synosrc=${2:-$SYNO_SRCPATH}
+
+	set -- $(echo -n $work_dir | sed 's,/, ,g')
+	while [ x"$1" != x"${synosrc#/}" -a $# -gt 0 ]; do
+		shift
+	done
+
+	if [ x"$1/$3" = x"${synosrc#/}/source" ]; then
+		echo -n "$4"
+	elif [ x"$1/$3" = x"${synosrc#/}/pkgscripts" ]; then
+		echo -n "$3"
+	elif [ x"$1/$3" = x"${synosrc#/}/build_env" -a x"${4:0:3}" = x"ds." -a "$5" = 'source' -a "$6" ]; then
+		echo -n "$6"
+	elif [ "$1" = "${synosrc#/}" -a "${3:0:3}" = "ds." ]; then
+		if [ "$4" = "source" ]; then
+			echo -n "$5";
+		elif [ "$4" = "lnxscripts" ]; then
+			echo -n "lnxscripts"
+		fi
+	else
+		tt_warn "get project from '$work_dir' failed" ; return 1
+	fi
+}
+is_build_syno_package() { # [work_dir]
+	local work_dir=${1:-$(tt_get_work_dir)}
+
+	set -- $(echo -n $work_dir | sed 's,/, ,g')
+
+	if [ -e "/$1/$2/build_env" -o -e "/$1/$2/pkgscripts" ]; then
+		true
+		return
+	fi
+
+	[ x"$1/$2/" = x"${synosrc#/}/package/" ]
+}
+#SYNO_ADD_OPT=
+syno_get_basepath_opt() { # output the common parsing getopts option
+	echo -n "p:b:s:w:dv:$SYNO_ADD_OPT"
+}
+syno_get_basepath_usage() { #output syno_get_basepath options
+	cat <<EOF
+	-p <platform>        set the platform of source (default: $SYNO_DEFAULT_PLATFORM)
+	-b <branch>          set the branch abbreviated name (default: $SYNO_DEFAULT_BRANCH)
+	-s <synosrc>         set the path for synosrc (default: $SYNO_SRCPATH)
+	                     if the flag -p and -b is not set, this script will
+	                     try to parse current working directory to find out
+	                     the branch and platform. or you can set the dir by
+	                     -w option.
+	-w <curr dir>        set parse dir. do not use current working directory
+	-v <dsm version>     set dsm version for package use
+	-d                   turn on debug mode
+EOF
+}
+syno_get_basepath() { # getopts $(syno_get_basepath_opt)
+	local work_dir= synosrc= platform= branch= opt= dsm_version=
+	local OPTARG= OPTIND=
+
+	while getopts ":$(syno_get_basepath_opt)" opt; do
+		#tt_debug "$opt: $OPTARG"
+		case "$opt" in
+			p) platform=${OPTARG} ;;
+			b) branch=${OPTARG} ;;
+			s) synosrc=${OPTARG} ;;
+			w) work_dir=${OPTARG} ;;
+			v) dsm_version=${OPTARG} ;;
+			d) tt_DEBUG=on ;;
+		esac
+	done
+	if [ -z "$work_dir" ]; then
+		work_dir=$(tt_get_work_dir)
+	fi
+
+	local tt_WARN=
+
+	[ "$synosrc" ] \
+		|| synosrc=${SYNO_SRCPATH:-/synosrc}
+
+	[ "$platform" ] \
+		|| platform=$(syno_get_platform "$work_dir" "$synosrc")
+
+	[ "$branch" ] \
+		|| branch=$(syno_get_branch "$work_dir" "$synosrc")
+
+	[ "$dsm_version" ] \
+		|| dsm_version=$(syno_get_dsm_version "$work_dir" "$synosrc")
+
+	if is_build_syno_package "$work_dir" || [ -n "$dsm_version" ] || [ x"$branch" = xpackage ]; then
+		if [ -z "$dsm_version" ]; then
+			# FIXME ignore platform???
+			tt_debug "basepath: $synosrc/$branch/"
+			echo -n "$synosrc/$branch"
+		else
+			tt_debug "basepath: $synosrc/$branch/build_env/ds.$platform-$dsm_version"
+			echo -n "$synosrc/$branch/build_env/ds.$platform-$dsm_version"
+		fi
+	else
+		tt_debug "basepath: $synosrc/$branch/ds.$platform"
+		echo -n "$synosrc/$branch/ds.$platform"
+	fi
+}
+syno_get_version() { # getopts $(syno_get_basepath_opt)
+	local basepath=$(syno_get_basepath "$@")
+	(
+		tt_debug "get version from: $basepath/source/lnxsdk/init/etc/VERSION"
+		eval $(grep -m 1 "buildnumber=" "$basepath/source/lnxsdk/init/etc/VERSION")
+		echo -n "$buildnumber"
+	)
+}
+syno_enum_project() { # getopts $(syno_get_basepath_opt)
+	local basepath=$(syno_get_basepath "$@")
+	local platform=$(syno_get_platform $basepath)
+	local v=$(syno_get_version "$@")
+
+	tt_debug "get project list for $basepath"
+	[ -d "$basepath" ] || { tt_warn "$basepath does not exist"; return 1; }
+
+	(
+		cd $basepath/lnxscripts/ || return 1
+
+		if [ ! -r ./include/config ]; then
+			tt_warn "config file does not exist"
+			return 1
+		fi
+		# use BuildList defined in lnxscripts/include/config
+		. ./include/config
+
+		case "$platform" in
+			x64) . ./include/platform.x64 ;;
+			bromolow) . ./include/platform.bromolow ;;
+			cedarview) . ./include/platform.cedarview ;;
+			5281) . ./include/platform.88f5281 ;;
+			6281) . ./include/platform.88f6281 ;;
+			6180) . ./include/platform.88f6180 ;;
+			7820) . ./include/platform.7820 ;;
+			ppc) . ./include/platform.powerpc ;;
+			824x) . ./include/platform.ppc824x ;;
+			853x) . ./include/platform.ppc853x ;;
+			854x) . ./include/platform.ppc854x ;;
+		esac
+
+		ProjectList=$BuildList
+
+		if [ -n "${EXCLUDE_PROJECTS}" ]; then
+			tt_debug "remove exclude projects"
+			ExcludeProj="^(`echo $EXCLUDE_PROJECTS | sed 's/ /|/g'`)\$"
+			ProjectList=`echo $ProjectList | sed 's/ /\n/g' | grep -vE "${ExcludeProj}"`
+		fi
+
+		if [ "$v" -gt 1806 ] || [ "$v" -lt 1800 -a "$v" -gt 1716 ] || [ "$v" -lt 1700 -a "$v" -gt 1620 ]; then
+			tt_debug "call ./ProjectDepends.py use -d opt"
+			ProjectList=`./ProjectDepends.py -d -x 0 -p "$platform" $ProjectList`
+		else
+			tt_debug "call ./ProjectDepends.py by sudo"
+			if ! sudo ./ProjectDepends.py -x 0 -p "${platform}" ${ProjectList}; then
+				tt_warn "can not get project list"
+				return 1
+			fi
+			if [ -r ./include/depends.temp ]; then
+				ProjectList=`cat ./include/depends.temp`
+				rm -f ./include/depends.temp
+			fi
+		fi
+
+		if [ -n "${EXCLUDE_PROJECTS}" ]; then
+			ExcludeProj="^(`echo $EXCLUDE_PROJECTS | sed 's/ /|/g'`)\$"
+			ProjectList=`echo $ProjectList | sed 's/ /\n/g' | grep -vE "${ExcludeProj}"`
+		fi
+
+		echo $ProjectList
+	)
+}
+syno_enum_platform() { # getopts $(synoget_basepath_opt) but ignore p option
+	local basepath=$(syno_get_basepath "$@")
+	(
+		eval $(grep -m 1 "AllPlatformOptionNames=" "$basepath/lnxscripts/include/platforms")
+		echo -n "$AllPlatformOptionNames"
+	)
+}
+syno_update() { # getopts $(synoget_basepath_opt)
+	local basepath=$(syno_get_basepath "$@") opt= project= isStashed=
+	while getopts $(syno_get_basepath_opt) opt; do
+		continue;
+	done
+	shift $((OPTIND-1))
+
+	for project in "$@"; do
+		(
+			cd $basepath/source/$project || exit 1
+			if git status | grep "\(new\ file:\|modified:\|deleted:\)"; then
+				isStashed=on
+				git stash || exit 1
+			fi
+			if git pull --rebase; then
+				[ "$isStashed" ] && git stash pop
+			else
+				[ "$isStashed" ] && git stash pop
+				exit 1
+			fi
+		)
+		if (exit $?); then
+			tt_warn "update $project failed"
+		fi
+	done
+}
+
+if [ "$(caller)" != "0 NULL" ]; then
+	if [ $# -gt 0 ]; then
+		while getopts $(syno_get_basepath_opt) opt; do
+			case "$opt" in
+				d) tt_DEBUG=on ;;
+			esac
+		done
+	fi
+
+	tt_debug "$(caller 0) include syno.common ok"
+	return 0
+fi
+
+hr() {
+	echo $(tt_color green)"=====$@====="$(tt_color)
+}
+usage() {
+	cat >&2 <<EOF
+USAGE: $(basename $0) [action] ...
+ACTION:
+	get_platform [work_dir] [synosrc]
+	get_branch [work_dir] [synosrc]
+	get_project [work_dir] [synosrc]
+	get_basepath [getopts $(syno_get_basepath_opt)]
+	get_version  [getopts $(syno_get_basepath_opt)]
+	enum_project [getopts $(syno_get_basepath_opt)]
+	enum_platform [getopts $(syno_get_basepath_opt)]
+	test_all
+EOF
+	exit 0
+}
+syno_test_all() {
+	hr "start self test"
+	tt_DEBUG=on
+
+	hr "test tt_get_work_dir"
+	( cd /synosrc/curr/ds.base/source/dsm; tt_get_work_dir )
+	( cd ~/bin; tt_get_work_dir )
+
+	hr "test syno_get_platform"
+	tt_test_case "base" 0 \
+		syno_get_platform "/synosrc/curr/ds.base/lnxscripts"
+	tt_test_case "6282r" 0 \
+		syno_get_platform "/synosrc/eagle/ds.6282r/source"
+	tt_test_case "base" 0 \
+		syno_get_platform "/synosrc/package/source/postfix"
+	tt_test_case "x64" 0 \
+		syno_get_platform "/synosrc/package/build_env/ds.x64-4.2"
+
+	hr "test syno_get_branch"
+	tt_test_case "curr" 0 \
+		syno_get_branch "/synosrc/curr/ds.base/lnxscripts"
+	tt_test_case "eagle" 0 \
+		syno_get_branch "/synosrc/eagle/ds.6282r/source"
+	tt_test_case "curr" 0 \
+		syno_get_branch "/eagle/ds.6282r/source"
+	tt_test_case "4.2" 0 \
+		syno_get_branch "/synosrc/package/build_env/ds.x64-4.2"
+
+	hr "test syno_get_project"
+	tt_test_case "dsm" 0 \
+		syno_get_project "/synosrc/q1/ds.853x/source/dsm"
+	tt_test_case "lnxscemd-2.0" 0 \
+		syno_get_project "/synosrc/q1/ds.853x/source/lnxscemd-2.0/modules"
+	tt_test_case "" 1 \
+		syno_get_project "/synosrc/q1/dsm/lnxscripts"
+	tt_test_case "lnxscripts" 0 \
+		syno_get_project "/synosrc/q1/ds.6281/lnxscripts"
+	tt_test_case "postfix" 0 \
+		syno_get_project "/synosrc/package/source/postfix"
+	tt_test_case "mailserver" 0 \
+		syno_get_project "/synosrc/package/build_env/ds.x64-4.1/source/mailserver"
+	tt_test_case "pkgscripts" 0 \
+		syno_get_project "/synosrc/package/pkgscripts"
+
+	hr "test syno_get_basepath"
+	tt_test_case "/synosrc/curr/ds.853x" 0 \
+		syno_get_basepath -p 853x
+	tt_test_case "/synosrc/q2/ds.853x" 0 \
+		syno_get_basepath -p 853x -b q2
+	tt_test_case "/synosrc/q2/ds.base" 0 \
+		syno_get_basepath -b q2
+	tt_test_case "/synosrc/eagle/ds.6282r" 0 \
+		syno_get_basepath -w "/synosrc/eagle/ds.6282r/source/"
+	tt_test_case "/synosrc/package" 0 \
+		syno_get_basepath -w "/synosrc/package/source/postfix"
+	tt_test_case "/synosrc/package" 0 \
+		syno_get_basepath -p x64 -w "/synosrc/package/source/postfix"
+	tt_test_case "/synosrc/package/build_env/ds.x64-4.1" 0 \
+		syno_get_basepath -p x64 -b 4.1 -w "/synosrc/package/source/postfix"
+
+	hr "test syno_get_version"
+	echo $(syno_get_version)
+	#echo $(syno_get_version -b q2)
+
+	hr "test syno_enum_project"
+	syno_enum_project
+	#syno_enum_project -b q1
+
+	hr "test syno_enum_platform"
+	echo $(syno_enum_platform)
+	#echo $(syno_enum_platform -b eagle)
+	#echo $(syno_enum_platform -b q2)
+}
+
+[ $# -gt 0 ] || usage
+
+while getopts "qh" opt; do
+	case $opt in
+		q) tt_WARN= ;;
+		h) usage
+	esac
+done
+shift $((OPTIND-1))
+
+action=$1 ; shift
+syno_$action "$@"
+

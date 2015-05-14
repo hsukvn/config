@@ -1,0 +1,38 @@
+To: thlu@synology.com
+Subject: [GIT] playground branch, master, updated. b0346f617ebe061a78df6f2e2f3259140cc51ae2
+Content-Type: text/plain; charset=utf-8
+X-Git-Refname: refs/heads/master
+X-Git-Reftype: branch
+X-Git-Oldrev: c6907ab9fb45bd795daabfd3d4caa5019536f805
+X-Git-Newrev: b0346f617ebe061a78df6f2e2f3259140cc51ae2
+
+This is an automated email from the git hooks/post-receive script. It was
+generated because a ref change was pushed to the repository containing
+the project "playground".
+
+The branch, master has been updated
+       via  b0346f617ebe061a78df6f2e2f3259140cc51ae2 (commit)
+      from  c6907ab9fb45bd795daabfd3d4caa5019536f805 (commit)
+
+Those revisions listed above that are new to this repository have
+not appeared on any other notification email; so we list those
+revisions in full, below.
+
+- Log -----------------------------------------------------------------
+commit b0346f617ebe061a78df6f2e2f3259140cc51ae2
+Author: thlu <thlu@thu.(none)>
+Date:   Thu Jan 10 00:00:55 2013 +0800
+
+    rm a
+
+-----------------------------------------------------------------------
+
+Summary of changes:
+ a |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+ delete mode 100644 a
+
+
+hooks/post-receive
+-- 
+playground

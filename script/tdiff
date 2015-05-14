@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import sys, os
+import re
+
+def remove_timestamp(src_file, dst_file):
+	src_fp = open(src_file, "r")
+	dst_fp = open(dst_file, "w")
+	rep = re.compile(r'^(.+:\d+: \[)\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}.\d+,(.*)$')
+
+	for line in src_fp:
+		line = line.rstrip()
+		m = rep.match(line)
+		if not m:
+			print >> dst_fp, line
+		else:
+			print >> dst_fp, m.group(1) + m.group(2)
+
+file_a = sys.argv[1]
+file_b = sys.argv[2]
+temp_a = "%s.tmp.%d" % (file_a, os.getpid())
+temp_b = "%s.tmp.%d" % (file_b, os.getpid())
+
+print >> sys.stderr, 'diff', file_a, file_b
+
+remove_timestamp(file_a, temp_a)
+remove_timestamp(file_b, temp_b)
+
+os.system("vimdiff " + temp_a + " " + temp_b)
+os.system("rm -f " + temp_a + " " + temp_b)

@@ -1,0 +1,11 @@
+--regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*new[ \t]+Object\(/\1/o,object/
+--regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
+--regex-JavaScript=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/f,function/
+--regex-JavaScript=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*\([^\]\)]*\)/\1/f,function/
+--regex-JavaScript=/(this\.)?([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(\)/\2/f,function/
+
+--langdef=txt
+--langmap=txt:.txt
+--regex-txt=/====== ([^=]*) ======/\1/,function/
+--regex-txt=/===== ([^=]*) =====/\1/,function/
+--regex-txt=/==== ([^=]*) ====/\1/,function/

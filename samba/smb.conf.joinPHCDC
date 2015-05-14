@@ -1,0 +1,13 @@
+[global]
+        server string=DiskStation
+        winbind enum groups=yes
+        idmap uid=10000-110000
+        idmap gid=96000-196000
+        security=ads
+        local master=no
+        realm=PHCDC.SYNO.COM
+        passdb backend=smbpasswd
+        printing=lprng
+        winbind enum users=yes
+        load printers=yes
+        workgroup=PHCDC

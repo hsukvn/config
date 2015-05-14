@@ -1,0 +1,100 @@
+#!/bin/bash
+
+SYNO_ADD_OPT="f:l:hqa"
+ScriptPath=$(dirname `readlink -f $0`)
+. $ScriptPath/syno.common ""
+BasePath=$(syno_get_basepath "$@")
+
+usage() {
+	cat >&2 <<EOF
+show the path of given bookmark
+
+USAGE: $(basename $0) [options] [bookmark]
+OPTION:
+$(syno_get_basepath_usage)
+	-f <file>            show file in this path
+	-l <prefix>          list all posible bookmark by prefix
+	-h                   show this help message
+EOF
+	exit 0
+}
+while getopts "$(syno_get_basepath_opt)" opt; do
+	tt_debug $opt
+	case "$opt" in
+		f) file=$OPTARG ;;
+		l) Prefix=$OPTARG ;;
+		a) list_abbr=y ;;
+		d) tt_DEBUG=on ;;
+		q) tt_WARN= ;;
+		h) usage ;;
+	esac
+done
+shift $(($OPTIND - 1))
+
+[ $# -eq 0 ] && set -- src
+
+posibles= bookmark=$1 project= dir=
+
+SYNO_PATH_ABBR="src pkg sdk core ext cp net help ushelp ls up ddns fw bb smb"
+if [ -n "$list_abbr" ]; then
+	echo $SYNO_PATH_ABBR
+	exit 0
+fi
+posibles="$posibles $(compgen -W "$SYNO_PATH_ABBR" -- $Prefix)"
+[ "$Prefix" ] && tt_debug posibles: $posibles
+# convert short cut to real project name and dir in projects
+case "$bookmark" in
+	src)	;;
+	pkg)	BasePath=/synosrc/package ;;
+	sdk)	project=libsynosdk	dir=lib ;;
+	core)	project=libsynocore	dir=lib ;;
+	ext)	project=synojslib	dir=ext-3 ;;
+	cp)	project=dsm		dir=modules/ControlPanel ;;
+	net)	project=dsm		dir=modules/ControlPanel/modules/Network ;;
+	help)	project=uihelp		dir=dsm ;;
+	ushelp)	project=uihelp_us2	dir=dsm ;;
+	ls)	project=lnxscripts	dir= ;;
+	up)	project=lnxsdk		dir=updater ;;
+	ddns)	project=dsm		dir=modules/ControlPanel/modules/DDNS ;;
+	fw)	project=dsm		dir=modules/ControlPanel/modules/Firewall ;;
+	bb)	project=busybox-1.16.1	dir= ;;
+	smb2)	project=samba-3.2.2	dir=source ;;
+	smb)	project=samba-3.6.x	dir=source3 ;;
+	*)      project=$bookmark ;;
+esac
+
+tt_debug "bookmark: $bookmark, proj: $project, dir: $dir, file: $file, Prefix: $Prefix"
+
+for srcpath in "" "source" "source/dsm/modules" "source/dsm/modules/ControlPanel/modules"; do
+	srcpath="$BasePath/$srcpath"
+	path="$srcpath${project:+/}$project${dir:+/}$dir"
+
+	tt_debug "search in $srcpath"
+
+	if [ ! -d "$srcpath" ]; then
+		continue;
+	fi
+
+	if [ "$Prefix" ]; then
+		list=$(ls -t --indicator-style=none $srcpath)
+		posibles=$posibles\ $(compgen -W "$list" -- $Prefix)
+		tt_debug posibles: $posibles
+		continue
+	fi
+
+	if [ -d "$path" ]; then
+		printf "%s\n" "$path${file:+/}$file"
+		exit 0
+	else
+		tt_debug "$bookmark not in $srcpath"
+	fi
+done
+
+if [ "$Prefix" ]; then
+	tt_debug "list by prefix"
+	echo $posibles
+	exit 0
+fi
+
+tt_warn "can not find path of bookmark: $bookmark"
+exit 1

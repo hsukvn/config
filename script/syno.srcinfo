@@ -1,0 +1,82 @@
+#!/bin/bash
+BLACKLIST=". CVS .git .AppleDouble"
+
+Scriptdir=$(dirname `readlink -f "$0"`)
+. $Scriptdir/syno.common ""
+BaseDir=$(syno_get_basepath "$@")
+SYNO_ADD_OPT="hecu:"
+
+[ $# -eq 0 ] && set -- "-h"
+usage() {
+	cat >&2 <<EOF
+list information of source codes.
+
+USAGE: $(basename $0) [OPTIONS]
+OPTIONS:
+$(syno_get_basepath_usage)
+	-e                   show projects in your source/ but not in CheckOutList
+	-c                   show projects in CheckOutList but not in your source/
+	-u <project>         update project
+	-h                   show this help message
+EOF
+	exit 0
+}
+while getopts $(syno_get_basepath_opt) opt; do
+	case "$opt" in
+		p|b|w) ;;
+		d) tt_DEBUG=on ;;
+		e) SHOW_NOT_IN_LIST=on ;;
+		c) SHOW_NEED_CHECK_OUT=on ;;
+		u) UP_PROJECT=$OPTARG ;;
+		h|?) usage ;;
+	esac
+done
+shift $((OPTIND - 1))
+
+Config="$BaseDir/lnxscripts/include/config"
+Srcpath="$BaseDir/source"
+tt_debug "Check projects with config : $Config" >&2
+tt_debug "Check projects location    : $Srcpath" >&2
+
+if [ "$UP_PROJECT" ]; then
+	tt_log "update: $UP_PROJECT"
+	syno_update "$UP_PROJECT"
+	syno.project "$UP_PROJECT"
+fi
+
+if [ "$SHOW_NEED_CHECK_OUT" -o "$SHOW_NOT_IN_LIST" ]; then
+	if [ ! -e $Config ]; then
+		tt_warn "config file '$Config' not existed" >&2
+		exit 1
+	fi
+	. $Config
+	rm -f /tmp/$(basename $0).$$.{a,b}
+
+	for i in $CheckOutList; do
+		printf "%s\n" $i >> /tmp/$(basename $0).$$.a
+	done
+	sort /tmp/$(basename $0).$$.a > /tmp/$(basename $0).$$.b
+
+	rm /tmp/$(basename $0).$$.a
+
+	for file in $Srcpath/*; do
+		if [ ! -d $file ]; then
+			continue;
+		fi
+		file=$(basename $file)
+		if printf "%s" "$BLACKLIST" | grep -qw "$file"; then
+			continue
+		fi
+		printf "%s\n" $file >> /tmp/$(basename $0).$$.a
+	done
+	if [ "$SHOW_NEED_CHECK_OUT" ]; then
+		echo "==== project in build list, but not in your source ====" >&2
+		sort /tmp/$(basename $0).$$.a | join -v 1 /tmp/$(basename $0).$$.b -
+	fi
+	if [ "$SHOW_NOT_IN_LIST" ]; then
+		echo "==== project in your source, but not in build list ====" >&2
+		sort /tmp/$(basename $0).$$.a | join -v 1 - /tmp/$(basename $0).$$.b
+	fi
+
+	rm -rf /tmp/$(basename $0).$$.{a,b}
+fi

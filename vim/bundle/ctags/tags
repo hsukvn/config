@@ -1,0 +1,885 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARFLAGS	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/Makefile	/^ARFLAGS = rc$/;"	m
+AUTOUPDATE_DEFAULT_HOUR	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	22;"	d	file:
+AUTOUPDATE_DEFAULT_MINUTE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	23;"	d	file:
+AppendTarget	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::AppendTarget(const std::string &unique, const std::string &version)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version)
+Apply	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Apply(const std::string strPostAction)$/;"	f	class:SmallUpdate	signature:(const std::string strPostAction)
+Apply	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::Apply()$/;"	f	class:SystemUpdate	signature:()
+AutoUpgradeTaskGet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^static int AutoUpgradeTaskGet(SYNO_SCHED_TASK **ppTask)$/;"	f	file:	signature:(SYNO_SCHED_TASK **ppTask)
+CancelDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::CancelDownload()$/;"	f	class:GroupUpdate	signature:()
+CancelDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CancelDownload()$/;"	f	class:SmallUpdate	signature:()
+CancelDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CancelDownload()$/;"	f	class:SystemUpdate	signature:()
+CancelDownloadDsm	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CancelDownloadDsm()$/;"	f	class:DsmUpdate	signature:()
+CheckDownloadedPatchType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^void UpdateUtil::CheckDownloadedPatchType(PATCH_TYPE &type)$/;"	f	class:UpdateUtil	signature:(PATCH_TYPE &type)
+CheckDsmRelease	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckDsmRelease()$/;"	f	class:DsmUpdate	signature:()
+CheckDsmReleaseByConf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckDsmReleaseByConf(const Json::Value &conf)$/;"	f	class:DsmUpdate	signature:(const Json::Value &conf)
+CheckFreeSpace	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static bool CheckFreeSpace(const std::string &folder, const unsigned long long require)$/;"	f	file:	signature:(const std::string &folder, const unsigned long long require)
+CheckHaveSmallFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CheckHaveSmallFix()$/;"	f	class:SmallUpdate	signature:()
+CheckNewRelease	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckNewRelease(bool &haveNewVer)$/;"	f	class:DsmUpdate	signature:(bool &haveNewVer)
+CheckNewReleaseByConf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckNewReleaseByConf(bool &haveNewVer, const Json::Value &conf)$/;"	f	class:DsmUpdate	signature:(bool &haveNewVer, const Json::Value &conf)
+CheckNewUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CheckNewUpdate(bool &blHaveNewUpdate)$/;"	f	class:SystemUpdate	signature:(bool &blHaveNewUpdate)
+CheckNewUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CheckNewUpdate(bool &blHaveNewUpdate, UPDATE_INFO &info)$/;"	f	class:SystemUpdate	signature:(bool &blHaveNewUpdate, UPDATE_INFO &info)
+CheckNewUpdateByConf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CheckNewUpdateByConf(bool &blHaveNewUpdate, const Json::Value &updateConf, UPDATE_INFO &info)$/;"	f	class:SystemUpdate	signature:(bool &blHaveNewUpdate, const Json::Value &updateConf, UPDATE_INFO &info)
+CheckPatchAndUpdateType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckPatchAndUpdateType(bool &match, Json::Value &updateInfo)$/;"	f	class:DsmUpdate	signature:(bool &match, Json::Value &updateInfo)
+CheckPatchIsSmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CheckPatchIsSmallUpdate(const std::string &strPatchPath, bool &isSmallUpdate)$/;"	f	class:SmallUpdate	signature:(const std::string &strPatchPath, bool &isSmallUpdate)
+CleanDownloadResult	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CleanDownloadResult(const std::string strDownloadPath)$/;"	f	class:DsmUpdate	signature:(const std::string strDownloadPath)
+CleanDownloadResult	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CleanDownloadResult()$/;"	f	class:SmallUpdate	signature:()
+CleanFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CleanFolder(const char *szFolderPath)$/;"	f	class:UpdateUtil	signature:(const char *szFolderPath)
+CleanFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CleanFolder(const std::string &strFolderPath)$/;"	f	class:UpdateUtil	signature:(const std::string &strFolderPath)
+CleanProgressFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CleanProgressFile()$/;"	f	class:UpdateUtil	signature:()
+ClearFlag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^void DsmUpdate::ClearFlag()$/;"	f	class:DsmUpdate	signature:()
+ClearFlag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	m_dsmUpdate.ClearFlag();$/;"	p	file:	signature:()
+ClearFlag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^void SystemUpdate::ClearFlag()$/;"	f	class:SystemUpdate	signature:()
+CompareVector	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CompareVector(std::vector<std::string> foo, std::vector<std::string> bar)$/;"	f	class:UpdateUtil	signature:(std::vector<std::string> foo, std::vector<std::string> bar)
+ConvertTagNameToTagType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^void RssFile::ConvertTagNameToTagType(const std::string strTagName, RSS_TAG_TYPE &tagType)$/;"	f	class:RssFile	signature:(const std::string strTagName, RSS_TAG_TYPE &tagType)
+ConvertVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ConvertVersion(const std::string &version, std::string &result)$/;"	f	class:GroupUpdate	signature:(const std::string &version, std::string &result)
+CurlDiscardFunc	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static size_t CurlDiscardFunc(char *ptr, size_t size, size_t nmemb, void *data)$/;"	f	file:	signature:(char *ptr, size_t size, size_t nmemb, void *data)
+CustomBugFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^CustomBugFix::CustomBugFix(const int sysSmallFixNumber):$/;"	f	class:CustomBugFix	signature:(const int sysSmallFixNumber)
+CustomBugFix::CustomBugFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^CustomBugFix::CustomBugFix(const int sysSmallFixNumber):$/;"	f	class:CustomBugFix	signature:(const int sysSmallFixNumber)
+CustomBugFix::Find	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::Find(const std::vector<std::string> &list, const std::string &strKey)$/;"	f	class:CustomBugFix	signature:(const std::vector<std::string> &list, const std::string &strKey)
+CustomBugFix::Merge	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::Merge(const Json::Value &bugFix, const std::string &strBuildNumber)$/;"	f	class:CustomBugFix	signature:(const Json::Value &bugFix, const std::string &strBuildNumber)
+CustomBugFix::MergeProjList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::MergeProjList(const Json::Value &projArray, int smallFixVersion, const std::string &strBuildNumber)$/;"	f	class:CustomBugFix	signature:(const Json::Value &projArray, int smallFixVersion, const std::string &strBuildNumber)
+CustomBugFix::MergeServiceList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::MergeServiceList(const Json::Value &serviceObj)$/;"	f	class:CustomBugFix	signature:(const Json::Value &serviceObj)
+DebianLib	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^DebianLib::DebianLib()$/;"	f	class:DebianLib	signature:()
+DebianLib	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^DebianLib::DebianLib(const std::string &strBuildNumber)$/;"	f	class:DebianLib	signature:(const std::string &strBuildNumber)
+DebianLib::DebianLib	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^DebianLib::DebianLib()$/;"	f	class:DebianLib	signature:()
+DebianLib::DebianLib	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^DebianLib::DebianLib(const std::string &strBuildNumber)$/;"	f	class:DebianLib	signature:(const std::string &strBuildNumber)
+DebianLib::ExecDpkg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::ExecDpkg(const std::string &strParam, const std::string &strDebianName)$/;"	f	class:DebianLib	signature:(const std::string &strParam, const std::string &strDebianName)
+DebianLib::ExecDpkg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::ExecDpkg(const std::string &strParam, const std::string &strDebianName, const std::string &strDestFolder)$/;"	f	class:DebianLib	signature:(const std::string &strParam, const std::string &strDebianName, const std::string &strDestFolder)
+DebianLib::FindSmallFixNumfromDeb	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^int DebianLib::FindSmallFixNumfromDeb(const std::string &strDebName)$/;"	f	class:DebianLib	signature:(const std::string &strDebName)
+DebianLib::InstallDebCompare	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::InstallDebCompare(const std::string &strDebFirst,const std::string &strDebSecond)$/;"	f	class:DebianLib	signature:(const std::string &strDebFirst,const std::string &strDebSecond)
+DebianLib::WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^		DebianLib::WriteUpdateLog(strMsg, SZF_DPKG_UPGRADE_LOG);$/;"	p	class:DebianLib	file:	signature:(strMsg, SZF_DPKG_UPGRADE_LOG)
+DebianLib::WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	DebianLib::WriteUpdateLog(strMsg, SZF_DPKG_UPGRADE_LOG);$/;"	p	class:DebianLib	file:	signature:(strMsg, SZF_DPKG_UPGRADE_LOG)
+DebianLib::WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^void  DebianLib::WriteUpdateLog(const std::string &strMsg, const std::string &strFileName)$/;"	f	class:DebianLib	signature:(const std::string &strMsg, const std::string &strFileName)
+DebianLib::WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	DebianLib::WriteUpdateLog(strUpdateMsg.str(), SZF_UPDATE_LOG);$/;"	p	class:DebianLib	file:	signature:(strUpdateMsg.str(), SZF_UPDATE_LOG)
+DebianLib::operator ()	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::operator() (const std::string &strDebFirst, const std::string &strDebSecond)$/;"	f	class:DebianLib	signature:(const std::string &strDebFirst, const std::string &strDebSecond)
+DefaultTaskConfigFill	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^static int DefaultTaskConfigFill(SYNO_SCHED_TASK *pTask)$/;"	f	file:	signature:(SYNO_SCHED_TASK *pTask)
+Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::Download(const std::string &folder)$/;"	f	class:GroupUpdate	signature:(const std::string &folder)
+Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Download(bool blDumpToInfoFile)$/;"	f	class:SmallUpdate	signature:(bool blDumpToInfoFile)
+Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Download(bool blDumpToInfoFile, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)$/;"	f	class:SmallUpdate	signature:(bool blDumpToInfoFile, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)
+Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::Download()$/;"	f	class:SystemUpdate	signature:()
+DownloadDsm	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::DownloadDsm()$/;"	f	class:DsmUpdate	signature:()
+DownloadFiles	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::DownloadFiles(bool &cancelled)$/;"	f	class:SmallUpdate	signature:(bool &cancelled)
+DownloadJson	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::DownloadJson(const std::string &strSmallJsonFile)$/;"	f	class:SmallUpdate	signature:(const std::string &strSmallJsonFile)
+DownloadStatusToString	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^std::string DsmUpdate::DownloadStatusToString(DSM_DOWNLOAD_STATUS &downloadStatus)$/;"	f	class:DsmUpdate	signature:(DSM_DOWNLOAD_STATUS &downloadStatus)
+DownloadTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	DownloadTask(): m_Links(), m_Iter(m_Links.begin())$/;"	f	class:DownloadTask	access:public	signature:()
+DownloadTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^class DownloadTask {$/;"	c	file:
+DownloadTask::DownloadTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	DownloadTask(): m_Links(), m_Iter(m_Links.begin())$/;"	f	class:DownloadTask	access:public	signature:()
+DownloadTask::GetJob	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	bool GetJob(std::string &link, std::string &output)$/;"	f	class:DownloadTask	access:public	signature:(std::string &link, std::string &output)
+DownloadTask::Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	void Init(const std::map<std::string, std::string> &links)$/;"	f	class:DownloadTask	access:public	signature:(const std::map<std::string, std::string> &links)
+DownloadTask::UpdateStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	void UpdateStatus(const std::string &filepath, const std::string &status)$/;"	f	class:DownloadTask	access:public	signature:(const std::string &filepath, const std::string &status)
+DownloadTask::m_Iter	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::map<std::string, std::string>::const_iterator m_Iter;$/;"	m	class:DownloadTask	file:	access:private
+DownloadTask::m_JobMutex	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	pthread_mutex_t m_JobMutex, m_StatusMutex;$/;"	m	class:DownloadTask	file:	access:private
+DownloadTask::m_Links	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::map<std::string, std::string> m_Links;$/;"	m	class:DownloadTask	file:	access:private
+DownloadTask::m_StatusMutex	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	pthread_mutex_t m_JobMutex, m_StatusMutex;$/;"	m	class:DownloadTask	file:	access:private
+DownloadTask::ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		bool ret = false;$/;"	l
+DownloadTask::~DownloadTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	~DownloadTask()$/;"	f	class:DownloadTask	access:public	signature:()
+DownloadWorker	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static void *DownloadWorker(void *arg)$/;"	f	file:	signature:(void *arg)
+DsmUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^DsmUpdate::DsmUpdate() :$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^DsmUpdate::DsmUpdate(const bool isRegularCheck) :$/;"	f	class:DsmUpdate	signature:(const bool isRegularCheck)
+DsmUpdate::CancelDownloadDsm	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CancelDownloadDsm()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::CheckDsmRelease	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckDsmRelease()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::CheckDsmReleaseByConf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckDsmReleaseByConf(const Json::Value &conf)$/;"	f	class:DsmUpdate	signature:(const Json::Value &conf)
+DsmUpdate::CheckNewRelease	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckNewRelease(bool &haveNewVer)$/;"	f	class:DsmUpdate	signature:(bool &haveNewVer)
+DsmUpdate::CheckNewReleaseByConf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckNewReleaseByConf(bool &haveNewVer, const Json::Value &conf)$/;"	f	class:DsmUpdate	signature:(bool &haveNewVer, const Json::Value &conf)
+DsmUpdate::CheckPatchAndUpdateType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CheckPatchAndUpdateType(bool &match, Json::Value &updateInfo)$/;"	f	class:DsmUpdate	signature:(bool &match, Json::Value &updateInfo)
+DsmUpdate::CleanDownloadResult	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::CleanDownloadResult(const std::string strDownloadPath)$/;"	f	class:DsmUpdate	signature:(const std::string strDownloadPath)
+DsmUpdate::ClearFlag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^void DsmUpdate::ClearFlag()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::DownloadDsm	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::DownloadDsm()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::DownloadStatusToString	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^std::string DsmUpdate::DownloadStatusToString(DSM_DOWNLOAD_STATUS &downloadStatus)$/;"	f	class:DsmUpdate	signature:(DSM_DOWNLOAD_STATUS &downloadStatus)
+DsmUpdate::DsmUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^DsmUpdate::DsmUpdate() :$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::DsmUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^DsmUpdate::DsmUpdate(const bool isRegularCheck) :$/;"	f	class:DsmUpdate	signature:(const bool isRegularCheck)
+DsmUpdate::ExecWgetP	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::ExecWgetP(const std::string strOutFile, const std::string strLink, bool &cancelled)$/;"	f	class:DsmUpdate	signature:(const std::string strOutFile, const std::string strLink, bool &cancelled)
+DsmUpdate::ExecWgetWithRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::ExecWgetWithRetry(const std::string strOutFile, const std::string strLink, bool &cancelled)$/;"	f	class:DsmUpdate	signature:(const std::string strOutFile, const std::string strLink, bool &cancelled)
+DsmUpdate::FindDownloadVolume	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::FindDownloadVolume(std::string &strDownloadVolume)$/;"	f	class:DsmUpdate	signature:(std::string &strDownloadVolume)
+DsmUpdate::GetAutoUpdateInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetAutoUpdateInfo(bool &downloaded, Json::Value &updateInfo)$/;"	f	class:DsmUpdate	signature:(bool &downloaded, Json::Value &updateInfo)
+DsmUpdate::GetDownloadPercentage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDownloadPercentage(const char *szFilePath, int &percentage)$/;"	f	class:DsmUpdate	signature:(const char *szFilePath, int &percentage)
+DsmUpdate::GetDownloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDownloadStatus(int &percentage, DSM_DOWNLOAD_STATUS &downloadStatus)$/;"	f	class:DsmUpdate	signature:(int &percentage, DSM_DOWNLOAD_STATUS &downloadStatus)
+DsmUpdate::GetDownloadedPatchPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDownloadedPatchPath(bool &downloaded, std::string &strPatchPath)$/;"	f	class:DsmUpdate	signature:(bool &downloaded, std::string &strPatchPath)
+DsmUpdate::GetDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDsmInfo(DSMINFO &dsmInfo)$/;"	f	class:DsmUpdate	signature:(DSMINFO &dsmInfo)
+DsmUpdate::GetFullVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^std::string DsmUpdate::GetFullVersion()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::GetOutputFilePath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetOutputFilePath(const std::string strLink, const std::string strDownloadPath, std::string &strOutFile)$/;"	f	class:DsmUpdate	signature:(const std::string strLink, const std::string strDownloadPath, std::string &strOutFile)
+DsmUpdate::GetVolumePathForPatch	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetVolumePathForPatch(std::string &strVolumePath, bool &decompress)$/;"	f	class:DsmUpdate	signature:(std::string &strVolumePath, bool &decompress)
+DsmUpdate::Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^void DsmUpdate::Init()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::IsPathSufficient	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::IsPathSufficient(const char *szPath, bool &decompress)$/;"	f	class:DsmUpdate	signature:(const char *szPath, bool &decompress)
+DsmUpdate::PreCheckDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::PreCheckDownload(bool &canProceed)$/;"	f	class:DsmUpdate	signature:(bool &canProceed)
+DsmUpdate::PrepareDownloadEnv	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::PrepareDownloadEnv(std::string &strDownloadPath)$/;"	f	class:DsmUpdate	signature:(std::string &strDownloadPath)
+DsmUpdate::UpdateDsm	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::UpdateDsm(const char *szPatchPath, const char *szVolumePath, bool decompress)$/;"	f	class:DsmUpdate	signature:(const char *szPatchPath, const char *szVolumePath, bool decompress)
+DsmUpdate::UpdateProgressFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::UpdateProgressFile(const char *szKey, const char *szValue)$/;"	f	class:DsmUpdate	signature:(const char *szKey, const char *szValue)
+DsmUpdate::VerifyChecksum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::VerifyChecksum(const char *szCheckSum, const char *szFilePath)$/;"	f	class:DsmUpdate	signature:(const char *szCheckSum, const char *szFilePath)
+DsmUpdate::WriteDownloadPidFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::WriteDownloadPidFile()$/;"	f	class:DsmUpdate	signature:()
+DsmUpdate::~DsmUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^DsmUpdate::~DsmUpdate()$/;"	f	class:DsmUpdate	signature:()
+DumpJsonRootToFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::DumpJsonRootToFile(const char *szFilePath, const Json::Value &resp)$/;"	f	class:UpdateUtil	signature:(const char *szFilePath, const Json::Value &resp)
+DumpToInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::DumpToInfoFile(bool blSaveInfoFiletoDebDir)$/;"	f	class:SmallUpdate	signature:(bool blSaveInfoFiletoDebDir)
+Equal	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Equal(const SmallUpdate &smallUpdate) const$/;"	f	class:SmallUpdate	signature:(const SmallUpdate &smallUpdate) const
+ExecDpkg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::ExecDpkg(const std::string &strParam, const std::string &strDebianName)$/;"	f	class:DebianLib	signature:(const std::string &strParam, const std::string &strDebianName)
+ExecDpkg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::ExecDpkg(const std::string &strParam, const std::string &strDebianName, const std::string &strDestFolder)$/;"	f	class:DebianLib	signature:(const std::string &strParam, const std::string &strDebianName, const std::string &strDestFolder)
+ExecWgetP	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::ExecWgetP(const std::string strOutFile, const std::string strLink, bool &cancelled)$/;"	f	class:DsmUpdate	signature:(const std::string strOutFile, const std::string strLink, bool &cancelled)
+ExecWgetP	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ExecWgetP(const std::string &strURL, const std::string &strDestDir)$/;"	f	class:SmallUpdate	signature:(const std::string &strURL, const std::string &strDestDir)
+ExecWgetWithRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::ExecWgetWithRetry(const std::string strOutFile, const std::string strLink, bool &cancelled)$/;"	f	class:DsmUpdate	signature:(const std::string strOutFile, const std::string strLink, bool &cancelled)
+ExecWgetWithRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ExecWgetWithRetry(const std::string &link, const std::string &output, const int tries)$/;"	f	class:GroupUpdate	signature:(const std::string &link, const std::string &output, const int tries)
+ExecWgetWithRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ExecWgetWithRetry(const std::string &strURL, const std::string &strDestDir)$/;"	f	class:SmallUpdate	signature:(const std::string &strURL, const std::string &strDestDir)
+ExportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ExportInfoFile(const std::string &folder)$/;"	f	class:GroupUpdate	signature:(const std::string &folder)
+FilesExist	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::FilesExist(const std::string& strDir, const std::string& strFile)$/;"	f	class:SmallUpdate	signature:(const std::string& strDir, const std::string& strFile)
+FilesExist	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::FilesExist(const std::string& strDir, const std::vector<std::string>& fileList)$/;"	f	class:SmallUpdate	signature:(const std::string& strDir, const std::vector<std::string>& fileList)
+Find	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::Find(const std::vector<std::string> &list, const std::string &strKey)$/;"	f	class:CustomBugFix	signature:(const std::vector<std::string> &list, const std::string &strKey)
+FindDownloadVolume	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::FindDownloadVolume(std::string &strDownloadVolume)$/;"	f	class:DsmUpdate	signature:(std::string &strDownloadVolume)
+FindSmallFixNumfromDeb	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^int DebianLib::FindSmallFixNumfromDeb(const std::string &strDebName)$/;"	f	class:DebianLib	signature:(const std::string &strDebName)
+GetApplyStage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::GetApplyStage(int &percent, std::string &strStage, std::string &strErrMsg)$/;"	f	class:SmallUpdate	signature:(int &percent, std::string &strStage, std::string &strErrMsg)
+GetAutoUpdateInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetAutoUpdateInfo(bool &downloaded, Json::Value &updateInfo)$/;"	f	class:DsmUpdate	signature:(bool &downloaded, Json::Value &updateInfo)
+GetAutoUpdateStep	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^SYNOUPGRADE_AUTOUPDATE_STEP UpdateUtil::GetAutoUpdateStep()$/;"	f	class:UpdateUtil	signature:()
+GetDownloadPercentage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDownloadPercentage(const char *szFilePath, int &percentage)$/;"	f	class:DsmUpdate	signature:(const char *szFilePath, int &percentage)
+GetDownloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDownloadStatus(int &percentage, DSM_DOWNLOAD_STATUS &downloadStatus)$/;"	f	class:DsmUpdate	signature:(int &percentage, DSM_DOWNLOAD_STATUS &downloadStatus)
+GetDownloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::GetDownloadStatus(int &percent, std::string &strStatus)$/;"	f	class:SmallUpdate	signature:(int &percent, std::string &strStatus)
+GetDownloadedFullVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::GetDownloadedFullVersion(std::string &strVersion)$/;"	f	class:SystemUpdate	signature:(std::string &strVersion)
+GetDownloadedInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^static bool GetDownloadedInfo(const char *szfDownloadInfo, Json::Value &info)$/;"	f	file:	signature:(const char *szfDownloadInfo, Json::Value &info)
+GetDownloadedPatchPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDownloadedPatchPath(bool &downloaded, std::string &strPatchPath)$/;"	f	class:DsmUpdate	signature:(bool &downloaded, std::string &strPatchPath)
+GetDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetDsmInfo(DSMINFO &dsmInfo)$/;"	f	class:DsmUpdate	signature:(DSMINFO &dsmInfo)
+GetErrno	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::ERR_NO SmallUpdate::GetErrno()$/;"	f	class:SmallUpdate	signature:()
+GetFullVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^std::string DsmUpdate::GetFullVersion()$/;"	f	class:DsmUpdate	signature:()
+GetFullVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^std::string SmallUpdate::GetFullVersion()$/;"	f	class:SmallUpdate	signature:()
+GetInvalidRestartService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::GetInvalidRestartService(std::vector<std::string> &invalidServiceList)$/;"	f	class:SmallUpdate	signature:(std::vector<std::string> &invalidServiceList)
+GetJob	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	bool GetJob(std::string &link, std::string &output)$/;"	f	class:DownloadTask	access:public	signature:(std::string &link, std::string &output)
+GetOutputFilePath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetOutputFilePath(const std::string strLink, const std::string strDownloadPath, std::string &strOutFile)$/;"	f	class:DsmUpdate	signature:(const std::string strLink, const std::string strDownloadPath, std::string &strOutFile)
+GetPatchLink	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::GetPatchLink(const DSMINFO &dsmInfo, std::string &link)$/;"	f	class:RssFile	signature:(const DSMINFO &dsmInfo, std::string &link)
+GetPatchPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::GetPatchPath(const std::string &unique, const std::string &version, std::string &path)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version, std::string &path)
+GetPatchSize	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static bool GetPatchSize(const std::string &url, unsigned long long &size)$/;"	f	file:	signature:(const std::string &url, unsigned long long &size)
+GetProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::GetProgress(const std::string &unique, const std::string &version, int &percentage, std::string &status)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version, int &percentage, std::string &status)
+GetProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::GetProgress(UPDATE_PROGRESS &prog)$/;"	f	class:UpdateUtil	signature:(UPDATE_PROGRESS &prog)
+GetRestartServiceList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::GetRestartServiceList(std::vector<std::string> &dsmServices, std::vector<std::string> &synoServices, std::vector<std::string> &pkg)$/;"	f	class:SmallUpdate	signature:(std::vector<std::string> &dsmServices, std::vector<std::string> &synoServices, std::vector<std::string> &pkg)
+GetRssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::GetRssFile(const bool isRegularCheck)$/;"	f	class:RssFile	signature:(const bool isRegularCheck)
+GetServiceNameSectionKey	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::GetServiceNameSectionKey(const std::string &strService, std::string &strSection, std::string &strKey)$/;"	f	class:UpdateUtil	signature:(const std::string &strService, std::string &strSection, std::string &strKey)
+GetServiceRestartType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SERVICE_RESTART_TYPE SmallUpdate::GetServiceRestartType(void)$/;"	f	class:SmallUpdate	signature:(void)
+GetSourceDir	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::GetSourceDir(std::string &strSourceDir,const std::string &strFolderName)$/;"	f	class:SmallUpdate	signature:(std::string &strSourceDir,const std::string &strFolderName)
+GetUserAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::GetUserAgent(std::string &userAgent, const char *szAppName)$/;"	f	class:UpdateUtil	signature:(std::string &userAgent, const char *szAppName)
+GetVolumePathForPatch	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::GetVolumePathForPatch(std::string &strVolumePath, bool &decompress)$/;"	f	class:DsmUpdate	signature:(std::string &strVolumePath, bool &decompress)
+GroupUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^GroupUpdate::GroupUpdate():$/;"	f	class:GroupUpdate	signature:()
+GroupUpdate::AppendTarget	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::AppendTarget(const std::string &unique, const std::string &version)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version)
+GroupUpdate::CancelDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::CancelDownload()$/;"	f	class:GroupUpdate	signature:()
+GroupUpdate::ConvertVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ConvertVersion(const std::string &version, std::string &result)$/;"	f	class:GroupUpdate	signature:(const std::string &version, std::string &result)
+GroupUpdate::Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::Download(const std::string &folder)$/;"	f	class:GroupUpdate	signature:(const std::string &folder)
+GroupUpdate::ExecWgetWithRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ExecWgetWithRetry(const std::string &link, const std::string &output, const int tries)$/;"	f	class:GroupUpdate	signature:(const std::string &link, const std::string &output, const int tries)
+GroupUpdate::ExportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ExportInfoFile(const std::string &folder)$/;"	f	class:GroupUpdate	signature:(const std::string &folder)
+GroupUpdate::GetPatchPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::GetPatchPath(const std::string &unique, const std::string &version, std::string &path)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version, std::string &path)
+GroupUpdate::GetProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::GetProgress(const std::string &unique, const std::string &version, int &percentage, std::string &status)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version, int &percentage, std::string &status)
+GroupUpdate::GroupUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^GroupUpdate::GroupUpdate():$/;"	f	class:GroupUpdate	signature:()
+GroupUpdate::ImportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ImportInfoFile(const std::string &folder)$/;"	f	class:GroupUpdate	signature:(const std::string &folder)
+GroupUpdate::IsPatchReady	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::IsPatchReady(const std::string &unique, const std::string &version)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version)
+GroupUpdate::STATUS_CANCELED	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_CANCELED = "canceled";$/;"	m	class:GroupUpdate	file:
+GroupUpdate::STATUS_DOWNLOADING	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_DOWNLOADING = "downloading";$/;"	m	class:GroupUpdate	file:
+GroupUpdate::STATUS_FAILED	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_FAILED = "failed";$/;"	m	class:GroupUpdate	file:
+GroupUpdate::STATUS_FINISHED	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_FINISHED = "finished";$/;"	m	class:GroupUpdate	file:
+GroupUpdate::STATUS_QUEUING	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_QUEUING = "queuing";$/;"	m	class:GroupUpdate	file:
+GroupUpdate::TokenizeVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^GroupUpdate::UPDATE_TYPE GroupUpdate::TokenizeVersion(const std::string &version, PSLIBSZLIST *ppslVersion)$/;"	f	class:GroupUpdate	signature:(const std::string &version, PSLIBSZLIST *ppslVersion)
+GroupUpdate::UpdateDownloadInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::UpdateDownloadInfo(std::map<std::string, std::string> &links, const std::string &folder)$/;"	f	class:GroupUpdate	signature:(std::map<std::string, std::string> &links, const std::string &folder)
+GroupUpdate::~GroupUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^GroupUpdate::~GroupUpdate()$/;"	f	class:GroupUpdate	signature:()
+HAS_AND_IS_TYPE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	6;"	d	file:
+HASetApplyProgressErr	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::HASetApplyProgressErr(std::string strErrMsg)$/;"	f	class:SmallUpdate	signature:(std::string strErrMsg)
+HaveNewFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::HaveNewFix()$/;"	f	class:SmallUpdate	signature:()
+ImportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::ImportInfoFile(const std::string &folder)$/;"	f	class:GroupUpdate	signature:(const std::string &folder)
+ImportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ImportInfoFile(const char* szfDownloadInfo)$/;"	f	class:SmallUpdate	signature:(const char* szfDownloadInfo)
+ImportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::ImportInfoFile()$/;"	f	class:SystemUpdate	signature:()
+ImportSmallPatch	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ImportSmallPatch(const std::string &strMaunalSmallPatch)$/;"	f	class:SmallUpdate	signature:(const std::string &strMaunalSmallPatch)
+ImportSmallPatch	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ImportSmallPatch(const std::string &strMaunalSmallPatch, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)$/;"	f	class:SmallUpdate	signature:(const std::string &strMaunalSmallPatch, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)
+InfoKey	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		InfoKey key((*iter)[SZK_INFO_UNIQUE].asString(), (*iter)[SZK_INFO_VERSION].asString());$/;"	p	file:	signature:(*iter)[SZK_INFO_UNIQUE].asString(), (*iter)[SZK_INFO_VERSION].asString()
+Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^void DsmUpdate::Init()$/;"	f	class:DsmUpdate	signature:()
+Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	task.Init(links);$/;"	p	file:	signature:(links)
+Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	void Init(const std::map<std::string, std::string> &links)$/;"	f	class:DownloadTask	access:public	signature:(const std::map<std::string, std::string> &links)
+Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::Init()$/;"	f	class:SmallUpdate	signature:()
+InstallDeb	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::InstallDeb(int percent, APPLY_STAGE applyStage)$/;"	f	class:SmallUpdate	signature:(int percent, APPLY_STAGE applyStage)
+InstallDebCompare	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::InstallDebCompare(const std::string &strDebFirst,const std::string &strDebSecond)$/;"	f	class:DebianLib	signature:(const std::string &strDebFirst,const std::string &strDebSecond)
+IsAutoUpdateGetHotfixOnly	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^static bool IsAutoUpdateGetHotfixOnly(const bool isUpdateHotfix)$/;"	f	file:	signature:(const bool isUpdateHotfix)
+IsAutoUpgradeTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^static BOOL IsAutoUpgradeTask(SYNO_SCHED_TASK *pTask)$/;"	f	file:	signature:(SYNO_SCHED_TASK *pTask)
+IsDownloadedUpToDate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::IsDownloadedUpToDate()$/;"	f	class:SmallUpdate	signature:()
+IsDownloading	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static bool IsDownloading()$/;"	f	file:	signature:()
+IsHotfix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::IsHotfix(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)$/;"	f	class:RssFile	signature:(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)
+IsPatchReady	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::IsPatchReady(const std::string &unique, const std::string &version)$/;"	f	class:GroupUpdate	signature:(const std::string &unique, const std::string &version)
+IsPathSufficient	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::IsPathSufficient(const char *szPath, bool &decompress)$/;"	f	class:DsmUpdate	signature:(const char *szPath, bool &decompress)
+IsReadyApply	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::IsReadyApply()$/;"	f	class:SmallUpdate	signature:()
+IsThereAvailVolPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::IsThereAvailVolPath(std::string& strOutPath, unsigned long requireBytes, bool blIncludeRoot)$/;"	f	class:UpdateUtil	signature:(std::string& strOutPath, unsigned long requireBytes, bool blIncludeRoot)
+IsVersionNewer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::IsVersionNewer(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)$/;"	f	class:RssFile	signature:(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)
+JsonArray2StringVector	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::JsonArray2StringVector(const Json::Value &inJson, std::vector<std::string> &outVector)$/;"	f	class:UpdateUtil	signature:(const Json::Value &inJson, std::vector<std::string> &outVector)
+LIB	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/Makefile	/^LIB=libsynoinstallcpp.so$/;"	m
+LOCK_UN	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	if (lock >= 0)  flock(fileno(fd), LOCK_UN);$/;"	l
+LookUpServer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::LookUpServer()$/;"	f	class:SmallUpdate	signature:()
+MAX_GROUP_DOWNLOAD_WORKER_NUM	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	19;"	d	file:
+Merge	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::Merge(const Json::Value &bugFix, const std::string &strBuildNumber)$/;"	f	class:CustomBugFix	signature:(const Json::Value &bugFix, const std::string &strBuildNumber)
+MergeProjList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::MergeProjList(const Json::Value &projArray, int smallFixVersion, const std::string &strBuildNumber)$/;"	f	class:CustomBugFix	signature:(const Json::Value &projArray, int smallFixVersion, const std::string &strBuildNumber)
+MergeServiceList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^bool CustomBugFix::MergeServiceList(const Json::Value &serviceObj)$/;"	f	class:CustomBugFix	signature:(const Json::Value &serviceObj)
+OBJ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/Makefile	/^OBJ = $(SRC:.cpp=.o)$/;"	m
+ParseJsonRootFromFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::ParseJsonRootFromFile(const char *szFilePath, Json::Value &resp)$/;"	f	class:UpdateUtil	signature:(const char *szFilePath, Json::Value &resp)
+ParseRssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::ParseRssFile(const bool getHotfix, const DSMINFO &currDsmInfo, $/;"	f	class:RssFile	signature:(const bool getHotfix, const DSMINFO &currDsmInfo, bool &hasDsmUpdate, DSMINFO &rssDsmInfo)
+ParseTagValue	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::ParseTagValue(const std::string &strLine, std::string &strTag, std::string &strValue, RSS_TAG_TYPE &tagType)$/;"	f	class:RssFile	signature:(const std::string &strLine, std::string &strTag, std::string &strValue, RSS_TAG_TYPE &tagType)
+PreCheckDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::PreCheckDownload(bool &canProceed)$/;"	f	class:DsmUpdate	signature:(bool &canProceed)
+PrepareDownloadEnv	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::PrepareDownloadEnv(std::string &strDownloadPath)$/;"	f	class:DsmUpdate	signature:(std::string &strDownloadPath)
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^			UpdateUtil::RemoveFolder(m_sourceDir.c_str());$/;"	p	class:UpdateUtil	file:	signature:(m_sourceDir.c_str())
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::RemoveFolder(SZD_SMALL_UPDATE);$/;"	p	class:UpdateUtil	file:	signature:(SZD_SMALL_UPDATE)
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::RemoveFolder(m_sourceDir.c_str());$/;"	p	class:UpdateUtil	file:	signature:(m_sourceDir.c_str())
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::RemoveFolder(szDir);$/;"	p	class:UpdateUtil	file:	signature:(szDir)
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	UpdateUtil::RemoveFolder(m_sourceDir.c_str());$/;"	p	class:UpdateUtil	file:	signature:(m_sourceDir.c_str())
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::RemoveFolder(const char *szFolderPath)$/;"	f	class:UpdateUtil	signature:(const char *szFolderPath)
+RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::RemoveFolder(const std::string &strFolderPath)$/;"	f	class:UpdateUtil	signature:(const std::string &strFolderPath)
+RssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^RssFile::RssFile() :$/;"	f	class:RssFile	signature:()
+RssFile::ConvertTagNameToTagType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^void RssFile::ConvertTagNameToTagType(const std::string strTagName, RSS_TAG_TYPE &tagType)$/;"	f	class:RssFile	signature:(const std::string strTagName, RSS_TAG_TYPE &tagType)
+RssFile::GetPatchLink	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::GetPatchLink(const DSMINFO &dsmInfo, std::string &link)$/;"	f	class:RssFile	signature:(const DSMINFO &dsmInfo, std::string &link)
+RssFile::GetRssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::GetRssFile(const bool isRegularCheck)$/;"	f	class:RssFile	signature:(const bool isRegularCheck)
+RssFile::IsHotfix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::IsHotfix(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)$/;"	f	class:RssFile	signature:(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)
+RssFile::IsVersionNewer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::IsVersionNewer(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)$/;"	f	class:RssFile	signature:(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)
+RssFile::ParseRssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::ParseRssFile(const bool getHotfix, const DSMINFO &currDsmInfo, $/;"	f	class:RssFile	signature:(const bool getHotfix, const DSMINFO &currDsmInfo, bool &hasDsmUpdate, DSMINFO &rssDsmInfo)
+RssFile::ParseTagValue	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::ParseTagValue(const std::string &strLine, std::string &strTag, std::string &strValue, RSS_TAG_TYPE &tagType)$/;"	f	class:RssFile	signature:(const std::string &strLine, std::string &strTag, std::string &strValue, RSS_TAG_TYPE &tagType)
+RssFile::RssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^RssFile::RssFile() :$/;"	f	class:RssFile	signature:()
+RssFile::RssFileExist	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::RssFileExist()$/;"	f	class:RssFile	signature:()
+RssFile::SatisfyReqVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::SatisfyReqVersion(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)$/;"	f	class:RssFile	signature:(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)
+RssFile::SetDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^void RssFile::SetDsmInfo(const RSS_TAG_TYPE &tagType, const char *szValue, DSMINFO &dsmInfo)$/;"	f	class:RssFile	signature:(const RSS_TAG_TYPE &tagType, const char *szValue, DSMINFO &dsmInfo)
+RssFile::~RssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^RssFile::~RssFile()$/;"	f	class:RssFile	signature:()
+RssFileExist	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::RssFileExist()$/;"	f	class:RssFile	signature:()
+SRC	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/Makefile	/^SRC=smallupdate.cpp dsmupdate.cpp update_cpputil.cpp custombugfix.cpp systemupdate.cpp debian_lib.cpp setting.cpp rssfile.cpp groupupdate.cpp$/;"	m
+STATIC_LIB	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/Makefile	/^STATIC_LIB=libsynoinstallcpp.a$/;"	m
+STATUS_CANCELED	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_CANCELED = "canceled";$/;"	m	class:GroupUpdate	file:
+STATUS_DOWNLOADING	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_DOWNLOADING = "downloading";$/;"	m	class:GroupUpdate	file:
+STATUS_FAILED	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_FAILED = "failed";$/;"	m	class:GroupUpdate	file:
+STATUS_FINISHED	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_FINISHED = "finished";$/;"	m	class:GroupUpdate	file:
+STATUS_QUEUING	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^const std::string GroupUpdate::STATUS_QUEUING = "queuing";$/;"	m	class:GroupUpdate	file:
+SYNOInstallAutoDownloadGet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^bool SYNOInstallAutoDownloadGet()$/;"	f	signature:()
+SYNOInstallAutoDownloadSet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^bool SYNOInstallAutoDownloadSet(bool blUpdateOnNew)$/;"	f	signature:(bool blUpdateOnNew)
+SYNOInstallAutoUgradeTypeSet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^bool SYNOInstallAutoUgradeTypeSet(SYNOINSTALL_UPGRADE_TYPE type)$/;"	f	signature:(SYNOINSTALL_UPGRADE_TYPE type)
+SYNOInstallAutoUpgradeTypeGet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^SYNOINSTALL_UPGRADE_TYPE SYNOInstallAutoUpgradeTypeGet()$/;"	f	signature:()
+SYNOInstallScheduleTaskSettingGet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^int SYNOInstallScheduleTaskSettingGet(Json::Value &jsSchedule)$/;"	f	signature:(Json::Value &jsSchedule)
+SYNOInstallScheduleTaskSettingSet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^int SYNOInstallScheduleTaskSettingSet(const SYNOINSTALL_AUTOUPDATE_TYPE type, const Json::Value &jsSchedule)$/;"	f	signature:(const SYNOINSTALL_AUTOUPDATE_TYPE type, const Json::Value &jsSchedule)
+SZF_GROUP_DOWNLOAD_INFO	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	16;"	d	file:
+SZF_GROUP_DOWNLOAD_PIDFILE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	17;"	d	file:
+SZF_GROUP_DOWNLOAD_STATUS	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	18;"	d	file:
+SZF_SMALLUPDATE_PID	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	27;"	d	file:
+SZF_STOP_DOWNLOAD_SMALLUPDATE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	26;"	d	file:
+SZK_INFO_BUILDNUM	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	28;"	d	file:
+SZK_INFO_BYTE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	25;"	d	file:
+SZK_INFO_FILENAME	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	23;"	d	file:
+SZK_INFO_FIXNUM	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	29;"	d	file:
+SZK_INFO_MAJOR	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	26;"	d	file:
+SZK_INFO_MINOR	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	27;"	d	file:
+SZK_INFO_PATH	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	24;"	d	file:
+SZK_INFO_TYPE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	30;"	d	file:
+SZK_INFO_UNIQUE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	21;"	d	file:
+SZK_INFO_VERSION	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	22;"	d	file:
+SZ_AUTOUPDATE_ACTION_ALL	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	17;"	d	file:
+SZ_AUTOUPDATE_ACTION_DOWNLOAD	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	19;"	d	file:
+SZ_AUTOUPDATE_ACTION_HOTFIX	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	18;"	d	file:
+SZ_AUTOUPDATE_APP	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	15;"	d	file:
+SZ_AUTOUPDATE_APPNAME	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	16;"	d	file:
+SZ_AUTOUPDATE_CMD	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	9;"	d	file:
+SZ_AUTOUPDATE_DEFAULT_WEEK	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	21;"	d	file:
+SZ_AUTOUPDATE_NAME	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	20;"	d	file:
+SZ_SMALLUPDATE_PAUSE_REASON	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	28;"	d	file:
+SZ_SMALLUPDATE_SKIP_SERVICE	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	29;"	d	file:
+SatisfyReqVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^bool RssFile::SatisfyReqVersion(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)$/;"	f	class:RssFile	signature:(const DSMINFO &currDsmInfo, const DSMINFO &rssDsmInfo)
+SendNotification	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^		UpdateUtil::SendNotification(ret, m_isRegularCheck, data[SZK_PATCH_PATH].asString(), version);$/;"	p	class:UpdateUtil	file:	signature:(ret, m_isRegularCheck, data[SZK_PATCH_PATH].asString(), version)
+SendNotification	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::SendNotification(ret, m_isRegularCheck, m_sourceDir, version);$/;"	p	class:UpdateUtil	file:	signature:(ret, m_isRegularCheck, m_sourceDir, version)
+SendNotification	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^void UpdateUtil::SendNotification(const bool success, const bool isRegularCheck,$/;"	f	class:UpdateUtil	signature:(const bool success, const bool isRegularCheck, const std::string &strOutFile, const std::string &version)
+ServiceStart	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^int UpdateUtil::ServiceStart(void)$/;"	f	class:UpdateUtil	signature:(void)
+ServiceStop	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^int UpdateUtil::ServiceStop(void)$/;"	f	class:UpdateUtil	signature:(void)
+SetDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^void RssFile::SetDsmInfo(const RSS_TAG_TYPE &tagType, const char *szValue, DSMINFO &dsmInfo)$/;"	f	class:RssFile	signature:(const RSS_TAG_TYPE &tagType, const char *szValue, DSMINFO &dsmInfo)
+SetProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::SetProgress(UPDATE_STEP step, int err)$/;"	f	class:UpdateUtil	signature:(UPDATE_STEP step, int err)
+SetUpdateList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::SetUpdateList(const std::string &strSmallJsonFile)$/;"	f	class:SmallUpdate	signature:(const std::string &strSmallJsonFile)
+SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate():$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate(const bool isRegularCheck):$/;"	f	class:SmallUpdate	signature:(const bool isRegularCheck)
+SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate(const std::string &strUnique) :$/;"	f	class:SmallUpdate	signature:(const std::string &strUnique)
+SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate(const std::string &strUnique, const std::string &strMajor, const std::string &strMinor,$/;"	f	class:SmallUpdate	signature:(const std::string &strUnique, const std::string &strMajor, const std::string &strMinor, const std::string &strBuildNumber, const std::string &strSmallFixNumber)
+SmallUpdate::Apply	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Apply(const std::string strPostAction)$/;"	f	class:SmallUpdate	signature:(const std::string strPostAction)
+SmallUpdate::CancelDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CancelDownload()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::CheckHaveSmallFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CheckHaveSmallFix()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::CheckPatchIsSmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CheckPatchIsSmallUpdate(const std::string &strPatchPath, bool &isSmallUpdate)$/;"	f	class:SmallUpdate	signature:(const std::string &strPatchPath, bool &isSmallUpdate)
+SmallUpdate::CleanDownloadResult	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::CleanDownloadResult()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Download(bool blDumpToInfoFile)$/;"	f	class:SmallUpdate	signature:(bool blDumpToInfoFile)
+SmallUpdate::Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Download(bool blDumpToInfoFile, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)$/;"	f	class:SmallUpdate	signature:(bool blDumpToInfoFile, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)
+SmallUpdate::DownloadFiles	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::DownloadFiles(bool &cancelled)$/;"	f	class:SmallUpdate	signature:(bool &cancelled)
+SmallUpdate::DownloadJson	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::DownloadJson(const std::string &strSmallJsonFile)$/;"	f	class:SmallUpdate	signature:(const std::string &strSmallJsonFile)
+SmallUpdate::DumpToInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::DumpToInfoFile(bool blSaveInfoFiletoDebDir)$/;"	f	class:SmallUpdate	signature:(bool blSaveInfoFiletoDebDir)
+SmallUpdate::Equal	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::Equal(const SmallUpdate &smallUpdate) const$/;"	f	class:SmallUpdate	signature:(const SmallUpdate &smallUpdate) const
+SmallUpdate::ExecWgetP	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ExecWgetP(const std::string &strURL, const std::string &strDestDir)$/;"	f	class:SmallUpdate	signature:(const std::string &strURL, const std::string &strDestDir)
+SmallUpdate::ExecWgetWithRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ExecWgetWithRetry(const std::string &strURL, const std::string &strDestDir)$/;"	f	class:SmallUpdate	signature:(const std::string &strURL, const std::string &strDestDir)
+SmallUpdate::FilesExist	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::FilesExist(const std::string& strDir, const std::string& strFile)$/;"	f	class:SmallUpdate	signature:(const std::string& strDir, const std::string& strFile)
+SmallUpdate::FilesExist	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::FilesExist(const std::string& strDir, const std::vector<std::string>& fileList)$/;"	f	class:SmallUpdate	signature:(const std::string& strDir, const std::vector<std::string>& fileList)
+SmallUpdate::GetApplyStage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::GetApplyStage(int &percent, std::string &strStage, std::string &strErrMsg)$/;"	f	class:SmallUpdate	signature:(int &percent, std::string &strStage, std::string &strErrMsg)
+SmallUpdate::GetDownloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::GetDownloadStatus(int &percent, std::string &strStatus)$/;"	f	class:SmallUpdate	signature:(int &percent, std::string &strStatus)
+SmallUpdate::GetErrno	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::ERR_NO SmallUpdate::GetErrno()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::GetFullVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^std::string SmallUpdate::GetFullVersion()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::GetInvalidRestartService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::GetInvalidRestartService(std::vector<std::string> &invalidServiceList)$/;"	f	class:SmallUpdate	signature:(std::vector<std::string> &invalidServiceList)
+SmallUpdate::GetRestartServiceList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::GetRestartServiceList(std::vector<std::string> &dsmServices, std::vector<std::string> &synoServices, std::vector<std::string> &pkg)$/;"	f	class:SmallUpdate	signature:(std::vector<std::string> &dsmServices, std::vector<std::string> &synoServices, std::vector<std::string> &pkg)
+SmallUpdate::GetServiceRestartType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SERVICE_RESTART_TYPE SmallUpdate::GetServiceRestartType(void)$/;"	f	class:SmallUpdate	signature:(void)
+SmallUpdate::GetSourceDir	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::GetSourceDir(std::string &strSourceDir,const std::string &strFolderName)$/;"	f	class:SmallUpdate	signature:(std::string &strSourceDir,const std::string &strFolderName)
+SmallUpdate::HASetApplyProgressErr	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::HASetApplyProgressErr(std::string strErrMsg)$/;"	f	class:SmallUpdate	signature:(std::string strErrMsg)
+SmallUpdate::HaveNewFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::HaveNewFix()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::ImportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ImportInfoFile(const char* szfDownloadInfo)$/;"	f	class:SmallUpdate	signature:(const char* szfDownloadInfo)
+SmallUpdate::ImportSmallPatch	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ImportSmallPatch(const std::string &strMaunalSmallPatch)$/;"	f	class:SmallUpdate	signature:(const std::string &strMaunalSmallPatch)
+SmallUpdate::ImportSmallPatch	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::ImportSmallPatch(const std::string &strMaunalSmallPatch, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)$/;"	f	class:SmallUpdate	signature:(const std::string &strMaunalSmallPatch, const std::string &strFolderName, bool blSaveInfoFiletoDebDir)
+SmallUpdate::Init	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::Init()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::InstallDeb	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::InstallDeb(int percent, APPLY_STAGE applyStage)$/;"	f	class:SmallUpdate	signature:(int percent, APPLY_STAGE applyStage)
+SmallUpdate::IsDownloadedUpToDate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::IsDownloadedUpToDate()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::IsReadyApply	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::IsReadyApply()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::LookUpServer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::LookUpServer()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::SetUpdateList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::SetUpdateList(const std::string &strSmallJsonFile)$/;"	f	class:SmallUpdate	signature:(const std::string &strSmallJsonFile)
+SmallUpdate::SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate():$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate(const bool isRegularCheck):$/;"	f	class:SmallUpdate	signature:(const bool isRegularCheck)
+SmallUpdate::SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate(const std::string &strUnique) :$/;"	f	class:SmallUpdate	signature:(const std::string &strUnique)
+SmallUpdate::SmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate::SmallUpdate(const std::string &strUnique, const std::string &strMajor, const std::string &strMinor,$/;"	f	class:SmallUpdate	signature:(const std::string &strUnique, const std::string &strMajor, const std::string &strMinor, const std::string &strBuildNumber, const std::string &strSmallFixNumber)
+SmallUpdate::SwitchAllService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchAllService(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SmallUpdate::SwitchAppService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchAppService(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SmallUpdate::SwitchPartialServices	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchPartialServices(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SmallUpdate::SwitchServices	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchServices(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SmallUpdate::UnpackSmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UnpackSmallUpdate()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::UpdateApplyProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateApplyProgress(int percent, APPLY_STAGE applyStage, std::string strErrMsg) {$/;"	f	class:SmallUpdate	signature:(int percent, APPLY_STAGE applyStage, std::string strErrMsg)
+SmallUpdate::UpdateConfig	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateConfig() const$/;"	f	class:SmallUpdate	signature:() const
+SmallUpdate::UpdateDownloadProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateDownloadProgress(int percent, DOWNLOAD_STATUS donwloadStatus) {$/;"	f	class:SmallUpdate	signature:(int percent, DOWNLOAD_STATUS donwloadStatus)
+SmallUpdate::UpdateFlash	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateFlash()$/;"	f	class:SmallUpdate	signature:()
+SmallUpdate::operator =	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate & SmallUpdate::operator= (const SmallUpdate &rhs)$/;"	f	class:SmallUpdate	signature:(const SmallUpdate &rhs)
+StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_dsmServiceRestartList, dsmServiceRestartList);$/;"	p	class:UpdateUtil	file:	signature:(m_dsmServiceRestartList, dsmServiceRestartList)
+StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_installDebList, installDebList);$/;"	p	class:UpdateUtil	file:	signature:(m_installDebList, installDebList)
+StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_pkgRestartList, pkgRestartList);$/;"	p	class:UpdateUtil	file:	signature:(m_pkgRestartList, pkgRestartList)
+StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_synoServiceRestartList, synoServiceRestartList);$/;"	p	class:UpdateUtil	file:	signature:(m_synoServiceRestartList, synoServiceRestartList)
+StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::StringVector2JsonArray(const std::vector<std::string> &stringVector, Json::Value &jsonArray)$/;"	f	class:UpdateUtil	signature:(const std::vector<std::string> &stringVector, Json::Value &jsonArray)
+SwitchAllService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchAllService(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SwitchAppService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchAppService(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SwitchPartialServices	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchPartialServices(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SwitchServices	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^void SmallUpdate::SwitchServices(bool blOn) const$/;"	f	class:SmallUpdate	signature:(bool blOn) const
+SystemUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^SystemUpdate::SystemUpdate(const bool isRegularCheck):$/;"	f	class:SystemUpdate	signature:(const bool isRegularCheck)
+SystemUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^SystemUpdate::SystemUpdate(void):$/;"	f	class:SystemUpdate	signature:(void)
+SystemUpdate::Apply	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::Apply()$/;"	f	class:SystemUpdate	signature:()
+SystemUpdate::CancelDownload	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CancelDownload()$/;"	f	class:SystemUpdate	signature:()
+SystemUpdate::CheckNewUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CheckNewUpdate(bool &blHaveNewUpdate)$/;"	f	class:SystemUpdate	signature:(bool &blHaveNewUpdate)
+SystemUpdate::CheckNewUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CheckNewUpdate(bool &blHaveNewUpdate, UPDATE_INFO &info)$/;"	f	class:SystemUpdate	signature:(bool &blHaveNewUpdate, UPDATE_INFO &info)
+SystemUpdate::CheckNewUpdateByConf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::CheckNewUpdateByConf(bool &blHaveNewUpdate, const Json::Value &updateConf, UPDATE_INFO &info)$/;"	f	class:SystemUpdate	signature:(bool &blHaveNewUpdate, const Json::Value &updateConf, UPDATE_INFO &info)
+SystemUpdate::ClearFlag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^void SystemUpdate::ClearFlag()$/;"	f	class:SystemUpdate	signature:()
+SystemUpdate::Download	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::Download()$/;"	f	class:SystemUpdate	signature:()
+SystemUpdate::GetDownloadedFullVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::GetDownloadedFullVersion(std::string &strVersion)$/;"	f	class:SystemUpdate	signature:(std::string &strVersion)
+SystemUpdate::ImportInfoFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^bool SystemUpdate::ImportInfoFile()$/;"	f	class:SystemUpdate	signature:()
+SystemUpdate::SystemUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^SystemUpdate::SystemUpdate(const bool isRegularCheck):$/;"	f	class:SystemUpdate	signature:(const bool isRegularCheck)
+SystemUpdate::SystemUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^SystemUpdate::SystemUpdate(void):$/;"	f	class:SystemUpdate	signature:(void)
+TokenizeVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^GroupUpdate::UPDATE_TYPE GroupUpdate::TokenizeVersion(const std::string &version, PSLIBSZLIST *ppslVersion)$/;"	f	class:GroupUpdate	signature:(const std::string &version, PSLIBSZLIST *ppslVersion)
+UnpackSmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UnpackSmallUpdate()$/;"	f	class:SmallUpdate	signature:()
+UntarFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::UntarFile(const char *szSrc, const char *szDestFolder)$/;"	f	class:UpdateUtil	signature:(const char *szSrc, const char *szDestFolder)
+UntarFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::UntarFile(const std::string &strSrc, const std::string &strDstFolder)$/;"	f	class:UpdateUtil	signature:(const std::string &strSrc, const std::string &strDstFolder)
+UpdateApplyProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateApplyProgress(int percent, APPLY_STAGE applyStage, std::string strErrMsg) {$/;"	f	class:SmallUpdate	signature:(int percent, APPLY_STAGE applyStage, std::string strErrMsg)
+UpdateConfig	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateConfig() const$/;"	f	class:SmallUpdate	signature:() const
+UpdateDownloadInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^bool GroupUpdate::UpdateDownloadInfo(std::map<std::string, std::string> &links, const std::string &folder)$/;"	f	class:GroupUpdate	signature:(std::map<std::string, std::string> &links, const std::string &folder)
+UpdateDownloadProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateDownloadProgress(int percent, DOWNLOAD_STATUS donwloadStatus) {$/;"	f	class:SmallUpdate	signature:(int percent, DOWNLOAD_STATUS donwloadStatus)
+UpdateDsm	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::UpdateDsm(const char *szPatchPath, const char *szVolumePath, bool decompress)$/;"	f	class:DsmUpdate	signature:(const char *szPatchPath, const char *szVolumePath, bool decompress)
+UpdateFlash	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^bool SmallUpdate::UpdateFlash()$/;"	f	class:SmallUpdate	signature:()
+UpdateProgressFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::UpdateProgressFile(const char *szKey, const char *szValue)$/;"	f	class:DsmUpdate	signature:(const char *szKey, const char *szValue)
+UpdateStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			task->UpdateStatus(output, GroupUpdate::STATUS_FAILED);$/;"	p	file:	signature:(output, GroupUpdate::STATUS_FAILED)
+UpdateStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			task->UpdateStatus(output, GroupUpdate::STATUS_FINISHED);$/;"	p	file:	signature:(output, GroupUpdate::STATUS_FINISHED)
+UpdateStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		task->UpdateStatus(output, GroupUpdate::STATUS_DOWNLOADING);$/;"	p	file:	signature:(output, GroupUpdate::STATUS_DOWNLOADING)
+UpdateStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	void UpdateStatus(const std::string &filepath, const std::string &status)$/;"	f	class:DownloadTask	access:public	signature:(const std::string &filepath, const std::string &status)
+UpdateUtil::CheckDownloadedPatchType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^void UpdateUtil::CheckDownloadedPatchType(PATCH_TYPE &type)$/;"	f	class:UpdateUtil	signature:(PATCH_TYPE &type)
+UpdateUtil::CleanFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CleanFolder(const char *szFolderPath)$/;"	f	class:UpdateUtil	signature:(const char *szFolderPath)
+UpdateUtil::CleanFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CleanFolder(const std::string &strFolderPath)$/;"	f	class:UpdateUtil	signature:(const std::string &strFolderPath)
+UpdateUtil::CleanProgressFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CleanProgressFile()$/;"	f	class:UpdateUtil	signature:()
+UpdateUtil::CompareVector	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::CompareVector(std::vector<std::string> foo, std::vector<std::string> bar)$/;"	f	class:UpdateUtil	signature:(std::vector<std::string> foo, std::vector<std::string> bar)
+UpdateUtil::DumpJsonRootToFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::DumpJsonRootToFile(const char *szFilePath, const Json::Value &resp)$/;"	f	class:UpdateUtil	signature:(const char *szFilePath, const Json::Value &resp)
+UpdateUtil::GetAutoUpdateStep	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^SYNOUPGRADE_AUTOUPDATE_STEP UpdateUtil::GetAutoUpdateStep()$/;"	f	class:UpdateUtil	signature:()
+UpdateUtil::GetProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::GetProgress(UPDATE_PROGRESS &prog)$/;"	f	class:UpdateUtil	signature:(UPDATE_PROGRESS &prog)
+UpdateUtil::GetServiceNameSectionKey	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::GetServiceNameSectionKey(const std::string &strService, std::string &strSection, std::string &strKey)$/;"	f	class:UpdateUtil	signature:(const std::string &strService, std::string &strSection, std::string &strKey)
+UpdateUtil::GetUserAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::GetUserAgent(std::string &userAgent, const char *szAppName)$/;"	f	class:UpdateUtil	signature:(std::string &userAgent, const char *szAppName)
+UpdateUtil::IsThereAvailVolPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::IsThereAvailVolPath(std::string& strOutPath, unsigned long requireBytes, bool blIncludeRoot)$/;"	f	class:UpdateUtil	signature:(std::string& strOutPath, unsigned long requireBytes, bool blIncludeRoot)
+UpdateUtil::JsonArray2StringVector	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::JsonArray2StringVector(const Json::Value &inJson, std::vector<std::string> &outVector)$/;"	f	class:UpdateUtil	signature:(const Json::Value &inJson, std::vector<std::string> &outVector)
+UpdateUtil::ParseJsonRootFromFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::ParseJsonRootFromFile(const char *szFilePath, Json::Value &resp)$/;"	f	class:UpdateUtil	signature:(const char *szFilePath, Json::Value &resp)
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^			UpdateUtil::RemoveFolder(m_sourceDir.c_str());$/;"	p	class:UpdateUtil	file:	signature:(m_sourceDir.c_str())
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::RemoveFolder(SZD_SMALL_UPDATE);$/;"	p	class:UpdateUtil	file:	signature:(SZD_SMALL_UPDATE)
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::RemoveFolder(m_sourceDir.c_str());$/;"	p	class:UpdateUtil	file:	signature:(m_sourceDir.c_str())
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::RemoveFolder(szDir);$/;"	p	class:UpdateUtil	file:	signature:(szDir)
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	UpdateUtil::RemoveFolder(m_sourceDir.c_str());$/;"	p	class:UpdateUtil	file:	signature:(m_sourceDir.c_str())
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::RemoveFolder(const char *szFolderPath)$/;"	f	class:UpdateUtil	signature:(const char *szFolderPath)
+UpdateUtil::RemoveFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::RemoveFolder(const std::string &strFolderPath)$/;"	f	class:UpdateUtil	signature:(const std::string &strFolderPath)
+UpdateUtil::SendNotification	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^		UpdateUtil::SendNotification(ret, m_isRegularCheck, data[SZK_PATCH_PATH].asString(), version);$/;"	p	class:UpdateUtil	file:	signature:(ret, m_isRegularCheck, data[SZK_PATCH_PATH].asString(), version)
+UpdateUtil::SendNotification	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::SendNotification(ret, m_isRegularCheck, m_sourceDir, version);$/;"	p	class:UpdateUtil	file:	signature:(ret, m_isRegularCheck, m_sourceDir, version)
+UpdateUtil::SendNotification	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^void UpdateUtil::SendNotification(const bool success, const bool isRegularCheck,$/;"	f	class:UpdateUtil	signature:(const bool success, const bool isRegularCheck, const std::string &strOutFile, const std::string &version)
+UpdateUtil::ServiceStart	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^int UpdateUtil::ServiceStart(void)$/;"	f	class:UpdateUtil	signature:(void)
+UpdateUtil::ServiceStop	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^int UpdateUtil::ServiceStop(void)$/;"	f	class:UpdateUtil	signature:(void)
+UpdateUtil::SetProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::SetProgress(UPDATE_STEP step, int err)$/;"	f	class:UpdateUtil	signature:(UPDATE_STEP step, int err)
+UpdateUtil::StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_dsmServiceRestartList, dsmServiceRestartList);$/;"	p	class:UpdateUtil	file:	signature:(m_dsmServiceRestartList, dsmServiceRestartList)
+UpdateUtil::StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_installDebList, installDebList);$/;"	p	class:UpdateUtil	file:	signature:(m_installDebList, installDebList)
+UpdateUtil::StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_pkgRestartList, pkgRestartList);$/;"	p	class:UpdateUtil	file:	signature:(m_pkgRestartList, pkgRestartList)
+UpdateUtil::StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		UpdateUtil::StringVector2JsonArray(m_synoServiceRestartList, synoServiceRestartList);$/;"	p	class:UpdateUtil	file:	signature:(m_synoServiceRestartList, synoServiceRestartList)
+UpdateUtil::StringVector2JsonArray	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::StringVector2JsonArray(const std::vector<std::string> &stringVector, Json::Value &jsonArray)$/;"	f	class:UpdateUtil	signature:(const std::vector<std::string> &stringVector, Json::Value &jsonArray)
+UpdateUtil::UntarFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::UntarFile(const char *szSrc, const char *szDestFolder)$/;"	f	class:UpdateUtil	signature:(const char *szSrc, const char *szDestFolder)
+UpdateUtil::UntarFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^bool UpdateUtil::UntarFile(const std::string &strSrc, const std::string &strDstFolder)$/;"	f	class:UpdateUtil	signature:(const std::string &strSrc, const std::string &strDstFolder)
+ValidateInfoItem	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static bool ValidateInfoItem(const Json::Value &item)$/;"	f	file:	signature:(const Json::Value &item)
+VerifyChecksum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::VerifyChecksum(const char *szCheckSum, const char *szFilePath)$/;"	f	class:DsmUpdate	signature:(const char *szCheckSum, const char *szFilePath)
+VerifyDeb	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^static bool VerifyDeb(const std::string &path)$/;"	f	file:	signature:(const std::string &path)
+WriteDownloadPidFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^bool DsmUpdate::WriteDownloadPidFile()$/;"	f	class:DsmUpdate	signature:()
+WriteDownloadPidFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^static bool WriteDownloadPidFile()$/;"	f	file:	signature:()
+WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^		DebianLib::WriteUpdateLog(strMsg, SZF_DPKG_UPGRADE_LOG);$/;"	p	class:DebianLib	file:	signature:(strMsg, SZF_DPKG_UPGRADE_LOG)
+WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	DebianLib::WriteUpdateLog(strMsg, SZF_DPKG_UPGRADE_LOG);$/;"	p	class:DebianLib	file:	signature:(strMsg, SZF_DPKG_UPGRADE_LOG)
+WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^void  DebianLib::WriteUpdateLog(const std::string &strMsg, const std::string &strFileName)$/;"	f	class:DebianLib	signature:(const std::string &strMsg, const std::string &strFileName)
+WriteUpdateLog	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	DebianLib::WriteUpdateLog(strUpdateMsg.str(), SZF_UPDATE_LOG);$/;"	p	class:DebianLib	file:	signature:(strUpdateMsg.str(), SZF_UPDATE_LOG)
+a	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int a = -1;$/;"	l
+append	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		info.append(item);$/;"	p	file:	signature:(item)
+append	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	m_Target.append(item);$/;"	p	file:	signature:(item)
+append	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^		jsonArray.append(strElement);$/;"	p	file:	signature:(strElement)
+applyStage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	APPLY_STAGE applyStage = APPLY_ANALYING;$/;"	l
+begin	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			size_t begin = version.find_first_of('-')+1;$/;"	l
+blChange	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	bool blChange = true;$/;"	l
+blHaveNewUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	bool blHaveNewUpdate = false;$/;"	l
+blNeedConfUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool ret = false, blNeedConfUpdate = false, blNeedFlashUpdate = false;$/;"	l
+blNeedFlashUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool ret = false, blNeedConfUpdate = false, blNeedFlashUpdate = false;$/;"	l
+blNeedRestart	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^	bool blNeedRestart = false;$/;"	l
+buildNumber	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int i = 0, sysSmallVersion = 0, buildNumber = 0, dsmversion = 0, newFixNum = -1;$/;"	l
+buildnum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			std::string buildnum = version.substr(begin, version.find_last_of('-') - begin);$/;"	l
+buildnum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string buildnum = (*iter)[SZK_INFO_BUILDNUM].asString();$/;"	l
+buildnumber	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int buildnumber = 0;$/;"	l
+c	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char c = 0;$/;"	l
+cache	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::map<InfoKey, std::string> cache;$/;"	l
+canProceed	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool canProceed = false;$/;"	l
+canProceed	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool canProceed = false;$/;"	l
+cancelled	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool cancelled = false;$/;"	l
+cancelled	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool cancelled = false;$/;"	l
+cbBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	size_t cbBuf = 0;$/;"	l
+cbBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	size_t cbBuf = 0;$/;"	l
+cbSize	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int cbSize = 64;$/;"	l
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	links.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	m_PatchInfo.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^		strTag.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^		strValue.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^			strLine.clear(); \/\/ all white space$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	info.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	invalidServiceList.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_debURLList.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_dsmServiceRestartList.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_installDebList.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_pkgRestartList.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_strFlashUpdateDebName.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_strFlashUpdateDebURL.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_strSmallUpdateDebName.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_strSmallUpdateDebURL.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	m_synoServiceRestartList.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	m_updateVersion.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^		outVector.clear();$/;"	p	file:	signature:()
+clear	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	outVector.clear();$/;"	p	file:	signature:()
+close	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	outFile.close();$/;"	p	file:	signature:()
+close	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	fInvalidRestartService.close();$/;"	p	file:	signature:()
+close	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	inFile.close();$/;"	p	file:	signature:()
+cnt	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	int cnt = 0;$/;"	l
+conf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	SynoConf conf;$/;"	l
+conf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	Json::Value conf(updateConf);$/;"	p	file:	signature:(updateConf)
+count	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	int count = 0;$/;"	l
+currDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	DSMINFO currDsmInfo, downloadDsmInfo;$/;"	l
+currDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	DSMINFO currDsmInfo, rssDsmInfo;$/;"	l
+currVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int currVer = 0;$/;"	l
+current	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int current = 0;$/;"	l
+customBugFix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	CustomBugFix *customBugFix = NULL;$/;"	l
+data	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	Json::Value data(Json::objectValue);$/;"	p	file:	signature:(Json::objectValue)
+data	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value data, smallUpdate;$/;"	l
+debList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::vector<std::string> debList;$/;"	l
+debURLList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::vector<std::string> debURLList;$/;"	l
+deblib	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		DebianLib deblib(strBuildNumber);$/;"	p	file:	signature:(strBuildNumber)
+deblib	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	DebianLib deblib(m_strBuildNumber);$/;"	p	file:	signature:(m_strBuildNumber)
+diskless	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool diskless = false;$/;"	l
+downloadCount	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int downloadCount = 0;$/;"	l
+downloadDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	DSMINFO currDsmInfo, downloadDsmInfo;$/;"	l
+downloadInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	Json::Value downloadInfo(Json::objectValue);$/;"	p	file:	signature:(Json::objectValue)
+downloadNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int downloadNum = 0;$/;"	l
+downloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	DSM_DOWNLOAD_STATUS downloadStatus = DSM_DOWNLOAD_NONE;$/;"	l
+downloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	DsmUpdate::DSM_DOWNLOAD_STATUS downloadStatus = DsmUpdate::DSM_DOWNLOAD_NONE;$/;"	l
+download_byte	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	unsigned long long total_byte = 0, download_byte = 0;$/;"	l
+downloaded	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool downloaded = false;$/;"	l
+dsmService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		Json::Value dsmService;$/;"	l
+dsmServiceRestartList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value dsmServiceRestartList(Json::arrayValue);$/;"	p	file:	signature:(Json::arrayValue)
+dsmversion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int i = 0, sysSmallVersion = 0, buildNumber = 0, dsmversion = 0, newFixNum = -1;$/;"	l
+dst	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^			std::string dst = SZD_SMALL_UPDATE;$/;"	l
+dummy	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string dummy;$/;"	l
+err	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		int err = -1;$/;"	l
+err	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		int err = SLIBCExecv(params[0], (char **)params, TRUE);$/;"	l
+err	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	CURLcode err = CURLE_OK;$/;"	l
+fInvalidRestartService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::ifstream fInvalidRestartService;$/;"	l
+fd	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int fd = -1;$/;"	l
+fd	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int fd = -1;$/;"	l
+fd	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	FILE  *fd = NULL;$/;"	l
+fdNull	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int fdNull = -1;$/;"	l
+fdProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int fdProgress = -1;$/;"	l
+filename	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string filename = url.substr(url.find_last_of('\/')+1);$/;"	l
+fileno	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	if (lock >= 0)  flock(fileno(fd), LOCK_UN);$/;"	p	file:	signature:(fd)
+filepath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string filepath = iter->second[SZK_INFO_PATH].asString();$/;"	l
+finishVerParse	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	bool finishVerParse = false;$/;"	l
+fp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	FILE *fp = NULL;$/;"	l
+fp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	FILE *fp = NULL;$/;"	l
+fp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	FILE* fp = fopen(SZF_STOP_DOWNLOAD_SMALLUPDATE, "w");$/;"	l
+fp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	FILE  *fp = NULL;$/;"	l
+getHotfix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool getHotfix = false;$/;"	l
+getline	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		std::getline(fInvalidRestartService, strLine);$/;"	p	class:std	file:	signature:(fInvalidRestartService, strLine)
+globbuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	glob_t globbuf;$/;"	l
+haveNewDSM	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	bool haveNewDSM = false;$/;"	l
+httpCode	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	long httpCode = 200;$/;"	l
+i	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int i = 0;$/;"	l
+i	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int i = 0, sysSmallVersion = 0, buildNumber = 0, dsmversion = 0, newFixNum = -1;$/;"	l
+i	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int i = 0;$/;"	l
+i	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int  i;$/;"	l
+i	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int i = 0;$/;"	l
+iHasTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	int iHasTask = -1;$/;"	l
+iProgress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int iProgress = 0;$/;"	l
+iRet	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int iRet =  -1;$/;"	l
+iRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int iRetry = 0;$/;"	l
+iRetry	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int iRetry = 0;$/;"	l
+id	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	long id = -1;$/;"	l
+idx	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		size_t idx = filepath.find_last_of("\/");$/;"	l
+idxDebName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		int idxDebName;$/;"	l
+idxDelim	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		std::size_t idxDelim;$/;"	l
+idxFirstUnderLine	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int idxFirstUnderLine = 0, idxLastUnderLine = 0, idxSmallNumber = 0, idxTemp = 0;$/;"	l
+idxLastUnderLine	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int idxFirstUnderLine = 0, idxLastUnderLine = 0, idxSmallNumber = 0, idxTemp = 0;$/;"	l
+idxSmallNumber	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int idxFirstUnderLine = 0, idxLastUnderLine = 0, idxSmallNumber = 0, idxTemp = 0;$/;"	l
+idxTemp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int idxFirstUnderLine = 0, idxLastUnderLine = 0, idxSmallNumber = 0, idxTemp = 0;$/;"	l
+inFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::ifstream inFile;$/;"	l
+info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	Json::Value info(Json::arrayValue);$/;"	p	file:	signature:(Json::arrayValue)
+info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	Json::Value info;$/;"	l
+info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value info(Json::objectValue);$/;"	p	file:	signature:(Json::objectValue)
+info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value info;$/;"	l
+info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	Json::Value info;$/;"	l
+info_file	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string info_file = folder + "\/" + SZF_GROUP_DOWNLOAD_INFO;$/;"	l
+installDebList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value installDebList(Json::arrayValue);$/;"	p	file:	signature:(Json::arrayValue)
+invalidServiceList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::vector<std::string> invalidServiceList;$/;"	l
+isDefault	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	bool isDefault = false;$/;"	l
+isSmallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool isSmallUpdate = false;$/;"	l
+it	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::vector<std::string>::const_iterator it;$/;"	l
+it	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::vector<std::string>::const_iterator it;$/;"	l
+item	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		Json::Value item;$/;"	l
+item	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	Json::Value item;$/;"	l
+item	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		Json::Value item = smallUpdate[i];$/;"	l
+iter	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	InfoMap::const_iterator iter;$/;"	l
+jsInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	Json::Value jsInfo(Json::objectValue);$/;"	p	file:	signature:(Json::objectValue)
+jsonNode	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^		Json::Value jsonNode = inJson[j];$/;"	l
+key	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		InfoKey key(unique, version);$/;"	p	file:	signature:(unique, version)
+length	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int length = 0;$/;"	l
+length	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	double length = 0.0;$/;"	l
+lineLen	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int lineLen = 0;$/;"	l
+link	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string link, output;$/;"	l
+links	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::map<std::string, std::string> links;$/;"	l
+listSize	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int percent = 0, listSize = 0;$/;"	l
+lock	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int  lock=0;$/;"	l
+m_Iter	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::map<std::string, std::string>::const_iterator m_Iter;$/;"	m	class:DownloadTask	file:	access:private
+m_JobMutex	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	pthread_mutex_t m_JobMutex, m_StatusMutex;$/;"	m	class:DownloadTask	file:	access:private
+m_Links	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::map<std::string, std::string> m_Links;$/;"	m	class:DownloadTask	file:	access:private
+m_StatusMutex	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	pthread_mutex_t m_JobMutex, m_StatusMutex;$/;"	m	class:DownloadTask	file:	access:private
+m_buildDate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	strUpdateMsg << m_buildDate;$/;"	l
+m_dsmVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	strUpdateMsg << m_dsmVersion;$/;"	l
+m_newFixNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	strUpdateMsg << m_newFixNum;$/;"	l
+m_strSmallFixNumber	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	strUpdateMsg << m_strSmallFixNumber;$/;"	l
+major	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string major = (*iter)[SZK_INFO_MAJOR].asString();$/;"	l
+make_pair	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		cache.insert(std::make_pair(key, url));$/;"	p	file:	signature:(key, url)
+make_pair	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		links.insert(std::make_pair(url, output));$/;"	p	file:	signature:(url, output)
+make_pair	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		m_PatchInfo.insert(std::make_pair(key, value));$/;"	p	file:	signature:(key, value)
+mapLength	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	static int mapLength = sizeof(tagNameTypeMapping) \/ sizeof(RSS_TAG_NAME_TYPE_MAPPING);$/;"	l	file:
+match	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool match = false;$/;"	l
+match	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	bool match = false;$/;"	l
+memberDebVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		int newDebVer = -1, memberDebVer = -1;$/;"	l
+minor	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string minor = (*iter)[SZK_INFO_MINOR].asString();$/;"	l
+newDebVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		int newDebVer = -1, memberDebVer = -1;$/;"	l
+newDsmBuildNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int patchBuildNum = 0, newDsmBuildNum = 0;$/;"	l
+newFixNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int i = 0, sysSmallVersion = 0, buildNumber = 0, dsmversion = 0, newFixNum = -1;$/;"	l
+newVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^	int newVer = -1;$/;"	l
+open	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	outFile.open(SZF_DOWNLOAD_INFO_TEMP);$/;"	p	file:	signature:(SZF_DOWNLOAD_INFO_TEMP)
+open	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	inFile.open(szFilePath);$/;"	p	file:	signature:(szFilePath)
+operator ()	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^bool DebianLib::operator() (const std::string &strDebFirst, const std::string &strDebSecond)$/;"	f	class:DebianLib	signature:(const std::string &strDebFirst, const std::string &strDebSecond)
+operator =	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^SmallUpdate & SmallUpdate::operator= (const SmallUpdate &rhs)$/;"	f	class:SmallUpdate	signature:(const SmallUpdate &rhs)
+outFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::ofstream outFile;$/;"	l
+output	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string output;$/;"	l
+output	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string link, output;$/;"	l
+pBufList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	SYNOVOLINFOLIST *pBufList = NULL;$/;"	l
+pCmd	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	FILE *pCmd = NULL;$/;"	l
+pCurl	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	CURL *pCurl = NULL;$/;"	l
+pCurl	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	CURL *pCurl = NULL;$/;"	l
+pEnt	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^		struct mntent *pEnt = NULL;$/;"	l
+pFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	FILE *pFile = NULL;$/;"	l
+pFileRss	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	FILE *pFileRss = NULL;$/;"	l
+pMailHash	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	PSLIBSZHASH pMailHash = NULL;$/;"	l
+pMailHash	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	PSLIBSZHASH pMailHash = NULL;$/;"	l
+pPidFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	FILE *pPidFile = NULL;$/;"	l
+pProc	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^		FILE *pProc = NULL;$/;"	l
+pProgressFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	FILE *pProgressFile = NULL;$/;"	l
+pSlash	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	const char* pSlash = NULL;$/;"	l
+pSlash	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	const char* pSlash = NULL;$/;"	l
+pTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	SYNO_SCHED_TASK * pTask = NULL;$/;"	l
+pTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	SYNO_SCHED_TASK *pTask = NULL;$/;"	l
+pTaskList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	SYNO_SCHED_TASK_LIST pTaskList = NULL;$/;"	l
+pVolInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	SYNOVOLINFOLIST *pVolInfoList = NULL, *pVolInfo = NULL;$/;"	l
+pVolInfoList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	SYNOVOLINFOLIST *pVolInfoList = NULL, *pVolInfo = NULL;$/;"	l
+paramc	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int paramc = 1;$/;"	l
+paramc	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int paramc = 1;$/;"	l
+params	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	const char *params[128] = { "\/usr\/syno\/bin\/wget",$/;"	l
+patchBuildNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int patchBuildNum = 0, newDsmBuildNum = 0;$/;"	l
+patchInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	Json::Value patchInfo(Json::objectValue);$/;"	p	file:	signature:(Json::objectValue)
+path	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string path;$/;"	l
+percent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int percent = 0, listSize = 0;$/;"	l
+percent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int percent = 0;$/;"	l
+percent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int  percent=0;$/;"	l
+percentage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int percentage = 0;$/;"	l
+percentage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	int percentage = 0;$/;"	l
+pid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	pid_t pid = -1;$/;"	l
+pid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int pid = 0;$/;"	l
+pid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	pid_t pid = -1;$/;"	l
+pid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	pid_t pid = 0;$/;"	l
+pid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^    pid_t pid = -1;$/;"	l
+pid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	pid_t pid = -1;$/;"	l
+pkg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		Json::Value pkg;$/;"	l
+pkgRestartList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value pkgRestartList(Json::arrayValue);$/;"	p	file:	signature:(Json::arrayValue)
+prefix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string prefix;$/;"	l
+progress	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	double progress = 0;$/;"	l
+pslAllServ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	PSLIBSZLIST pslAllServ = NULL;$/;"	l
+pslAppServ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	PSLIBSZLIST pslAppServ = NULL;$/;"	l
+pslAppServ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	PSLIBSZLIST pslAppServ = NULL;$/;"	l
+pslList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	PSLIBSZLIST pslList = NULL;$/;"	l
+pslSkipServ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	PSLIBSZLIST pslSkipServ = NULL;$/;"	l
+pslVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	PSLIBSZLIST pslVersion = NULL;$/;"	l
+pslVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	PSLIBSZLIST pslVersion = NULL;$/;"	l
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^				m_dsmServiceRestartList.push_back(dsmService[i].asString());$/;"	p	file:	signature:(dsmService[i].asString())
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^				m_pkgRestartList.push_back(pkg[i].asString());$/;"	p	file:	signature:(pkg[i].asString())
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^				m_synoServiceRestartList.push_back(synoService[i].asString());$/;"	p	file:	signature:(synoService[i].asString())
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^			m_debURLList.push_back(strDebURL);$/;"	p	file:	signature:(strDebURL)
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^			m_installDebList.push_back(strDebName);$/;"	p	file:	signature:(strDebName)
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		workers.push_back(tid);$/;"	p	file:	signature:(tid)
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		debURLList.push_back(m_strFlashUpdateDebURL);$/;"	p	file:	signature:(m_strFlashUpdateDebURL)
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		debURLList.push_back(m_strSmallUpdateDebURL);$/;"	p	file:	signature:(m_strSmallUpdateDebURL)
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		invalidServiceList.push_back(strService);$/;"	p	file:	signature:(strService)
+push_back	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^		outVector.push_back(jsonNode.asString());$/;"	p	file:	signature:(jsonNode.asString())
+r	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int r = -1;$/;"	l
+r	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int r = 0;$/;"	l
+ratio	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	double ratio = 0;$/;"	l
+reader	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	Json::Reader reader;$/;"	l
+reqVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int reqVer = 0;$/;"	l
+required_bytes	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	unsigned long long required_bytes = 0;$/;"	l
+result	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int result = -1;$/;"	l
+result	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int result = -1;$/;"	l
+result	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int result = 0;$/;"	l
+result	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int result = -1;$/;"	l
+result	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int result = -1;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	UPDATE_TYPE ret = UPDATE_TYPE_NONE;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	int ret = -1;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool ret = false, blNeedConfUpdate = false, blNeedFlashUpdate = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	bool ret = this->CheckNewUpdate(blHaveNewUpdate);$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	bool ret = false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	bool ret=false;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int ret = -1;$/;"	l
+ret	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int ret = 0;$/;"	l
+retGetKey	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	int retGetKey = -1;$/;"	l
+retService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int retService = -1;$/;"	l
+ret_service	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int ret_service = -1;$/;"	l
+rgszParams	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	const char *rgszParams[64] = {"\/usr\/syno\/bin\/wget", NULL};$/;"	l
+rgszTestDebian	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	const char *rgszTestDebian[] = {SZ_RDTEST_DEBIAN_PRE, SZ_RDTEST_DEBIAN_POST, NULL};$/;"	l
+root	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	Json::Value root;$/;"	l
+root	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value root;$/;"	l
+rss	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int rss = 0;$/;"	l
+rssDsmInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	DSMINFO currDsmInfo, rssDsmInfo;$/;"	l
+rssVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	int rssVer = 0;$/;"	l
+rss_info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	DSMINFO rss_info;$/;"	l
+running	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	bool running = IsDownloading();$/;"	l
+seekNextItem	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	bool seekNextItem = false;$/;"	l
+seekNextModel	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	bool seekNextModel = false;$/;"	l
+servicePercent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	double servicePercent = 0;$/;"	l
+serviceScriptNameMap	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	static const char* serviceScriptNameMap[][3] = {$/;"	l	file:
+services	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int services = DAEMON_ALL;$/;"	l
+services	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	int services = DAEMON_ALL;$/;"	l
+size	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		unsigned long long size = 0;$/;"	l
+smallDebNumFirst	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int smallDebNumFirst = 0, smallDebNumSecond = 0;$/;"	l
+smallDebNumSecond	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int smallDebNumFirst = 0, smallDebNumSecond = 0;$/;"	l
+smallFixNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int smallFixNum = -1;$/;"	l
+smallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value data, smallUpdate;$/;"	l
+smallUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	SmallUpdate smallUpdate;$/;"	l
+sort	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::sort(m_installDebList.begin(), m_installDebList.end(), deblib);$/;"	p	class:std	file:	signature:(m_installDebList.begin(), m_installDebList.end(), deblib)
+sort	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::sort(bar.begin(), bar.end());$/;"	p	class:std	file:	signature:(bar.begin(), bar.end())
+sort	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::sort(foo.begin(), foo.end());$/;"	p	class:std	file:	signature:(foo.begin(), foo.end())
+sourceDir	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string sourceDir = "";$/;"	l
+src	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^			std::string src = m_sourceDir + "\/" + rgszTestDebian[idx];$/;"	l
+stBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	struct stat stBuf = {0};$/;"	l
+stage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	APPLY_STAGE stage = APPLY_NONE;$/;"	l
+stagePercent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int stagePercent = 0;$/;"	l
+started_servs	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int started_servs = 0;$/;"	l
+statBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	struct stat statBuf;$/;"	l
+statBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	struct stat statBuf;$/;"	l
+stat_buf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	struct stat stat_buf;$/;"	l
+statfsBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	struct statfs statfsBuf;$/;"	l
+statfsTargetFs	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	struct statfs statfsTargetFs;$/;"	l
+status	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	int status = 0;$/;"	l
+status	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int status = 0; \/\/VOL_UNAVAIL_STATUS$/;"	l
+status	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	int status = 0;$/;"	l
+status	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	long status = 0;$/;"	l
+status	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	DOWNLOAD_STATUS status = DOWNLOAD_NONE;$/;"	l
+std::getline	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^		std::getline(fInvalidRestartService, strLine);$/;"	p	class:std	file:	signature:(fInvalidRestartService, strLine)
+std::sort	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::sort(m_installDebList.begin(), m_installDebList.end(), deblib);$/;"	p	class:std	file:	signature:(m_installDebList.begin(), m_installDebList.end(), deblib)
+std::sort	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::sort(bar.begin(), bar.end());$/;"	p	class:std	file:	signature:(bar.begin(), bar.end())
+std::sort	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::sort(foo.begin(), foo.end());$/;"	p	class:std	file:	signature:(foo.begin(), foo.end())
+step	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char step;$/;"	l
+strAvailVolPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strAvailVolPath;$/;"	l
+strBuildNumberPattern	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	std::string strBuildNumberPattern;$/;"	l
+strConfigUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strConfigUpdate;$/;"	l
+strConfigUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strSmallUpdater, strConfigUpdate;$/;"	l
+strDebList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::vector<std::string> strDebList;$/;"	l
+strDebName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		std::string strProjName, strDebName;$/;"	l
+strDebPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strDebPath;$/;"	l
+strDebURL	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		std::string strDebURL;$/;"	l
+strDebVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	std::string strDebVer;$/;"	l
+strDestFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strDestFile;$/;"	l
+strDownloadPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string strDownloadPath;$/;"	l
+strDownloadPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strDownloadPath = "";$/;"	l
+strDownloadVolume	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string strDownloadVolume;$/;"	l
+strElement	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^		std::string strElement = (*it);$/;"	l
+strErrMsg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strErrMsg = "err_system";$/;"	l
+strFlashUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strFlashUpdate;$/;"	l
+strFlashUpdateDebPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strFlashUpdateDebPath;$/;"	l
+strFolderName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strFolderName = SZD_SMALL_UPDATE_DOWNLOAD;$/;"	l
+strLine	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strLine;$/;"	l
+strMsg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	std::string strMsg;$/;"	l
+strOut	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::string strOut;$/;"	l
+strOutFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string strOutFile;$/;"	l
+strPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strPath;$/;"	l
+strPkgName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strPkgName;$/;"	l
+strProjName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		std::string strProjName, strDebName;$/;"	l
+strRebootInstallDebPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^			std::string strRebootInstallDebPath = SZD_SMALL_UPDATE"\/" + m_installDebList[i];$/;"	l
+strRestart	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		std::string strRestart = serviceObj.asString();$/;"	l
+strService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strService;$/;"	l
+strServiceName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strServiceName;$/;"	l
+strServiceScript	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strServiceScript;$/;"	l
+strServices	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strServices;$/;"	l
+strSmallFixVer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	std::string strSmallFixVer;$/;"	l
+strSmallJsonFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strSmallJsonFile;$/;"	l
+strSmallJsonName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strSmallJsonName;$/;"	l
+strSmallJsonPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strSmallJsonPath;$/;"	l
+strSmallUpdateDebPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strSmallUpdateDebPath;$/;"	l
+strSmallUpdateDownloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	std::string strSmallUpdateDownloadStatus;$/;"	l
+strSmallUpdater	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strSmallUpdater, strConfigUpdate;$/;"	l
+strStartStop	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strStartStop = (blOn ? "start" : "stop");$/;"	l
+strStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string strStatus;$/;"	l
+strTag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	std::string strTag;$/;"	l
+strTemp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strTemp;$/;"	l
+strTempPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	std::string strTempPath;$/;"	l
+strUpdateMsg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	std::string strUpdateMsg;$/;"	l
+strUpdateMsg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::stringstream strUpdateMsg;$/;"	l
+strUrl	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strUrl = m_synoinfo.Def(SZK_SMALLFIX_SERVER_URL, PATH_DOWNLOAD_SERVER);$/;"	l
+strUrlwithTZ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	std::string strUrlwithTZ = "";$/;"	l
+strUserAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string strUserAgent;$/;"	l
+strUserAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string strUserAgent = "";$/;"	l
+strValue	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	std::string strValue;$/;"	l
+supportBuildinStorage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool supportBuildinStorage = false;$/;"	l
+supportRAID	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	bool supportRAID = false;$/;"	l
+synoService	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		Json::Value synoService;$/;"	l
+synoServiceRestartList	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	Json::Value synoServiceRestartList(Json::arrayValue);$/;"	p	file:	signature:(Json::arrayValue)
+syno_prfix	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string syno_prfix = "synology_";$/;"	l
+sysSmallVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int i = 0, sysSmallVersion = 0, buildNumber = 0, dsmversion = 0, newFixNum = -1;$/;"	l
+sysSmallVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int sysSmallVersion = -1;$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char *szBuf = NULL;$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szBuf[32] = {0};$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char *szBuf = NULL;$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	char szBuf[32] = {0};$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szBuf[16] = {0};$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szBuf[32] = {0};$/;"	l
+szBuf	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char szBuf[32] = {0};$/;"	l
+szBuildNumber	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	char szBuildNumber[32] = {0};$/;"	l
+szCmd	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szCmd[PATH_MAX] = {0};$/;"	l
+szCurrPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szCurrPath[PATH_MAX] = {0};$/;"	l
+szDir	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szDir[MAX_PATH_LEN] = {0};$/;"	l
+szDisplayName	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char szDisplayName[SYNOSERVICE_DISPLAYNAME_MAX] = {0};$/;"	l
+szDownloadCount	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szDownloadCount[64] = {0};$/;"	l
+szDownloadNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szDownloadNum[64] = {0};$/;"	l
+szDownloadStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szDownloadStatus[64] = {0};$/;"	l
+szErrMsg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szErrMsg[256] = {0};$/;"	l
+szExtraMsg	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char szExtraMsg[1024] = {0};$/;"	l
+szFileCheckSum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szFileCheckSum[256] = {0};$/;"	l
+szFilePath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szFilePath[4096] = {0};$/;"	l
+szFilePath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	char szFilePath[PATH_MAX] = {'\\0'};$/;"	l
+szKey	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char *szKey = NULL;$/;"	l
+szLTag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szLTag[128] = {0};$/;"	l
+szLine	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char szLine[64]= {0};$/;"	l
+szMajor	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	char szMajor[32] = {0};$/;"	l
+szMinor	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	char szMinor[32] = {0};$/;"	l
+szOutFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szOutFile[4096] = {0};$/;"	l
+szOutFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szOutFile[4096] = {0};$/;"	l
+szPatchDirPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char *szPatchDirPath = NULL;$/;"	l
+szPatchPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szPatchPath[4096] = {0};$/;"	l
+szPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szPath[64] = {0};$/;"	l
+szPath	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char szPath[SYNO_MAXPATH] = {0};$/;"	l
+szPercent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szPercent[16] = {0};$/;"	l
+szRTag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szRTag[128] = {0};$/;"	l
+szRssServer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szRssServer[4096] = {0};$/;"	l
+szServ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char *szServ = NULL;$/;"	l
+szServ	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char *szServ = NULL;$/;"	l
+szSize	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char *szSize = NULL;$/;"	l
+szSizeWithComma	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szSizeWithComma[128] = {0};$/;"	l
+szSmallFixNum	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szSmallFixNum[8] = {0};$/;"	l
+szStage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szStage[16] = {0};$/;"	l
+szStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	char szStatus[16] = {'\\0'};$/;"	l
+szStatus	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szStatus[16] = {0};$/;"	l
+szTemp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	char szTemp[32] = {0};$/;"	l
+szTemp	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szTemp[32] = {0};$/;"	l
+szTempFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szTempFile[128] = {0};$/;"	l
+szTest	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szTest[4096] = {0};$/;"	l
+szTime	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	char szTime[64] = {0};$/;"	l
+szTimeZone	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szTimeZone[64] = {0};$/;"	l
+szTmpTag	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szTmpTag[MAX_PATH_LEN] = {0};$/;"	l
+szTmpValue	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szTmpValue[MAX_PATH_LEN] = {0};$/;"	l
+szType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/setting.cpp	/^	const char* szType = SZV_UPDATE_ALL;$/;"	l
+szUnique	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szUnique[64] = {0};$/;"	l
+szUpdateType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szUpdateType[64] = {0};$/;"	l
+szUpdateType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	char szUpdateType[64] = {0};$/;"	l
+szUserAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	char szUserAgent[512] = {0};$/;"	l
+szValue	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	char szValue[4096] = {0};$/;"	l
+szVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	char szVersion[64] = {0};$/;"	l
+szVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	char szVersion[64] = {0};$/;"	l
+szVersion	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/systemupdate.cpp	/^	char szVersion[64] = {0};$/;"	l
+szdTempFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	const char szdTempFolder[] = "\/flashUpd@teTempFolder";$/;"	l
+szdTempFolder	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	const char szdTempFolder[] = "\/smallUpd@teTempFolder";$/;"	l
+tCurrent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	time_t tCurrent = 0;$/;"	l
+tagNameTypeMapping	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	static RSS_TAG_NAME_TYPE_MAPPING tagNameTypeMapping[] = {$/;"	l	file:
+tagType	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	RSS_TAG_TYPE tagType = UNKNOW;$/;"	l
+target	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			DSMINFO target(unique, major, minor, buildnum);$/;"	p	file:	signature:(unique, major, minor, buildnum)
+task	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	DownloadTask *task = static_cast<DownloadTask *>(arg);$/;"	l
+task	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	DownloadTask task;$/;"	l
+tid	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		pthread_t tid = -1;$/;"	l
+tmNow	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/debian_lib.cpp	/^	struct tm *tmNow = NULL; $/;"	l
+tmpPercentage	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	double tmpPercentage = 0.0;$/;"	l
+tmp_path	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::string tmp_path;$/;"	l
+total_byte	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	unsigned long long total_byte = 0, download_byte = 0;$/;"	l
+total_percent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	double total_percent = 0;$/;"	l
+total_service	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	double total_service = 0;$/;"	l
+total_servs	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int total_servs = 0;$/;"	l
+total_servs	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	int total_servs = m_dsmServiceRestartList.size() + m_synoServiceRestartList.size() + m_pkgRestartList.size();$/;"	l
+type	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	UPDATE_TYPE type = UPDATE_TYPE_NONE;$/;"	l
+uProj	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/custombugfix.cpp	/^		Json::Value uProj = projArray[j];$/;"	l
+ui64FreeBytes	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	uint64_t ui64FreeBytes = 0;$/;"	l
+ulRequireBytes	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	unsigned long ulRequireBytes = 200 * 1024 * 1024;$/;"	l
+ullFreeBytes	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	unsigned long long ullFreeBytes = 0;$/;"	l
+ullTotalSizeByte	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	unsigned long long ullTotalSizeByte = 0;$/;"	l
+ulldownloadSizeByte	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	unsigned long long ulldownloadSizeByte = 0;$/;"	l
+unique	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			std::string unique = iter->first.first;$/;"	l
+unique	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string unique = (*iter)[SZK_INFO_UNIQUE].asString();$/;"	l
+updateInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	Json::Value updateInfo(Json::objectValue);$/;"	p	file:	signature:(Json::objectValue)
+url	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string url = iter->second;$/;"	l
+url	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string url;$/;"	l
+userAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string userAgent = "";$/;"	l
+userAgent	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^	std::string userAgent = "";$/;"	l
+value	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		Json::Value value;$/;"	l
+version	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	std::string version;$/;"	l
+version	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^			std::string version = iter->first.second;$/;"	l
+version	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^		std::string version = major + "." + minor + "-" + buildnum;$/;"	l
+version	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/smallupdate.cpp	/^	std::string version;$/;"	l
+volInfo	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	SYNOVOLInfo volInfo;$/;"	l
+volLen	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^		int volLen = strlen(SZD_USB_VOL);$/;"	l
+vol_info	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	SYNOVOLInfo vol_info;$/;"	l
+workers	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	std::vector<pthread_t> workers;$/;"	l
+write	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	outFile << writer.write(data);$/;"	p	file:	signature:(data)
+write	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	writer.write(data);$/;"	p	file:	signature:(data)
+writer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^	Json::FastWriter writer;$/;"	l
+writer	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/update_cpputil.cpp	/^	Json::FastWriter writer;$/;"	l
+~DownloadTask	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^	~DownloadTask()$/;"	f	class:DownloadTask	access:public	signature:()
+~DsmUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/dsmupdate.cpp	/^DsmUpdate::~DsmUpdate()$/;"	f	class:DsmUpdate	signature:()
+~GroupUpdate	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/groupupdate.cpp	/^GroupUpdate::~GroupUpdate()$/;"	f	class:GroupUpdate	signature:()
+~RssFile	/synosrc/curr/ds.base/source/libsynoinstall/cpp/lib/rssfile.cpp	/^RssFile::~RssFile()$/;"	f	class:RssFile	signature:()

@@ -1,0 +1,653 @@
+#!/usr/bin/perl
+# vim:fdm=marker
+
+use strict;
+use warnings;
+use JSON;
+use Getopt::Long qw(:config bundling);
+use Data::Dumper;
+use Cwd;
+use File::Copy;
+use File::Path;
+use File::Basename;
+use POSIX qw{strftime locale_h};
+
+setlocale(LC_TIME, "en_US.utf8");
+
+# FIXME the time stamp file can not change by --srcpath option
+
+my $VERSION = 'syno.build.status 2.1';
+my %opt = ();
+my %opt_config = (
+	# opt		    default	help						variable	handler
+	"branch|b=s"	=> ['curr',	"branch name. ex: q1|q2|curr",			'branch'],
+	"branch_subfix=s"=> ['',	"enable support for old branch subfix style",	'branchSubfix',
+			sub { $opt{'branchSubfix'} = ($_[1] =~ /b$/) ? "-$_[1]" : "-$_[1]b" }],
+	"srcpath"	=> ['/synosrc',	"path of synosrc",				'srcpath'],
+	"merge"		=> [0,		"merge json files to single detail json file",	'merge'],
+	"batch"		=> [0,		"if run BatchAll, log file format is logs.batch", 'run_batch'],
+	# feature list
+	"no-errproj"	=> [1,		"do not copy build errors logs",		'errproj'],
+	"no-errinstall"	=> [1,		"do not copy install errors logs",		'errinstall'],
+	"ccache"	=> [0,		"do not list ccache information",		'ccache'],
+	"timecost"	=> [0,		"do not list time cost information",		'timecost'],
+	"no-realtime"	=> [1,		"time option (not for syno build script)",	'realtime'],
+	"profile=s"	=> ['',		"generate job profile",				'profile'],
+	"errlog"	=> [0,		"copy error logs ('dir' option is needed)",	'errlog'],
+	"uplog"		=> [0,		"copy update logs ('dir' option is needed)",	'uplog'],
+	"vim|v"		=> [0,		"use vim to open error logs",			'erropen'],
+	# output (format, output name, output dir)
+	"format|f=s"	=> ['plain',	"set output format [plain|json|perl]",		'format'],
+	"output|o=s"	=> ["-",	"output file name",				'output'],
+	"owner=s"	=> ['',		"change output owner. ex: root.root",		'owner'],
+	"dir|D=s"	=> ['', #"logs.".strftime("%m%d_%H%M", localtime),
+					"move errlog, uplog, output, profile to this path", 'dir'],
+	"ftp=s"		=> ['',		"send files (include error logs) to ftp server",'ftp'],
+	# profile editing options
+	"timestamp=s"	=> ['build_timestamp',	"set timestamp file prefix for begin and end time",'timestamp'],
+	"begin=s"	=> ['',		"begin time for build process",			'begin'],
+	"end=s"		=> ['',		"end time for build process",			'end'],
+	"job_type=s"	=> ['',		"set job type of profile [build|re-build|test]",'job_type'],
+	"job_status=s"	=> ['',		"set job status of profile",			'job_status'],
+	"job_version=s"	=> ['',		"set version of profile",			'job_version'],
+	# other options
+	"tty"		=> [(-t STDOUT),"set output is tty. (output color codes)",	'tty'],
+	"debug"		=> [0,		"enable debug flag",				'debug'],
+	"help|h"	=> [0,		"this help message",				'help'],
+	"version|V"	=> [0,		"show version information",			'version'],
+	"pwd" 		=> [getcwd,	"directory to resolv relative path",		'pwd'],
+);
+{ # utils {{{
+	my %color_cmd_mapping = (
+		k => '0', r => '1', g => '2', y => '3', b => '4', p => '5', c => '6', w => '7'
+	);
+	sub color ($@) {
+		my ($color_str, @str) = @_;
+		my ($l, $f, $b, $filter) = ($color_str =~ /^(\d)?(\D)(\D)?(:.*)?$/);
+		$l ||= '0'; $f ||= 'w'; $b ||= 'k'; $filter ||= ':^.+$';
+
+		if (!$opt{tty}) {
+			return wantarray ? @str : $str[0];
+		}
+
+		my $color_code = sprintf "\033[%s%s%sm", $l?'1;':'','3'. $color_cmd_mapping{$f},
+			$b eq 'k'?'':';4'.$color_cmd_mapping{$b};
+		$filter = substr($filter, 1);
+
+		for my $s (@str) {
+			next unless defined $s;
+			$s =~ s/($filter)/$color_code$1\033[0m/g;
+		}
+		return wantarray ? @str : $str[0];
+	}
+	sub debug(@) {
+		return unless $opt{debug};
+		print STDERR color("b", $_) for @_;
+	}
+	sub help() {
+		printf STDERR "options:\n";
+		printf STDERR "\t".color("0wb", "%-20s %-60s %-32s\n"), "flag", "description", "default value";
+		printf STDERR color("1w", "\t--%-18s")." %-60s [%s]\n",
+			$_, $opt_config{$_}[1], $opt_config{$_}[0]
+			for sort keys %opt_config;
+		exit 1;
+	}
+	sub version() {
+		printf STDERR "version: $VERSION\n";
+		exit 0;
+	}
+} #}}}
+# parse arguments or dump help messages {{{
+%opt = map { $opt_config{$_}[2] => $opt_config{$_}[0]; } keys %opt_config;
+
+GetOptions(map {
+	my $h = \$opt{$opt_config{$_}[2]};
+	$h = eval "sub {\$opt{$opt_config{$_}[2]} = 0};" if /^no-/;
+	$h = $opt_config{$_}[3] if $opt_config{$_}[3];
+	$_ => $h;
+} keys %opt_config) or help;
+
+
+help	if $opt{help};
+version	if $opt{version};
+
+# }}}
+
+if (-1 == index($opt{timestamp}, '/')) {
+	# if timestamp is only have filename
+	if ($opt{branchSubfix}) {
+		$opt{timestamp} = "$opt{srcpath}/$opt{branch}/$opt{timestamp}".substr($opt{branchSubfix}, 1);
+	} else {
+		$opt{timestamp} = "$opt{srcpath}/$opt{branch}/$opt{timestamp}";
+	}
+}
+
+if ($opt{timestamp} and -f $opt{timestamp}) {
+	$opt{begin} = strftime("%d %b %Y %H:%M:%S GMT +8:00", localtime((stat($opt{timestamp}))[9]));
+	$opt{end}   = strftime("%d %b %Y %H:%M:%S GMT +8:00", localtime((stat($opt{timestamp}))[10]));
+	#current time: strftime("%d %b %Y %H:%M:%S GMT +8:00", localtime)
+}
+
+print Dumper \%opt if $opt{debug};
+
+my %stat = ();
+my @plat = ();
+my @old_plat = ();
+my $is_failed = 0;
+
+# get platforms by glob logs.build or perl format status #{{{
+if (!$opt{merge}) {
+	my @old_logs = ();
+	my $log_name = $opt{run_batch} ? 'logs.batch' : 'logs.build';
+	my @logs = ();
+	{
+		my $start_time = -f $opt{timestamp} ? (stat($opt{timestamp}))[9] : 0;
+
+		debug "timestamp: $opt{timestamp}, start time: $start_time\n";
+		chdir("$opt{srcpath}/$opt{branch}") or die "can not change dir to $opt{srcpath}/$opt{branch}";
+		debug "$opt{srcpath}/$opt{branch}/ds.*$opt{branchSubfix}/$log_name\n";
+		for (glob("ds.*$opt{branchSubfix}/$log_name")) {
+			next unless /^ds\.[^\/-]+$opt{branchSubfix}\//;
+
+			if ((stat($_))[9] > $start_time) {
+				push @logs, $_;
+			} else {
+				push @old_logs, $_;
+			}
+		}
+		chdir($opt{pwd}) or die;
+	}
+	@plat = map { /^ds\.([^\/-]+)$opt{branchSubfix}\//; $1 } @logs;
+	@old_plat = map { /^ds\.([^\/-]+)$opt{branchSubfix}\//; $1 } @old_logs;
+	debug "parse logs: ", join(", ", @logs), "\n";
+	debug "platform: ", join(", ", @plat), "\n";
+}
+#}}}
+
+sub get_errproj {#{{{ in: @platform, out: { plat => [ errproj, ...] }
+	my @platform = @_;
+	my %stat = ();
+
+	for my $platform (@platform) {
+		my $log = "$opt{srcpath}/$opt{branch}/ds.$platform$opt{branchSubfix}/logs/error.build";
+
+		$stat{$platform} = [];
+		next unless -r $log;
+
+		open IN, "< $log" or warn "WARN: $log, $!";
+		while (<IN>) {
+			if (/Error\(s\) occurred on project "([^"]+)"/) {
+				push @{$stat{$platform}}, $1;
+				$is_failed = 1;
+			}
+		}
+		close IN;
+	}
+
+	return \%stat;
+}#}}}
+sub get_errinstall {#{{{ in: @platform, out: { plat => [ errproj, ...] }
+	my @platform = @_;
+	my %stat = ();
+
+	for my $platform (@platform) {
+		my $log = "$opt{srcpath}/$opt{branch}/ds.$platform$opt{branchSubfix}/logs/error.install";
+
+		$stat{$platform} = [];
+		next unless -r $log;
+
+		open IN, "< $log" or warn "WARN: $log, $!";
+		while (<IN>) {
+			if (/Error\(s\) occurred on project "([^"]+)"/) {
+				push @{$stat{$platform}}, $1;
+				$is_failed = 1;
+			}
+		}
+		close IN;
+	}
+	
+	return \%stat;
+}#}}}
+sub get_ccache {#{{{ in: @platform, out: { __list__ => [items], item => { plat => $, ... }, ... }
+	my %stat = ( __list__ => [] );
+	my $col_width = 28;
+
+	chdir("$opt{srcpath}/$opt{branch}") or die;
+	for my $platform (@_) {
+		open IN, "chroot ds.${platform}$opt{branchSubfix} env CCACHE_DIR=/ccaches/$platform ccache -s |"
+				or warn "WARN: get $platform ccache info error: $!";
+		while (<IN>) {
+			chomp;
+			my $item  = substr($_, 0, $col_width);
+			my $value = substr($_, $col_width);
+			$item =~ s/(^\s*)|(\s*$)//g;
+			$value =~ s/(^\s*)|(\s*$)//g;
+
+			push @{$stat{'__list__'}}, $item unless exists $stat{$item};
+
+			$stat{$item}->{$platform} = $value;
+		}
+		close IN;
+	}
+	chdir($opt{pwd}) or die;
+	
+	for my $item (@{$stat{__list__}}) {
+		for my $plat (@_) {
+			$stat{$item}{$plat} = '-' unless exists $stat{$item}{$plat};
+		} 
+	}
+
+	return \%stat;
+}#}}}
+sub get_timecost {#{{{ in: @platform, out: { __list__ => [projs], proj => {plat => time, ...} ... }
+	my %stat = ( __list__ => [] );
+
+	for my $platform (@_) {
+		my $log_name = $opt{run_batch} ? 'logs.batch' : 'logs.build';
+		my $log = "$opt{srcpath}/$opt{branch}/ds.$platform$opt{branchSubfix}/$log_name";
+		my $all_time_info_start = 0;
+		my $proj = '';
+
+		open IN, "< $log" or warn "WARN: $log, $!";
+		while (<IN>){
+			chomp;
+			if ($opt{realtime}) {
+				if (/^----------------- Time cost statistics/) {
+					$all_time_info_start = 1;
+					next;
+				}
+				if ($all_time_info_start and /\s\d+:(\d+):(\d+)\s.*-->([^\]]+)/){
+					my $t = 1 * ($1 * 60 + $2);
+					$proj = $3;
+
+					push @{$stat{'__list__'}}, $proj unless exists $stat{$proj};
+					$stat{$proj}{$platform} = $t;
+				}
+			} else {
+				if (/^########## Building \[([^\]]+)\]/) {
+					$proj = $1;
+				}
+				#if ($proj ne '' and /^real\s+(\d+)m([^s]+)s\s*$/) {
+				#	$stat{$platform}->{$proj}->{real} = ($1*60 + $2);
+				#}
+				if ($proj ne '' and /^user\s+(\d+)m([^s]+)s\s*$/) {
+					push @{$stat{'__list__'}}, $proj if (! exists $stat{$proj});
+					$stat{$proj}{$platform} += 1*($1*60 + $2);
+				}
+				if ($proj ne '' and /^sys\s+(\d+)m([^s]+)s\s*$/) {
+					push @{$stat{'__list__'}}, $proj if (! exists $stat{$proj});
+					$stat{$proj}{$platform} += 1*($1*60 + $2);
+				}
+			}
+		}
+		close IN;
+	}
+
+	for my $proj (@{$stat{__list__}}) {
+		for my $plat (@_) {
+			$stat{$proj}{$plat} = '-' unless exists $stat{$proj}{$plat};
+		}
+	}
+
+	return \%stat;
+}#}}}
+sub get_version() {#{{{ in: , out: version
+	my $file = "$opt{srcpath}/$opt{branch}/ds.base$opt{branchSubfix}/source/lnxsdk/init/etc/VERSION";
+	my $version = '';
+
+	open IN, "< $file" or die "$! $file";
+	$_ = do { local $/; <IN> };
+	close IN;
+
+	if (/buildnumber="([^"]+)"/) {
+		$version = $1;
+	}
+
+	return $version;
+}#}}}
+sub gen_profile {#{{{ in: status, output to file $opt{profile} or stdout
+	my $status = shift;
+	my $writer = JSON->new->pretty;
+	my $json = {};
+	my $branch = 'Current';
+
+	if (!$opt{profile}) {
+		return;
+	}
+
+	if ($opt{'branch'} ne 'curr' and $opt{'branch'} ne '') {
+		$branch = $opt{'branch'};
+	} elsif ($opt{'branchSubfix'} =~ /^-(.+)b$/) {
+		$branch = $1;
+	}
+
+	$json->{version} = $opt{job_version} || get_version();
+	$json->{type} = "$opt{job_type}" if $opt{job_type};
+	$json->{branch} = $branch;
+	$json->{start} = $opt{begin};
+	$json->{end} = $opt{end} if $opt{end};
+
+	$json->{status} = $status if $status;
+	$json->{status} = $opt{job_status} if $opt{job_status};
+
+	if ($opt{profile} eq '-') {
+		*OUT = *STDOUT;
+	} else {
+		open OUT, "> $opt{profile}" or die "$! $opt{profile}";
+	}
+
+	print OUT $writer->encode($json);
+	close OUT unless ($opt{profile} eq '-');
+}#}}}
+
+# call get_* function to get informations
+if ($opt{erropen}) {
+	$stat{errproj}  = get_errproj(@plat);
+
+	my $temp_dir = $ENV{TMPDIR} || "/tmp";
+	my $file_temp = "$temp_dir/extract_info.txt";
+
+	open OUT, "> $file_temp" or die "$file_temp: $!";
+
+#	if ($opt{begin}) {
+#		print OUT "         begin time: $opt{begin}\n";
+#		print OUT "           end time: $opt{end}\n";
+#	}
+
+	print OUT "====== build platforms ======\n";
+	my @success_plat = ();
+	my @failed_plat = ();
+	print OUT "      did not build: [", join(", ", @old_plat), "],\n";
+
+	for my $p (@plat) {
+		if (0 >= scalar @{$stat{errproj}{$p}}) {
+			push @success_plat, $p;
+		} else {
+			push @failed_plat, $p;
+		}
+	}
+	print OUT "  success platforms: [", join(", ", @success_plat), "],\n";
+	print OUT "   failed platforms: [", join(", ", @failed_plat), "],\n";
+
+	for my $p (@failed_plat) {
+		print OUT "$p", " errors: \n";
+		print OUT join("", map { $_ = "$opt{srcpath}/$opt{branch}/ds.$p/logs/$_.build:1: \n"; } @{$stat{errproj}{$p}});
+	}
+	close OUT;
+
+	system('vim', "+cfile $file_temp", '+vert topleft copen', '+set nowrap', '+vertical res +45', '+set mouse=n',
+		'+tabe '."$opt{srcpath}/$opt{branch}/ds.base/logs/error.update", '+set ft=uplist');
+
+	exit 0;
+} elsif (!$opt{merge}) {
+	$stat{errproj}	= get_errproj(@plat)	if $opt{errproj};
+	$stat{ccache}	= get_ccache(@plat)	if $opt{ccache};
+	$stat{timecost}	= get_timecost(@plat)	if $opt{timecost};
+	$stat{errinstall} = get_errinstall(@plat) if $opt{errinstall} and $opt{run_batch};
+} else {
+	# merge status from previous log file {{{
+	$stat{errproj}  = {};
+	$stat{errinstall}  = {};
+	$stat{ccache}   = {
+		__list__ => []
+	};
+	$stat{timecost} = {
+		__list__ => []
+	};
+
+	for my $file (@ARGV) {
+		my $VAR1;
+		open IN, "< $file" or die "$! $file";
+		eval do { local $/; <IN> };
+		close IN;
+
+		#print Dumper $VAR1 if $opt{debug};
+
+		# merge platform
+		push @plat, @{$VAR1->{plat}};
+
+		# merge errproj
+		for my $p (keys %{$VAR1->{'stat'}{errproj}}) {
+			$stat{errproj}{$p} = $VAR1->{'stat'}{errproj}{$p};
+		}
+		# merge errinstall
+		for my $p (keys %{$VAR1->{'stat'}{errinstall}}) {
+			$stat{errinstall}{$p} = $VAR1->{'stat'}{errinstall}{$p};
+		}
+
+		# merge ccache
+		for my $i (@{$VAR1->{'stat'}{ccache}{__list__}}) {
+			push @{$stat{ccache}{__list__}}, $i unless exists $stat{ccache}{$i};
+
+			for my $p (keys %{$VAR1->{'stat'}{ccache}{$i}}) {
+				$stat{ccache}{$i}{$p} = $VAR1->{'stat'}{ccache}{$i}{$p};
+			}
+		}
+
+		# merge timecost
+		for my $i (@{$VAR1->{'stat'}{timecost}{__list__}}) {
+			push @{$stat{timecost}{__list__}}, $i unless exists $stat{timecost}{$i};
+
+			for my $p (keys %{$VAR1->{'stat'}{timecost}{$i}}) {
+				$stat{timecost}{$i}{$p} = $VAR1->{'stat'}{timecost}{$i}{$p};
+			}
+		}
+
+		# merge is_failed
+		$is_failed = 1 if $VAR1->{is_failed};
+	}
+	# }}}
+}
+
+# open output file handler
+if ($opt{output} eq '-') {
+	*OUT = *STDOUT;
+} else {
+	open OUT, "> $opt{output}" or die "$opt{output}: $!";
+}
+
+# output informations
+if ($opt{format} eq 'plain') {
+	# output plain text version. {{{
+	if ($opt{errproj}) {
+		if ($opt{begin}) {
+			print OUT "         begin time: $opt{begin}\n";
+			print OUT "           end time: $opt{end}\n";
+		}
+
+		print OUT "====== build platforms ======\n";
+		my @success_plat = ();
+		my @failed_plat = ();
+		print OUT "      did not build: [", color("c:[^,]", join(", ", @old_plat)), "],\n";
+
+		for my $p (@plat) {
+			if (0 >= scalar @{$stat{errproj}{$p}}) {
+				push @success_plat, $p;
+			} else {
+				push @failed_plat, $p;
+			}
+		}
+		print OUT "  success platforms: [", color("g:[^,]", join(", ", @success_plat)), "],\n";
+		print OUT "   failed platforms: [", color("r:[^,]", join(", ", @failed_plat)), "],\n";
+
+		for my $p (@failed_plat) {
+			print OUT color("r", "\t$p"), " errors: ";
+			print OUT join(", ", @{$stat{errproj}{$p}}), "\n";
+		}
+	}
+	if ($opt{errinstall} and exists $stat{errinstall}) {
+		print OUT "====== install platforms ======\n";
+		my @success_plat = ();
+		my @failed_plat = ();
+		
+		for my $p (@plat) {
+			if (0 >= scalar @{$stat{errinstall}{$p}}) {
+				push @success_plat, $p;
+			} else {
+				push @failed_plat, $p;
+			}
+		}
+		print OUT "  success platforms: [", color("g:[^,]", join(", ", @success_plat)), "],\n";
+		print OUT "   failed platforms: [", color("r:[^,]", join(", ", @failed_plat)), "],\n";
+
+		for my $p (@failed_plat) {
+			print OUT color("r", "\t$p"), " errors: ";
+			print OUT join(", ", @{$stat{errinstall}{$p}}), "\n";
+		}
+	}
+
+	if ($opt{ccache}) {
+		print OUT "====== ccache statistics ======\n";
+		print OUT join("\t", 'items', @plat), "\n";
+		for my $i (@{$stat{ccache}{__list__}}) {
+			print OUT join("\t", $i, @{$stat{ccache}{$i}}{@plat}), "\n";
+		}
+	}
+	
+	if ($opt{timecost}) {
+		print OUT "====== projects time cost ======\n";
+		print OUT join("\t", 'project', @plat), "\n";
+		for my $i (@{$stat{timecost}{__list__}}) {
+			print OUT join("\t", $i, @{$stat{timecost}{$i}}{@plat}), "\n";
+		}
+	}
+	#}}}
+} elsif ($opt{format} eq 'json') {
+	# output json version {{{
+	my %json = (
+		success => $JSON::true,
+		platform => [],
+	);
+	for my $p (@plat) {
+		my %platform = (
+			id => $p,
+			'err' => $opt{errproj} ? $stat{errproj}{$p} : [],
+			'errinstall' => $opt{errinstall} ? $stat{errinstall}{$p} : []
+		);
+		push @{$json{platform}}, \%platform;
+	}
+	if ($opt{ccache}) {
+		$json{ccache} = [];
+		for my $i (@{$stat{ccache}{__list__}}) {
+			my @attr = @{$stat{ccache}{$i}}{@plat};
+			my %ccache = (
+				item => $i,
+				val => \@attr,
+			);
+			push @{$json{ccache}}, \%ccache;
+		}
+	}
+	if ($opt{timecost}) {
+		$json{timecost} = [];
+		for my $i (@{$stat{timecost}{__list__}}) {
+			my @attr = ($i, @{$stat{timecost}{$i}}{@plat});
+			push @{$json{timecost}}, \@attr;
+		}
+	}
+
+	print OUT to_json(\%json);
+	# }}}
+} elsif ($opt{format} eq 'perl') {
+	# output perl code by Data::Dumper {{{
+	my $VAR1 = {
+		'stat' => \%stat,
+		'plat' => \@plat,
+		'is_failed' => $is_failed,
+	};
+	my $d = Data::Dumper->new([$VAR1], [qw(VAR1 *hash)]);
+	$d->Indent(0);
+	print OUT $d->Dump;
+	#}}}
+}
+
+gen_profile($is_failed ? "failed" : "success");
+
+# close file handler
+close OUT unless ($opt{output} eq '-');
+
+# copy all logs
+if ('' eq $opt{ftp} and $opt{dir}) {
+	# copy files to dir {{{
+	print STDERR "copy file to $opt{dir}\n";
+
+	mkpath($opt{dir});
+	move($opt{output}, $opt{dir}) if $opt{output} ne '-';
+
+	if ($opt{errlog}) {
+		my ($src, $tgr, $log_path) = ('', '', '');
+		for my $p (@plat) {
+			$log_path = "$opt{srcpath}/$opt{branch}/ds.$p$opt{branchSubfix}/logs";
+			if (exists $stat{errproj}) {
+				for my $l (@{$stat{errproj}{$p}}) {
+					$src = "$log_path/$l.build";
+					$tgr = "$opt{dir}/$p.$l.build";
+
+					copy($src, $tgr) or warn "cp $src failed";
+				}
+			}
+			if (exists $stat{errinstall}) {
+				for my $l (@{$stat{errinstall}{$p}}) {
+					$src = "$log_path/$l.install";
+					$tgr = "$opt{dir}/$p.$l.install";
+
+					copy($src, $tgr) or warn "cp $src failed";
+				}
+			}
+		}
+	}
+
+	move($opt{profile}, "$opt{dir}/$opt{profile}") if -r $opt{profile};
+
+	if ($opt{uplog} and -f "$opt{srcpath}/$opt{branch}/ds.base$opt{branchSubfix}/logs/error.update") {
+		copy("$opt{srcpath}/$opt{branch}/ds.base$opt{branchSubfix}/logs/error.update", "$opt{dir}/error.update")
+			or warn "cp $opt{srcpath}/$opt{branch}/ds.base$opt{branchSubfix}/logs/error.update failed";
+	}
+	
+	system("chown", "-R", "$opt{owner}", "$opt{dir}") if ($opt{owner});
+	#}}}
+} elsif ('' ne $opt{ftp} and $opt{dir}) {
+	print STDERR "send file to ftp server\n"; #{{{
+
+	my ($user, $pass, $host, $dir) = split(/[\/:@]/, $opt{ftp}, 4);
+
+	open OUT, "| ftp -n $host 1>&2" or die "can not pipe to ftp, $!";
+	print OUT "user $user $pass\n";
+	print OUT "cd $dir\n" if $dir;
+	print OUT "mkdir $opt{dir}\n";
+
+	# FIXME if this command failed, we copy file to wrong place 
+	print OUT "cd $opt{dir}\n";
+
+	print OUT "put $opt{output}\n" if -r $opt{output};
+	print OUT "put $opt{profile}\n" if -r $opt{profile};
+
+	if ($opt{uplog}) {
+		print OUT "lcd $opt{srcpath}/$opt{branch}/ds.base$opt{branchSubfix}/logs/\n";
+		print OUT "put error.update\n";
+		print OUT "lcd ../../\n";
+	}
+	if ($opt{errlog}) {
+		for my $p (@plat) {
+			print OUT "lcd $opt{srcpath}/$opt{branch}/ds.$p$opt{branchSubfix}/logs/\n";
+
+			if (exists $stat{errproj}) {
+				for my $l (@{$stat{errproj}{$p}}) {
+					print OUT "put $l.build\n";
+					print OUT "rename $l.build $p.$l.build\n";
+				}
+			}
+			if (exists $stat{errinstall}) {
+				for my $l (@{$stat{errinstall}{$p}}) {
+					print OUT "put $l.install\n";
+					print OUT "rename $l.install $p.$l.install\n";
+				}
+			}
+		}
+	}
+	print OUT "exit\n";
+	close OUT;
+
+	unlink $opt{output} if -r $opt{output} and !$opt{debug};
+	unlink $opt{profile} if -r $opt{profile} and !$opt{debug};
+	#}}}
+}

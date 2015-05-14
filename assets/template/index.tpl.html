@@ -1,0 +1,58 @@
+{% extends "markdown.tpl.html" %}
+
+{% block header %}
+        {{ asset_css("tablesorter/style.css") }}
+        {{ asset_js("tablesorter/jquery.tablesorter.min.js") }}
+{% endblock %}
+
+{% macro file_list_table(files) %}
+<div class="panel panel-info">
+    <div class="panel-heading">index</div>
+    <table class="table">
+        <thead>
+            <!--tr> <th>doc name</th><th>mtime</th> </tr-->
+        </thead>
+        <tbody>
+            {% for value in files %}
+            <tr>
+                <td width="36px">
+                {% if value.type == "folder" %}
+                    <span class="glyphicon glyphicon-folder-close" style="color: #f0ad4e;"></span>
+                {% elif value.type == "file" %}
+                    <span class="glyphicon glyphicon-file" style="color: #428bca;"></span>
+                {% endif %}
+                </td>
+
+                <td><a href="{{value.name}}">{{value.name}}</a></td>
+                <td>{{value.mtime_str}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endmacro %}
+
+{% block body %}
+<div class="container bs-docs-container" data-spy="scroll" data-target=".bs-docs-sidebar">
+<div class="row">
+    <p></p>
+    {% if index %}
+        <div class="col-md-6">
+            {{ file_list_table(files) }}
+        </div>
+        <div class="col-md-6">
+            {{ index | safe }}
+        </div>
+    {% else %}
+        <div class="col-md-12">
+            {{ file_list_table(files) }}
+        </div>
+    {% endif %}
+</div>
+</div>
+<footer>
+{% if mtime %}
+    Last modified: {{mtime}}
+{% endif %}
+</footer>
+{% endblock %}
