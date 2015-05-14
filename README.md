@@ -1,4 +1,4 @@
-linux_configs
+configs
 =============
 
 make install
@@ -11,10 +11,10 @@ edit .bashrc, uncomment the following lines to enable auto complete
 
 edit .bashrc, append the following lines
 
-        for f in ~/config/bashrc.d/*; do                                                 
-                source $f;                                                               
-                done                                                                             
-        PATH="~/bin:$PATH"  
+        for f in ~/config/bashrc.d/*; do
+                source $f;
+                done
+        PATH="~/bin:$PATH"
 
 start new bash env, you can login again or simply:
 
@@ -33,7 +33,7 @@ build tags
         cd /synosrc
         ./syno.build_tags
 
-syno.build.status 
+syno.build.status
 
         cd ~/config/addon
         tar zxvf JSON-2.53.tar.gz
