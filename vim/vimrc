@@ -31,11 +31,11 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-execute pathogen#infect()
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Bundle 'scrooloose/syntastic'
+" execute pathogen#infect()
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
@@ -175,7 +175,7 @@ endfun
 " *** usage: use C-X C-X or C-<space> to trigger the completion ***
 " the flowing line enable YCM to do powful C++ completion funtionality
 " by loading cpp completion model
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " If you prefer the completion tip window to close when a selection is
 " made, these followint lines close it on movement in insert mode or
 " when leaving insert mode
@@ -199,6 +199,9 @@ let g:ycm_semantic_triggers =  {
 " provide the auto-triggering and subsequence-based matching (and other YCM
 " features) on top of it.
 let g:EclimCompletionMethod = 'omnifunc'
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+" let g:ycm_filetype_specific_completion_to_disable = {'*': 1}
 " -------------------------
 
 " --- ListToggle ----------
