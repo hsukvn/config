@@ -1,0 +1,21 @@
+#!/bin/bash
+
+src_paths="
+/synosrc/curr/ds.base/source
+/synosrc/package6-0/source
+"
+
+for path in $src_paths
+do
+	if [ ! -d $path ]
+	then
+		continue
+	fi
+
+	(
+		cd $path
+		echo making index in $path
+		ctags -R --sort=foldcase .
+		mkid
+	)
+done

@@ -231,6 +231,8 @@ map <leader>e <Esc>:CtrlP<CR>
 " should be generate by command `ctags -R` at (src/project) root dir
 map <F5> :call Do_NewTags()<CR>
 "set tags=./tags,tags;$HOME
+" ctags (the semicolon is important!)
+set tags=tags;
 "set tags=/synosrc/curr/ds.base/tags,~/.vim/bundle/ctags/tags
 " use a new tab to trace tag
 " nmap <C-]> viwy:tab tag <C-R>"<CR>
