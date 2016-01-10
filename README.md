@@ -1,6 +1,8 @@
 configs
 =============
 
+my linux configs
+
 make install
 
 edit .bashrc, uncomment the following lines to enable auto complete
