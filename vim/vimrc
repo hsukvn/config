@@ -26,6 +26,9 @@ filetype plugin indent on "required! for Vundle and completion function
 " My Bundles here:
 "
 " original repos on github
+Bundle 'fatih/vim-go'
+au BufRead,BufNewFile *.{go}   set filetype=go
+let g:go_fmt_autosave = 0
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
@@ -64,6 +67,8 @@ Bundle 'pangloss/vim-javascript'
 "set laststatus=2
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'airblade/vim-gitgutter'
+let g:gitgutter_enabled = 0
 
 " -----------------------------------------
 " General Settings

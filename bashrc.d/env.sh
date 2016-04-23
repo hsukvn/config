@@ -1,7 +1,7 @@
 export LANG=C.UTF-8
 export LANGUAGE=C
 
-export PATH=~/bin":$PATH"
+export PATH=~/bin":$PATH":"~/gocode/bin"
 export PYTHONPATH="$HOME/config/pythonlib/${PYTHONPATH+:}$PYTHONPATH"
 
 export EDITOR=vim
@@ -19,3 +19,5 @@ export TERM=xterm-256color
 # for cscope and vim temp dir
 export TMPDIR=$HOME/.tmp
 [ -d "$HOME" -a ! -d "$TMPDIR" ] && mkdir "$TMPDIR"
+
+export GOPATH="/usr/share/go/"
