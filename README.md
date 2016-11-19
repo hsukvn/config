@@ -10,6 +10,7 @@ Install
 
 	$ cd ~
 	$ git clone https://github.com/ilcic/config.git
+	$ cd config
 	$ ./install.sh -a
 	$ ./install.sh -i
 	$ ./install.sh -s
