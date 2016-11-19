@@ -2,3 +2,4 @@ vim/.netrwhist
 *.pyc
 gitconfig
 vim/bundle/*
+addon/JSON-2.53

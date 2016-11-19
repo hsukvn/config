@@ -5,17 +5,19 @@ show_usage() {
 Usage: $(basename $0) [options]
 Options:
     -a        install basic apt packages
-    -i        install these configs
-    -u        uninstall these configs and recover enveirement
+    -i        install configs
+    -s        install for synology
+    -u        uninstall configs and recover environments
     -h        show this help message
     -d        debug mode
 EOF
 }
 
-while getopts "adhiu" opt; do
+while getopts "adhisu" opt; do
 	case $opt in
 		a) InstallApt=yes;;
 		i) InstallConfig=yes;;
+		s) InstallForSynology=yes;;
 		u) UnInstallConfig=yes;;
 		h) show_usage; exit 0;;
 		d) DEBUG=on;;
@@ -81,6 +83,26 @@ install_config() {
 	source /root/.bashrc
 }
 
+install_syno_build_tags() {
+	[ ! -d "/synosrc" ] && return;
+	exe "ln -s ~/config/script/syno.build.tags /synosrc/syno.build_tags"
+}
+
+install_syno_build_status() {
+	exe "cd ~/config/addon"
+	exe "tar zxvf JSON*"
+	exe "cd JSON*"
+	exe "perl Makefile.PL"
+	exe "make"
+	exe "make install"
+	exe "cd -"
+}
+
+install_for_synology() {
+	install_syno_build_tags
+	install_syno_build_status
+}
+
 restore_config() {
 	echo "star to restore from $BAKDIR..."
 	[ ! -d $BAKDIR ]  && return;
@@ -116,6 +138,12 @@ fi
 if [ $InstallConfig ]; then
 	echo "starting install config..."
 	install_config
+	echo "finish"
+fi
+
+if [ $InstallForSynology ]; then
+	echo "starting install synology configs..."
+	install_for_synology
 	echo "finish"
 fi
 
