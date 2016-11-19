@@ -27,12 +27,12 @@ filetype plugin indent on "required! for Vundle and completion function
 "
 " original repos on github
 Bundle 'fatih/vim-go'
-au BufRead,BufNewFile *.{go}   set filetype=go
 let g:go_fmt_autosave = 0
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'Valloric/YouCompleteMe'
 " Bundle 'scrooloose/syntastic'
 " execute pathogen#infect()
@@ -48,7 +48,6 @@ let g:syntastic_check_on_wq = 0
 Bundle 'Valloric/ListToggle'
 " vim-scripts repos
 Bundle 'javacomplete'
-"Bundle 'rubycomplete.vim'
 Bundle 'ctags.vim'
 Bundle 'vim-scripts/EasyGrep'
 Bundle 'taglist.vim'
@@ -314,6 +313,9 @@ let g:EasyGrepRecursive = 1
 let g:EasyGrepCommand = 1
 let g:EasyGrepIgnoreCase = 1
 
+" au BufRead,BufNewFile *.{go}   set filetype=go
+au BufNewFile,BufRead *.handlebars set filetype=html
+au BufNewFile,BufRead *.bash set filetype=sh
 
 if has("autocmd")
 autocmd BufRead *.txt set tw=78

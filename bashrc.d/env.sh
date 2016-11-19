@@ -1,7 +1,10 @@
-export LANG=C.UTF-8
-export LANGUAGE=C
+# export LANG=C.UTF-8
+# export LANGUAGE=C
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
-export PATH=~/bin":$PATH":"~/gocode/bin"
+export PATH=~/bin":$PATH"
 export PYTHONPATH="$HOME/config/pythonlib/${PYTHONPATH+:}$PYTHONPATH"
 
 export EDITOR=vim
@@ -20,4 +23,6 @@ export TERM=xterm-256color
 export TMPDIR=$HOME/.tmp
 [ -d "$HOME" -a ! -d "$TMPDIR" ] && mkdir "$TMPDIR"
 
-export GOPATH="/usr/share/go/"
+export GOPATH=~/go
+export PATH=$PATH:~/go/bin
+

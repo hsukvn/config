@@ -25,6 +25,8 @@ alias gj="/root/bin/gj/bin/gj"
 alias tmux="tmux -2"
 alias weather='curl -4 wttr.in/Taipei'
 alias dic='zdict'
+alias dos2unix="sed -i -e 's/'\"\$(printf '\015')\"'//g' "
+alias synoptt='luit -encoding big5 telnet bs.synology.io 5566'
 
 tt_error() {
 	local ret=$?
