@@ -10,9 +10,9 @@ Install
 
 	$ cd ~
 	$ git clone https://github.com/ilcic/config.git
-	$ install.sh -a
-	$ install.sh -i
-	$ install.sh -s
-	$ source .bashrc
+	$ ./install.sh -a
+	$ ./install.sh -i
+	$ ./install.sh -s
+	$ source /root/.bashrc
 
 For vim install please check out `vim`
