@@ -1,0 +1,10 @@
+#!/bin/bash
+HOST=$1
+cat /root/.ssh/id_rsa.pub | ssh root@$HOST "mkdir -p ~/.ssh/; cat >> ~/.ssh/authorized_keys"
+
+if [ $? == 255 ]; then
+	ssh-keygen -f "/root/.ssh/known_hosts" -R $HOST
+	exit 0
+fi
+
+ssh root@$HOST

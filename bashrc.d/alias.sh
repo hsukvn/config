@@ -25,7 +25,6 @@ alias gj="/root/config/gj/bin/gj"
 alias tmux="tmux -2"
 alias weather='curl -4 wttr.in/Taipei'
 alias dic='zdict'
-alias synouser='/root/config/synouser/synoUser.py'
 
 tt_error() {
 	local ret=$?

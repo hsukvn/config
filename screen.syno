@@ -1,5 +1,0 @@
-source ~/.screenrc
-screen weechat-curses
-screen /dev/ttyS0 115200,cs8
-screen syno.chroot
-screen /dev/ttyUSB0 115200,cs8
