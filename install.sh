@@ -46,7 +46,11 @@ install_apt() {
 	exe "apt install -y ssh vim samba"
 	exe "apt install -y build-essential ctags cscope"
 	exe "apt install -y python-pip python"
-	exe "apt install -y silversearcher-ag"
+	exe "apt install -y python3-pip python3"
+	exe "apt install -y silversearcher-ag id-utils"
+
+	exe "pip3 install --upgrade requests"
+	exe "pip3 install --upgrade zdict"
 }
 
 backup_config() {

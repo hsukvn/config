@@ -21,7 +21,7 @@ alias ll='ls -al'
 alias con="screen /dev/ttyS0 115200,cs8"
 
 # useful commandline tools
-alias gj="/root/config/gj/bin/gj"
+alias gj="/root/bin/gj/bin/gj"
 alias tmux="tmux -2"
 alias weather='curl -4 wttr.in/Taipei'
 alias dic='zdict'
