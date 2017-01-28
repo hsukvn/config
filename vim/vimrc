@@ -33,7 +33,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 " Bundle 'scrooloose/syntastic'
 " execute pathogen#infect()
 " set statusline+=%#warningmsg#
@@ -237,6 +237,7 @@ map <F5> :call Do_NewTags()<CR>
 "set tags=./tags,tags;$HOME
 " ctags (the semicolon is important!)
 set tags=tags;
+set path=.
 "set tags=/synosrc/curr/ds.base/tags,~/.vim/bundle/ctags/tags
 " use a new tab to trace tag
 " nmap <C-]> viwy:tab tag <C-R>"<CR>

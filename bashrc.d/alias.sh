@@ -3,7 +3,6 @@
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
 	#eval "`dircolors -b`"
-	eval `dircolors ~/.colorrc`
 	alias ls='ls --color=auto -F'
 	alias grep='grep --color'
 fi

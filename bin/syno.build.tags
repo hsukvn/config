@@ -1,0 +1,173 @@
+#!/bin/bash
+ScriptPath=$(dirname `readlink -f $0`)
+. $ScriptPath/../bin/syno.common
+
+BasePath=$(syno_get_basepath "$@") || exit 1
+Branch=$(syno_get_branch "$BasePath") || exit 1
+TagDir=$BasePath/../tags
+CTAG_CMD="/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q "
+PROJECTS="
+	libsynocore libsynosdk synojslib synodb
+	libsynoshare libsynoacl libsynobandwidth
+	libsynocgi synoutilscpp jsoncpp libdsm dsm dsm-AdminCenter webapi-DSM5
+	libsynoldap synoldap synorelayservice
+	synoportforwarding
+	synopkg synomount webfm2 synowimax
+	lnxsdk lnxscemd-2.0 lnxessential
+	libfindhost lnxfhd webassistant juniorinstaller DSAssistant2
+	rsync-3.x libsynobackup synobackup synodedup dsm-BackupApp timebkp timebkpservice synosyncfolder S2S 
+	cpp tt_tools synotest
+	libdaemon-0.14 libevent-2.x gtest-1.6.x
+	icu22 libxml2-2.x openssl-1.0.x
+	samba-3.6.x netatalk-2.x curl-7.x 
+	dhcpcd-1.3.22-pl1 rp-pppoe-3.5 lnxlibnet bridge-utils-1.4 ppp-2.4.x
+	busybox-1.16.1 linux-2.6.32 linux-3.x
+	sqlite-3.8.x syslog-ng-3.x
+"
+
+usage() {
+	cat >&2 <<EOF
+build ctags and cscope tags for project.
+
+USAGE: $(basename $0) [options] [project name...]
+	if project name is empty or "all", this script will use default list and
+	build cscope file for whole source (may cost more than ten minutes)
+OPTIONS:
+$(syno_get_basepath_usage)
+	-h                   show this help messages
+EOF
+	exit 0
+}
+
+IsBuildCscope=
+while getopts $(syno_get_basepath_opt)"hc" opt; do
+	tt_debug "$opt: $OPTARG"
+	case $opt in
+		d) tt_DEBUG=y ;;
+		c) IsBuildCscope=y ;;
+		h) usage ;;
+	esac
+done
+shift $((OPTIND - 1))
+
+# check output dir of tag files
+if ! tt_check_and_create_dir "$TagDir"; then
+	exit 1
+fi
+
+# get change root base path
+ChrootPath=
+case "$Branch" in
+	curr|q1|q3)  ChrootPath=$(syno_get_basepath "$BasePath") ;;
+	dr3)         ChrootPath= ;;
+	*)           tt_warn "unknow branch to build chroot tags" ;;
+esac
+
+Projects=
+for p ; do
+	Projects="$Projects `basename $p`"
+done
+if [ "$IsBuildCscope" ]; then
+	tt_debug "build cscope only"
+elif [ -z "$Projects" -o "$Projects" = "all" ]; then
+	IsBuildCscope=on
+	case $Branch in
+		dr3)
+			Projects="DataRep AutoUp"
+			CscopePath="$(dirname $BasePath)"
+			;;
+		*)      Projects=$PROJECTS
+			CscopePath="$BasePath/source"
+			;;
+	esac
+fi
+
+build_tag() { # <project dir> <project tag>
+	local proj_dir=$1
+	local proj_tag=$2
+	local ctag_cmd=${CTAG_CMD:-ctags -R}
+
+	local ret=
+
+	tt_log -n "[build_tag] $proj_dir -> $proj_tag... "
+
+	if [ -z "$proj_dir" -o -z "$proj_tag" -o -z "$ctag_cmd" ]; then
+		tt_warn "build_tag: bad parameter"
+		return 1
+	fi
+
+	# FIXME check time
+
+	if [ ! -d "$proj_dir" ]; then
+		tt_warn "dir '$proj_dir' not exists"
+		return 1
+	fi
+
+	if ! $ctag_cmd -f "$proj_tag.$$~" "$proj_dir"; then
+		tt_warn "'$ctag_cmd -f $proj_tag.$$~ $proj_dir' failed"
+		return 1
+	fi
+
+	if [ "$(basename $proj_tag)" = "libsynosdk.tags" -o "$(basename $proj_tag)" = "libsynocore.tags" ]; then
+		grep -v "/gpl/" "$proj_tag.$$~" > "$proj_tag"
+		rm -f "$proj_tag.$$~"
+	else
+		mv "$proj_tag.$$~" "$proj_tag"
+	fi
+
+	if [ -e "$proj_tag" ]; then
+		tt_log "done"
+	else
+		tt_warn "failed"
+	fi
+}
+build_cscope() { # <source dir> <output dir>
+	local source_dir=$1
+	local output_dir=$2
+	local exclude_list="linux-2.6.15 linux-2.6.24 apache-2.2.16 uclinux2422 apache-2.2.16"
+
+	tt_log "[build_tag] construct cscope files: $source_dir -> $output_dir/cscope.files"
+
+	if [ -z "$source_dir" -o -z "$output_dir" ]; then
+		tt_warn "bad parameters"
+		return 1
+	fi
+
+	find "$source_dir" -not -type l \
+		\( -name '*.c' -o -name '*.h' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.cc' \) \
+		| grep -v "source/\($(printf "$exclude_list" | sed 's, ,\\|,g')\)" > "$output_dir/cscope.files"
+
+	(
+		cd $output_dir || return 1
+
+		tt_log -n "[build_tag] build cscope..."
+
+		if cscope -bqk; then
+			tt_log "done"
+		else
+			tt_warn "failed"
+		fi
+	)
+}
+
+tt_debug "projects: $Projects"
+tt_debug "build cscope: ${IsBuildCscope:-off}"
+
+# build tags under ds.X/source/
+for proj in $Projects; do
+	case "$proj" in
+		DataRep|AutoUp)
+			build_tag "$(dirname $BasePath)/$proj" "$TagDir/$proj.tags" ;;
+		cpp)
+			[ "$ChrootPath" ] &&\
+				build_tag "$ChrootPath/usr/include/c++/4.3.3" "$TagDir/$proj.tags" ;;
+		*)
+			build_tag "$BasePath/source/$proj" "$TagDir/$proj.tags" ;;
+	esac
+done
+
+# build cscope
+if [ "$IsBuildCscope" -a "$CscopePath" ]; then
+	build_cscope "$CscopePath" "$TagDir"
+fi
+
