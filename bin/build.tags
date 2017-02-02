@@ -1,0 +1,23 @@
+#!/bin/bash
+
+src_paths="
+/synosrc/nextos/ds.base/source
+/synosrc/curr/ds.base/source
+/synosrc/router/ds.base/source
+/synosrc/packages/source
+"
+
+for path in $src_paths
+do
+	if [ ! -d $path ]
+	then
+		continue
+	fi
+
+	(
+		cd $path
+		echo making index in $path
+		ctags -R --sort=foldcase --exclude=*.html .
+		mkid
+	)
+done
