@@ -1,6 +1,3 @@
-if $SHELL =~ 'bin/fish'
-  set shell=/bin/zsh
-endif
 set nocompatible    " be iMproved(not vi mode)
 filetype off    " required! for Vundle
 
@@ -30,7 +27,7 @@ Bundle 'fatih/vim-go'
 let g:go_fmt_autosave = 0
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'hynek/vim-python-pep8-indent'
 " Bundle 'Valloric/YouCompleteMe'
@@ -40,34 +37,34 @@ Bundle 'hynek/vim-python-pep8-indent'
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 "used for toggle compilation error window 
 Bundle 'Valloric/ListToggle'
 " vim-scripts repos
-Bundle 'javacomplete'
+" Bundle 'javacomplete'
 Bundle 'ctags.vim'
-Bundle 'vim-scripts/EasyGrep'
+" Bundle 'vim-scripts/EasyGrep'
 Bundle 'taglist.vim'
 Bundle 'tagbar'
 
-Bundle 'mileszs/ack.vim'
-Bundle 'fcamel/gj'
+" Bundle 'mileszs/ack.vim'
+" Bundle 'fcamel/gj'
 
 Bundle 'ntpeters/vim-better-whitespace'
 Bundle 'bling/vim-airline'
 set laststatus=2
 let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 Bundle 'pangloss/vim-javascript'
-"Bundle 'Lokaltog/vim-powerline'
-"set laststatus=2
+" Bundle 'Lokaltog/vim-powerline'
+" set laststatus=2
 " non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'airblade/vim-gitgutter'
-let g:gitgutter_enabled = 0
+" Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'airblade/vim-gitgutter'
+" let g:gitgutter_enabled = 0
 
 " -----------------------------------------
 " General Settings
@@ -284,7 +281,7 @@ let Tlist_File_Fold_Auto_Close=1 "files' tags are folded except current one
 let Tlist_Sort_Type="name"      " tags will be sorted by name; default is by occurence
 let Tlist_Exit_OnlyWindow=1     " exit vim when taglist is the last window
 "nmap <F3> : call Do_Tlist_Toggle()<CR>
-function! Do_Tlist_Toggle() 
+function! Do_Tlist_Toggle()
   TlistToggle
   TlistUpdate
 endfunction
@@ -309,7 +306,7 @@ let g:tagbar_type_javascript = {
 " <leader>vo - Select the files to search in and set grep options
 " <Leader>vr - Perform a global search search on the word under the cursor
 "              and prompt for a pattern with which to replace it.
-map <leader>vf <esc>:Grep 
+map <leader>vf <esc>:Grep
 let g:EasyGrepRecursive = 1
 let g:EasyGrepCommand = 1
 let g:EasyGrepIgnoreCase = 1

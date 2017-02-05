@@ -1,10 +1,9 @@
 #!/bin/bash
 
 src_paths="
-/synosrc/nextos/ds.base/source
 /synosrc/curr/ds.base/source
-/synosrc/router/ds.base/source
-/synosrc/packages/source
+/synosrc/Next-alpha/ds.base/source
+/synosrc/package/source
 "
 
 for path in $src_paths
