@@ -3,3 +3,4 @@ vim/.netrwhist
 gitconfig
 vim/bundle/*
 addon/JSON-2.53
+bin/connect
