@@ -53,9 +53,30 @@ Compiling YCM without semantic support for C-family languages:
     $ cd ~/.vim/bundle/YouCompleteMe
     $ ./install.sh
 
+Compiling YCM with semantic support for Go languages:
+
+    $ cd ~/.vim/bundle/YouCompleteMe
+    $ ./install.py --gocode-completer
+
+Compiling YCM with semantic support for Javascript languages:
+
+    $ cd ~/.vim/bundle/YouCompleteMe
+    $ ./install.py --tern-completer
+
 For more installation detail, please see the document of [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 All done! Hope you enjoy it.
+
+F & Q
+=====
+
+libtinfo.so missing for YCM in arch linux
+
+    $ ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.5
+
+RuntimeError: Warning: Unable to detect a .tern-project file in the hierarchy before xxxxx and no global .tern-config file was found. This is required for accurate JavaScript completion. Please see the User Guide for details.
+
+    $ ln -s ~/config/dotfiles/tern-config ~/.tern-config
 
 Demos
 =====
