@@ -1,4 +1,0 @@
-synostorage -fstype=cifs,credentials=/etc/smb.auth,iocharset=utf8    ://synostorage/diskstation
-synoutil -fstype=cifs,credentials=/etc/smb.auth,iocharset=utf8    ://synostorage/DesktopUtility
-snoopy -fstype=cifs,credentials=/etc/smb.auth,iocharset=utf8 ://snoopy/public
-pmdoc -fstype=cifs,credentials=/etc/smb.auth,iocharset=utf8 ://synostorage/productdoc
