@@ -13,6 +13,7 @@ Install
 	$ cd config
 	$ ./install.sh -a
 	$ ./install.sh -i
+	$ ./install.sh -v
 	$ ./install.sh -s
 	$ source /root/.bashrc
 
