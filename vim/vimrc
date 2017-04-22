@@ -1,10 +1,7 @@
-set nocompatible    " be iMproved(not vi mode)
-filetype off    " required! for Vundle
-
-" Setting up Vundle - the vim plugin bundler
-"---Let Vundle manage vundle: Vundle is a fancy vim plugin manager
-"  help you easily manage(install, update, and remove) your 
-"  vim plugin(or so-called bundle)
+" -----------------------------------------
+" Vundle Settings
+" -----------------------------------------
+filetype off    " for Vundle
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
@@ -17,75 +14,41 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" The following line is required! for Vundle
 Bundle 'gmarik/vundle'
-filetype plugin indent on "required! for Vundle and completion function
-" My Bundles here:
-"
-" original repos on github
 Bundle 'fatih/vim-go'
-let g:go_fmt_autosave = 0
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdtree'
-" Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'hynek/vim-python-pep8-indent'
-" Bundle 'Valloric/YouCompleteMe'
-" Bundle 'scrooloose/syntastic'
-" execute pathogen#infect()
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-"used for toggle compilation error window 
 Bundle 'Valloric/ListToggle'
-" vim-scripts repos
-" Bundle 'javacomplete'
+Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'ctags.vim'
-" Bundle 'vim-scripts/EasyGrep'
 Bundle 'taglist.vim'
 Bundle 'tagbar'
-
-" Bundle 'mileszs/ack.vim'
-" Bundle 'fcamel/gj'
-
-Bundle 'ntpeters/vim-better-whitespace'
+Bundle 'fcamel/gj'
 Bundle 'bling/vim-airline'
-set laststatus=2
-let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
 Bundle 'pangloss/vim-javascript'
-" Bundle 'Lokaltog/vim-powerline'
-" set laststatus=2
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
-" Bundle 'airblade/vim-gitgutter'
-" let g:gitgutter_enabled = 0
 
 " -----------------------------------------
 " General Settings
 " -----------------------------------------
+set nocompatible        " be iMproved
 set nu	                " show the line number; use [set nonu] to close;
 set cursorline          " highlight current line
 set nowrap              " never auto change to next line
 set paste               " can use <Cmd>+v to paste in vim
 
-"Restore cursor to file position in previous editing session
+" restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
-set autoindent      " auto indentation
+set autoindent          " auto indentation
 set smartindent         " a improvement of autoindent
-set copyindent      " copy the previous indentation on autoindenting
-set incsearch       " incremental search
-set nobackup        " no *~ backup files
-set ignorecase      " ignore case when searching
-set smartcase       " ignore case if search pattern is all lowercase,
-" case-sensitive otherwise
-set smarttab      " insert tabs on the start of a line according to context
+set copyindent          " copy the previous indentation on autoindenting
+set incsearch           " incremental search
+set nobackup            " no *~ backup files
+set ignorecase          " ignore case when searching
+set smartcase           " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smarttab            " insert tabs on the start of a line according to context
 
 set wildchar=<TAB>      " when type command, use <tab> to do completion
 set wildmenu
@@ -93,52 +56,35 @@ set showmatch
 set showmode
 set noswapfile
 
-"mouse
-set mouse=n
+" disable sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
-syntax on	        " use syntax
+set mouse=n
 
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
 
+syntax on	            " use syntax
 set t_Co=256            " 256 color mode
-"set background=dark    " another is 'light', change this will affect colorscheme
-"colorscheme molokai    " colorschem setting: solarized_dark, railscasts, distinguished
-colorscheme hybrid    " colorschem setting: solarized_dark, railscasts, distinguished
-"set term=xterm-256color
-"fix tmux color
-set t_ut=
+colorscheme hybrid
+set background=dark
+set t_ut=               " fix tmux color
 
-" TAB setting{
+" TAB setting
 set tabstop=4
-set softtabstop=4	" the default tab space size=4
-set shiftwidth=4	" the default autoindenting space size=4
+set softtabstop=4	    " the default tab space size=4
+set shiftwidth=4	    " the default autoindenting space size=4
 "set expandtab	        " replace <TAB> with spaces
-
-
 " show tab
-" set list
-" set listchars=tab:>\ 
-" highlight ErrorMsg     gui=NONE
-" Whitespace
-" highlight SpecialKey   ctermfg=235  guifg=#30302c
-" YAML scalar
-" highlight yamlScalar   ctermfg=250  guifg=#a8a897
-" Last search highlighting and quickfix's current line
-" highlight Search       ctermfg=183  ctermbg=237
-" Brakets and pairs
-" highlight MatchParen   ctermfg=220  ctermbg=237
-" Markdown headers
-" highlight link htmlH1 Statement
-" Mode message (insert, visual, etc)
-" highlight ModeMsg      ctermfg=240
-" Visual mode selection
-" highlight Visual       ctermbg=236
 
-
+au BufNewFile,BufRead *.handlebars set filetype=html
+au BufNewFile,BufRead *.bash set filetype=sh
 au FileType Makefile set noexpandtab
-"}
+au Filetype html setlocal ts=2 sw=2 expandtab
 
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -205,7 +151,7 @@ let g:ycm_enable_diagnostic_highlighting = 0
 " let g:ycm_filetype_specific_completion_to_disable = {'*': 1}
 " -------------------------
 
-" --- ListToggle ----------
+" --- istToggle ----------
 let g:lt_location_list_toggle_map = '<leader>w'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 let g:lt_height = 10
@@ -221,11 +167,6 @@ map <F2> <Esc>:NERDTreeTabsToggle<CR>
 "map <leader>n :NERDTreeTabsToggle<CR>
 " -------------------------
 
-" --- ctrlp ---------------
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
-map <leader>e <Esc>:CtrlP<CR>
-" -------------------------
-
 " --- ctags ---------------
 " !!!Make sure use <F5> before change to source root dir!!!-----
 " use <F5>(means:new tags) to generate a file 'tags', which originally 
@@ -234,7 +175,6 @@ map <F5> :call Do_NewTags()<CR>
 "set tags=./tags,tags;$HOME
 " ctags (the semicolon is important!)
 set tags=tags;
-set path=.
 "set tags=/synosrc/curr/ds.base/tags,~/.vim/bundle/ctags/tags
 " use a new tab to trace tag
 " nmap <C-]> viwy:tab tag <C-R>"<CR>
@@ -281,7 +221,7 @@ let Tlist_File_Fold_Auto_Close=1 "files' tags are folded except current one
 let Tlist_Sort_Type="name"      " tags will be sorted by name; default is by occurence
 let Tlist_Exit_OnlyWindow=1     " exit vim when taglist is the last window
 "nmap <F3> : call Do_Tlist_Toggle()<CR>
-function! Do_Tlist_Toggle()
+function! Do_Tlist_Toggle() 
   TlistToggle
   TlistUpdate
 endfunction
@@ -300,34 +240,10 @@ let g:tagbar_type_javascript = {
 \ }
 " -------------------------
 
-" --- EasyGrep ------------
-" <leader>vv - Grep for the word under the cursor
-" <leader>va - Like vv, but add to existing list
-" <leader>vo - Select the files to search in and set grep options
-" <Leader>vr - Perform a global search search on the word under the cursor
-"              and prompt for a pattern with which to replace it.
-map <leader>vf <esc>:Grep
-let g:EasyGrepRecursive = 1
-let g:EasyGrepCommand = 1
-let g:EasyGrepIgnoreCase = 1
-
-" au BufRead,BufNewFile *.{go}   set filetype=go
-au BufNewFile,BufRead *.handlebars set filetype=html
-au BufNewFile,BufRead *.bash set filetype=sh
-
-if has("autocmd")
-autocmd BufRead *.txt set tw=78
-autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal g'\"" |
-    \ endif
-endif
-
-" <Leader>f{char} to move to {char}
+" --- easymotion ------------
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-" s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
 
 " Move to line
@@ -340,3 +256,10 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
+
+" --- vim-go ------------
+let g:go_fmt_autosave = 0
+
+" --- vim-airline ------------
+set laststatus=2
+let g:airline_powerline_fonts = 1

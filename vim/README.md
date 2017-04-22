@@ -1,39 +1,28 @@
 Introduction
 ============
 
-This is my vim configuration files, the .vim directory.
+This is my vim configuration files
 
-The following is the list of plugins currently used:
+The following is the list of plugins currently used
 
-- *(plugin name)* - *(its [github repos] or [vim-scripts repos])* | **description**
-- vundle - gmarik/vundle  
-**plugin management tool**
-- nerdtree - scrooloose/nerdtree  
-**tree structure of quickly access filesystem**
-- vim-nerdtree-tabs - jistr/vim-nerdtree-tabs  
-**tabpage of nerdtree**
-- taglist - vim-scripts/taglist  
-**show tags (function definition, variable definition)**
-- vim-easymotion - Lokaltog/vim-easymotion  
-**a fantastic way of movement, quickly jumping to any location in the screen**
-- syntastic - scrooloose/syntastic  
-**show syntax error/warning**
-- ctrlp - kien/ctrlp  
-**quickly search/open file with fuzzy matching or regular expression**
-- ctags - vim-scripts/ctags  
-**necessary tool to do code tracing**
-- EasyGrep - vim-scripts/EasyGrep  
-**fast and easy find and replace across multiple files**
-- ListToggle - Valloric/ListToggle  
-**quick open/close the quickfix list in vim**
-- YouCompleteMe - Valloric/YouCompleteMe  
-**a powerful completion plugin for C-family language and Python**
-- javacomplete - vim-scripts/javacomplete  
-**java completion**
-- rubycomplete - vim-scripts/rubycomplete  
-**ruby completion**
+* vundle - gmarik/vundle  
+	* plugin management tool
+*  nerdtree - scrooloose/nerdtree  
+	* tree structure of quickly access filesystem
+* vim-nerdtree-tabs - jistr/vim-nerdtree-tabs  
+	* tabpage of nerdtree
+* taglist - vim-scripts/taglist  
+	* show tags (function definition, variable definition)
+* vim-easymotion - Lokaltog/vim-easymotion  
+	* a fantastic way of movement, quickly jumping to any location in the screen
+* ctags - vim-scripts/ctags  
+	* necessary tool to do code tracing
+* ListToggle - Valloric/ListToggle  
+	* quick open/close the quickfix list in vim
+* YouCompleteMe - Valloric/YouCompleteMe  
+	* a powerful completion plugin for C-family language and Python
 
-I use the plugin 'vundle' to automatically manage/install/update/remove my vim's plugin,  
+This project use 'vundle' to automatically manage/install/update/remove my vim's plugin,  
 For more details, refer to [vundle](https://github.com/gmarik/vundle)   
 or the kindly [introduction](http://blog.chh.tw/posts/vim-vundle/) written in Chinese.
 
@@ -66,7 +55,7 @@ Compiling YCM without semantic support for C-family languages:
 
 For more installation detail, please see the document of [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
-Everything's done! Hope you enjoy it.
+All done! Hope you enjoy it.
 
 Demos
 =====
@@ -81,16 +70,3 @@ The completion realized thank to [YouCompleteMe](https://github.com/Valloric/You
 
 The quickly easy movement realized thank to [vim-easymotion](https://github.com/Lokaltog/vim-easymotion)
 ![](http://i.imgur.com/3N2lOuw.png)
-
-Quickly find and open your file/directory by [ctrlp]()
-![](http://i.imgur.com/AWA0Zt9.png)
-
-Detect the compilation error while editing by [syntastic](https://github.com/scrooloose/syntastic)
-![](http://i.imgur.com/GRPwc2y.png)
-
-FAQ
-===
-**No completion / Error message of lacking python**
-
-The completion feature is realized by the plugin [YouCompleteMe](https://github.com/Valloric/YouCompleteMe).
-However, it requires python installed on your environment first so that it can serve as the completion server.

@@ -1,5 +1,4 @@
-vim/.netrwhist
 *.pyc
-vim/bundle/*
+vim
 addon/JSON-2.53
 bin/connect

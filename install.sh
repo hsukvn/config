@@ -6,6 +6,7 @@ Usage: $(basename $0) [options]
 Options:
     -a        install basic apt packages
     -i        install configs
+    -v        install vim
     -s        install for synology
     -u        uninstall configs and recover environments
     -h        show this help message
@@ -13,10 +14,11 @@ Options:
 EOF
 }
 
-while getopts "adhisu" opt; do
+while getopts "adhivsu" opt; do
 	case $opt in
 		a) InstallApt=yes;;
 		i) InstallConfig=yes;;
+		v) InstallVim=yes;;
 		s) InstallForSynology=yes;;
 		u) UnInstallConfig=yes;;
 		h) show_usage; exit 0;;
@@ -56,11 +58,9 @@ install_apt() {
 }
 
 backup_config() {
-	echo "star to backup from $BAKDIR..."
+	echo "start to backup to $BAKDIR..."
 	[ ! -d $BAKDIR ] && exe "mkdir $BAKDIR"
 	[ -d /root/bin ] && exe "mv /root/bin $BAKDIR/bin"
-	[ -d /root/.vim ] && exe "mv /root/.vim $BAKDIR/vim"
-	[ -f /root/.vimrc ] && exe "mv /root/.vimrc $BAKDIR/vimrc"
 
 	[ ! -d $BAKDIR/dotfile ] && exe "mkdir $BAKDIR/dotfile"
 	for dotfile in $DOTFILES; do
@@ -71,16 +71,31 @@ backup_config() {
 install_config() {
 	backup_config
 
-	echo "star to install..."
+	echo "start to install..."
 	exe "ln -s $PWD/bin /root/bin"
-	exe "ln -s $PWD/vim /root/.vim"
-	exe "ln -s /root/.vim/vimrc /root/.vimrc"
 
 	for dotfile in $DOTFILES; do
 		exe "ln -s $PWD/dotfiles/$dotfile /root/.$dotfile"
 	done
 
 	source /root/.bashrc
+}
+
+backup_vim() {
+	echo "start to backup vim to $BAKDIR..."
+	[ ! -d $BAKDIR ] && exe "mkdir $BAKDIR"
+	[ -d /root/.vim ] && exe "mv /root/.vim $BAKDIR/vim"
+	[ -f /root/.vimrc ] && exe "mv /root/.vimrc $BAKDIR/vimrc"
+}
+
+install_vim() {
+	backup_vim
+	echo "start to clone vim..."
+	exe "git clone https://github.com/ilcic/dotvim.git vim"
+
+	echo "start to setup vim..."
+	exe "ln -s $PWD/vim /root/.vim"
+	exe "ln -s /root/.vim/vimrc /root/.vimrc"
 }
 
 install_syno_build_tags() {
@@ -104,7 +119,7 @@ install_for_synology() {
 }
 
 restore_config() {
-	echo "star to restore from $BAKDIR..."
+	echo "start to restore from $BAKDIR..."
 	[ ! -d $BAKDIR ]  && return;
 	[ -d $BAKDIR/bin ] && exe "mv $BAKDIR/bin /root/bin"
 	[ -d $BAKDIR/vim ] && exe "mv $BAKDIR/vim /root/.vim"
@@ -138,6 +153,12 @@ fi
 if [ $InstallConfig ]; then
 	echo "starting install config..."
 	install_config
+	echo "finish"
+fi
+
+if [ $InstallVim ]; then
+	echo "starting install vim..."
+	install_vim
 	echo "finish"
 fi
 
