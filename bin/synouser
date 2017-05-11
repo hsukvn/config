@@ -1,19 +1,22 @@
 #!/usr/bin/python2
 # -*- coding: utf-8 -*-
 # hanenlin@synology.com
+import httplib, urllib, json, getpass #for passwd module
 import xml.etree.ElementTree as ET
 from collections import Counter
 import argparse
 import os.path
+import platform
 from datetime import datetime
 import glob
 from argparse import RawTextHelpFormatter
+import subprocess
 
 RED = "\033[1;31m"
 GRN = "\033[1;32m"
 YEL = "\033[1;33m"
 BLU = "\033[94m"
-GRY = "\033[1;30m"
+GRY = "\033[38;5;187m"
 WHT = "\033[1;37m"
 CYN = "\033[1;36m"
 CLR = "\033[;m"
@@ -24,7 +27,9 @@ title_dict = None
 output_queue_account = list()
 output_queue_team = list()
 output_queue_ext = list()
-local_database = os.getenv("HOME")+'/.snoopy_2015.xml'
+local_database = os.getenv("HOME")+'/.snoopy_2016.xml'
+
+
 def get_today():
     now = datetime.now()
     today = str(now.year)+"-%02d" %(now.month)+"-%02d" %(now.day)
@@ -70,18 +75,12 @@ def format_padding(string, pad):
 
 def format_team(member, padding = 0):
     result = ""
-    my_division = member.find('department/division')
-    my_team     = member.find('department/team')
-    if my_team != None:
+    my_department = member.find('department')
+    if my_department != None:
         try:
-            result = department_dict[my_team.text]
+            result = department_dict[my_department.text]
         except:
-            if my_team.text != None:
-                result = my_division.text + '-' + my_team.text
-            else:
-                result = my_division.text
-    else:
-        result = my_division.text
+            result = my_department.text
 
     result = format_padding(result, padding - len(result))
     return result, len(result)
@@ -99,7 +98,7 @@ def format_title(member, padding = 0):
 
 def format_name_en(member, padding = 0):
     result = ""
-    name_en = member.find('nameEn').text
+    name_en = member.find('name_en').text
     name_en_list = name_en.split(' ')
     first_name_en = name_en.replace(name_en_list[-1],'').strip(' ')
     result = '('+first_name_en+')'
@@ -108,7 +107,7 @@ def format_name_en(member, padding = 0):
 
 def format_name_tw(member, padding = 0):
     result = ""
-    name_tw = member.find('nameTw').text
+    name_tw = member.find('name_tw').text
     result = name_tw
     #padding
     if len(result) == 2:
@@ -186,6 +185,8 @@ def flush_output_queue():
     if need_separation:
         separation_print('account')
     format_print_queue(output_queue_account, len_list, fun_list, color_list)
+    if len(output_queue_account) > 1:
+        print 'total : ', len(output_queue_account)
 
     if need_separation:
         separation_print('team')
@@ -193,6 +194,7 @@ def flush_output_queue():
 
     if output_queue_team:
         print 'total : ', len(output_queue_team)
+
 
     if output_queue_ext:
         format_print_queue(output_queue_ext, len_list, fun_list, color_list)
@@ -207,67 +209,69 @@ def department_spanning(division, team):
         spanning_list.append(division+'-'+team)
     return spanning_list
 
-def query_ext_info(target, all_info):
+def mail_alias_spanning(queue, name):
+    xml_root = tree.getroot()
+    xml_mail_alias = xml_root.find('mail_alias')
+    flag = 0
+    for alias in xml_mail_alias:
+        if name == alias.attrib['name'].lower():
+            flag = 1
+            for item in alias.text.split(','):
+                if item == name:
+                    continue
+                mail_alias_spanning(queue, item)
 
+    if flag == 0:
+        queue.append(name)
+
+
+def query_ext_info(target):
     xml_root = tree.getroot()
     xml_employee = xml_root.find('employee')
+    mail_alias_list = list()
+    mail_alias_spanning(mail_alias_list, target.lower())
+
     for xml_member in xml_employee:
         # check the employee still be hired
         if xml_member.attrib['employed'] == '0':
-            if all_info != True:
-                continue
+            continue
         # the sub-element must in xml tree, find function shouldn't return None
         my_account    = xml_member.find('account').text
-        my_division   = xml_member.find('department/division').text
-        my_team       = xml_member.find('department/team').text
         my_ext        = xml_member.find('ext').text
-        my_name_en    = xml_member.find('nameEn').text.lower()
-        my_name_tw    = xml_member.find('nameTw').text
-
-        try:
-            xpath = "department_mapping/alias[simple_name='" + target.upper() + "']/full_name"
-            my_team_full = xml_root.find(xpath).text
-        except:
-            my_team_full = None
+        my_name_en    = xml_member.find('name_en').text.lower()
+        my_name_tw    = xml_member.find('name_tw').text
+        my_department = xml_member.find('department').text
 
         # barrier
-        if my_account == None or my_division == None:
+        if my_account == None:
             continue
-        
+
         #TODO : account spanning
-        if target in my_account or target in my_name_en:
-            output_queue_account.append(xml_member)
+        if len(mail_alias_list) == 1:
+            if target in my_account:
+                output_queue_account.append(xml_member)
+            elif target in my_name_en:
+                output_queue_account.append(xml_member)
 
         # query for Chinese name
         if target in my_name_tw:
             output_queue_account.append(xml_member)
 
         # query for QC, QC-1, QC1, qc1
-        for compare_item in department_spanning(my_division, my_team):
-            if target.upper() in compare_item:
-                output_queue_team.append(xml_member)
-                break
+        if target.lower() == my_department or target.upper() == my_department:
+            output_queue_account.append(xml_member)
 
-        # query for CPT/cpt
-        if my_team_full != None and my_team == my_team_full:
-            output_queue_team.append(xml_member)
+        # query for CPT/cpt from mail alias
+        if my_account in mail_alias_list:
+            if not xml_member in output_queue_account:
+                output_queue_account.append(xml_member)
 
         # for query #800
         if my_ext == target:
             output_queue_ext.append(xml_member)
 
 def finger_team_print(member):
-    division = member.find('department/division').text
-    team = member.find('department/team').text
-    
-    if team == None:
-        full_name = division
-    else:
-        full_name = division + '-' + team
-    if 'SD' in division:
-        return color(CYN, format_team(member)[0]) + ' ('+full_name+')'
-    else:
-        return format_team(member)[0]
+    return format_team(member)[0]
 
 def finger_print(target):
     xml_root = tree.getroot()
@@ -283,7 +287,7 @@ def finger_print(target):
 
     if len(finger_queue) > 1:
         for idx, m in enumerate(finger_queue):
-            print color(WHT, str(idx)), m.find('account').text,m.find('nameTw').text,
+            print color(WHT, str(idx)), m.find('account').text,m.find('name_tw').text,
             print "(%s)" %(format_team(m)[0])
 
         idx = raw_input('Please select specific member : ')
@@ -291,18 +295,23 @@ def finger_print(target):
     else:
         member = finger_queue[0]
 
+    try:
+        title_str = "".join([title_dict[member.find('title').text].encode('utf8'), " (", member.find('title').text.encode('utf8'), ")"])
+    except KeyError:
+        title_str = member.find('title').text.encode('utf8')
+
     print 'employee id:', member.attrib['employee_id']
     print 'employed   :', (color(GRN, 'True') if member.attrib['employed'] == '1' else color(RED, 'False'))
-    print 'name       :', member.find('nameTw').text, '('+member.find('nameEn').text+')'
+    print 'name       :', member.find('name_tw').text.encode('utf8'), '('+member.find('name_en').text.encode('utf8')+')'
     print 'gender     :', ('Male' if member.find('gender').text == '1' else 'Female')
-    print 'title      :', title_dict[member.find('title').text], '('+ member.find('title').text +')'
+    print 'title      :', title_str
     print 'department :', finger_team_print(member)
     print 'ext        :', '#' + member.find('ext').text 
     print 'account    :', member.find('account').text
     print 'profile    :', member.find('profile').text
     #FIXME
-    if member.find('location') is not None:
-        print 'location   :', member.find('location').text
+    if member.find('location').text is not None:
+        print 'location   :', member.find('location').text.encode('utf8')
     print 'information:'
     for info in member.findall('information/info_entry'):
         date = color(BLU, info.attrib['date'])
@@ -367,11 +376,8 @@ def show_team_analysis(queue_on_job, queue_off_job, queue_gender):
     def separation_print(string, c):
         print '[',color(c, string),']'
     def team_full_name_print(member):
-        if member.find('department/team').text != None:
-            full_name = member.find('department/division').text + '-' + member.find('department/team').text
-        else:
-            full_name = member.find('department/division').text
-        print color(CYN, full_name)
+        department_name = member.find('department').text
+        print color(CYN, department_name)
     len_list = [0, 0]
     fun_list = [format_name_tw,format_name_en]
     color_list = [CLR,CLR]
@@ -392,10 +398,35 @@ def show_team_analysis(queue_on_job, queue_off_job, queue_gender):
     separation_print('成員', GRN)
     format_print_queue(queue_on_job, len_list, fun_list, color_list, 3)
     separation_print('畢業生', YEL)
-    format_print_queue(queue_off_job, len_list, fun_list, color_list, 3)
+    for member in queue_off_job:
+        find_add_flag = 0
+        first_name_en = member.find('name_en').text.split()[0]
+        print "%s %-10s" %(member.find('name_tw').text, first_name_en),
+        for info in member.findall('information/info_entry'):
+            date = color(BLU, info.attrib['date'])
+            modify_type = info.attrib['modify_type']
+            if 'add' in modify_type or 'return' in modify_type:
+                print date,'~',
+                find_add_flag = 1
+
+            if 'remove' in modify_type:
+                if find_add_flag == 0:
+                    print '0000-00-00 ~ ',
+                print date,
+            else:
+                print '',
+            #if 'modify' in info.attrib['modify_type']:
+            #    mtype = color(YEL, info.attrib['modify_type'])
+        print ''
 
 
-def analyze_team(target, depth):
+def analyze_team(target, exactly_match, depth):
+    def exactly_compare(a, b, exactly):
+        if exactly == 1:
+            return a == b
+        else:
+            return a in b
+
     team_member_in = list()
     team_member_out = list()
     team_member_gender = list()
@@ -409,27 +440,29 @@ def analyze_team(target, depth):
         my_team_full = None
 
     for xml_member in xml_employee:
-        my_division   = xml_member.find('department/division').text
-        my_team       = xml_member.find('department/team').text
-        for compare_item in department_spanning(my_division, my_team):
-            if ((target.upper() in compare_item) or
-                    (my_team_full != None and my_team == my_team_full)):
-                if xml_member.attrib['employed'] == '1':
-                    team_member_in.append(xml_member)
-                    if xml_member.find('gender').text == '0':
-                        team_member_gender.append(xml_member)
-                else:
-                    team_member_out.append(xml_member)
-                team_queue.append(format_team(xml_member)[0])
-                break
+        my_department   = xml_member.find('department').text
+        my_department_simple = ""
+        try:
+            my_department_simple = department_dict[my_department]
+        except:
+            my_department_simple = my_department
+
+        if target.lower() == my_department_simple.lower():
+            if xml_member.attrib['employed'] == '1':
+                team_member_in.append(xml_member)
+                if xml_member.find('gender').text == '0':
+                    team_member_gender.append(xml_member)
+            else:
+                team_member_out.append(xml_member)
+            team_queue.append(format_team(xml_member)[0])
 
     if len(Counter(team_queue)) == 1:
         show_team_analysis(team_member_in, team_member_out, team_member_gender)
     else:
         if depth == 0:
-            return
+            return 0
         for sub in Counter(team_queue):
-            analyze_team(sub, 0)
+            analyze_team(sub, 1, 0)
             print ''
 
             
@@ -440,7 +473,7 @@ def anlysis_name_en(top):
     for member in xml_employee:
         if member.attrib['employed'] == '0':
             continue
-        name_en = member.find('nameEn').text
+        name_en = member.find('name_en').text
         last_name = name_en.split()[-1]
         first_name = name_en.replace(last_name,'').strip()
         name_queue.append(first_name)
@@ -452,27 +485,86 @@ def anlysis_name_en(top):
     for idx,(name,num) in enumerate(mc):
         print 'No.%2d %8s x %d' %(idx+1,name,num)
 
+def getProfile(conn, headers, cgi, uid, pwd):
+    if 5 > len(uid) and 8 > len(pwd):
+        return False
+    params = urllib.urlencode({'action': 'auth', 'uid': uid, 'pwd': pwd, 'reset': 'false'})
+    conn.request("POST", cgi, params, headers)
+    response = conn.getresponse()
+    if 200 != response.status:
+        return False
+    res = json.loads(response.read())
+    if True != res['success']:
+        print res
+        return False
+
+    params = urllib.urlencode({'action': 'getprofile', 'uid': uid, 'pwd': pwd, 'reset': 'false'})
+    conn.request("POST", cgi, params, headers)
+    response = conn.getresponse()
+    if 200 != response.status:
+        return False
+    res = json.loads(response.read())
+    if True != res['success']:
+        print res
+        return False
+
+    return res['data']
+
+def change_password(uid):
+    conn = httplib.HTTPSConnection("ldap.synology.com", 5001)
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "*/*"}
+    cgi = "/webman/3rdparty/DirectoryServer/ldap_profile.cgi"
+
+    pwd = getpass.getpass()
+    profile = getProfile(conn, headers, cgi, uid, pwd)
+    if False == profile:
+        print 'Failed to login'
+        return
+
+    new_pwd = getpass.getpass('New Password:')
+    confirm_pwd = getpass.getpass('Confirm Password:')
+    if new_pwd != confirm_pwd:
+        print 'Inconsistent password'
+        return
+
+
+    params = urllib.urlencode({'action': 'chprofile', 'uid': uid, 'pwd': pwd, 'new_pwd': new_pwd, 'email': profile['email'].encode('utf-8'), 'confirm_pwd': confirm_pwd, 'desc': profile['description'].encode('utf-8')})
+    conn.request("POST", cgi, params, headers)
+    response = conn.getresponse()
+
+    if 200 != response.status:
+        return False
+    res = json.loads(response.read())
+    if True == res['success']:
+        print 'Successfully changed password'
+    else:
+        print res
+        print 'Failed to change password'
+
+def analysis_title_distribute():
+    title_queue = list()
+    xml_root = tree.getroot()
+    xml_employee = xml_root.find('employee')
+    for member in xml_employee:
+        if member.attrib['employed'] == '0':
+            continue
+        title = member.find('title').text
+        title_queue.append(title)
+
+    mc = Counter(title_queue).most_common(20)
+    for idx,(name,num) in enumerate(mc):
+        print '%26s x %d' %(name,num)
+
+
+
 def update_database():
-    rmp = '/tmp/snoopy'
-    rdb = '/tmp/snoopy/snoopy_2015.xml'
 
-    if not os.path.isdir(rmp):
-        cmd = "mkdir " + rmp
-        os.popen (cmd)
-
-    if not os.path.ismount(rmp):
-        os.popen ("mount.cifs //snoopy.synology.com/public/Hanen /tmp/snoopy/ -o user=syno -o password=""")
-
-    if os.path.exists(rdb):
-        print color(GRN, "updating.....")
-        cmd = "cp "+rdb+" "+local_database
-        os.popen(cmd)
+    print color(GRN, "updating.....")
+    ret = subprocess.call(["/usr/bin/wget", "http://hanenlin.synology.io/snoopy_2016.xml", "-O", local_database])
+    if ret == 0:
+        print color(GRN, "update success")
     else:
         print color(RED, "update failed")
-
-    if os.path.ismount(rmp):
-        cmd = "umount " + rmp
-        os.popen (cmd)
 
 def auto_update():
     global tree
@@ -501,29 +593,13 @@ def format_modify_type(info, padding = 0):
     return result, len(result)
 
 def format_modify_text(info):
-    def parse_team(department):
-        result = ""
-        department = department.split('-')
-        my_division = department[0]
-        my_team     = department[1]
-        if my_team != 'None':
-            try:
-                result = my_division + ' '+ department_dict[my_team]
-            except:
-                if my_team != 'None':
-                    result = my_division + '-' + my_team
-                else:
-                    result = my_division
-        else:
-            result = my_division
-        return result
 
     o_buffer = ''
     mtype = info.attrib['modify_type']
     if 'team' in mtype:
         team_list = info.text.split(',')
-        team_a = parse_team(team_list[0])
-        team_b = parse_team(team_list[1])
+        team_a = team_list[0]
+        team_b = team_list[1]
         o_buffer = team_a + ' -> ' + team_b
         o_buffer = color(GRN, o_buffer)
     elif 'title' in mtype:
@@ -642,42 +718,6 @@ def format_print_staff_turnover(queue, io):
         print format_padding(monthDict[i+1], 5),o_buffer
     print ''
 
-def analyze_staff_turnover(query_year):
-    def mbr_division_type(member):
-        division = member.find('department/division').text
-        if 'SD' in division:
-            return 'RD'
-        check_list = ['QC','MK','Sup','MIS']
-        for c in check_list:
-            if c in division:
-                return c.upper()
-        return 'OTHERS'
- 
-    month_add = [[],[],[],[],[],[],[],[],[],[],[],[]]
-    month_del = [[],[],[],[],[],[],[],[],[],[],[],[]]
-    xml_root = tree.getroot()
-    xml_employee = xml_root.find('employee')
-    for member in xml_employee:
-        for info in member.findall('information/info_entry'):
-            date = info.attrib['date'].split('-')
-            if date[0] != query_year:
-                continue
-            mtype = info.attrib['modify_type']
-            idx = (int(date[1])%12)
-            if mtype == 'add' or mtype == 'return':
-                month_add[idx].append(mbr_division_type(member))
-                #format_history_output_buf([(info,member)])
-            elif mtype == 'remove':
-                month_del[idx].append(mbr_division_type(member))
-                #format_history_output_buf([(info,member)])
-
-    temp = month_add[0]
-    month_add = month_add[1:] + [temp]
-    temp = month_del[0]
-    month_del = month_del[1:] + [temp]
-    format_print_staff_turnover(month_add, 'add')
-    format_print_staff_turnover(month_del, 'del')
-
 def query_alias(req):
     output_queue = list()
     xml_root = tree.getroot()
@@ -712,7 +752,7 @@ def help_description():
         database_timestamps = xml_root.attrib['date']
     except:
         pass
-    print 'query extension list, snoopy version 2015'
+    print 'query extension list, snoopy version 2016'
     if database_timestamps == get_today():
         print database_timestamps,color(GRN, 'up-to-date')
     else:
@@ -720,11 +760,9 @@ def help_description():
 
 
 def main():
-    parser = argparse.ArgumentParser(description='query extension list, snoopy version 2015', formatter_class=RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(description='query extension list, snoopy version 2016', formatter_class=RawTextHelpFormatter)
     parser.add_argument('pattern', nargs='*',
             help='query the information from ext list')
-    parser.add_argument('-v','--verbose', action='store_true', 
-            help=help_format('query all infomation. including member has left','tel --verbose ANT'))
     parser.add_argument('-a','--alias', action='store_true', 
             help=help_format('query mail alias','tel -a rma'))
     parser.add_argument('-f','--finger', action='store_true',
@@ -737,10 +775,12 @@ def main():
             help='Update ext list before query info.')
     parser.add_argument('-n','--name', action='store_true',
             help='analyze Engish name')
+    parser.add_argument('-x','--title', action='store_true',
+            help='analyze title')
     parser.add_argument('-r', action='store_true', 
             help=help_format('history record, default: this month','tel -r [2015-06]'))
-    parser.add_argument('-o','--turnover', action='store_true', 
-            help=help_format('show proportion of new/remove member by month','tel -o 2015'))
+    parser.add_argument('-p', '--passwd', action='store_true',
+            help=help_format('change password e.g. tel -p hanenlin','tel -p hanenlin'))
     args = parser.parse_args()
 
     auto_update()
@@ -751,7 +791,7 @@ def main():
     load_xml_tree()
     load_team_mapping()
     load_title_mapping()
-  
+ 
     if len(args.pattern) == 0:
         if args.location == True:
             show_location_analysis()
@@ -759,22 +799,25 @@ def main():
             show_history_information(get_today()[0:7])
         elif args.name == True:
             anlysis_name_en(10)
+        elif args.title == True:
+            analysis_title_distribute()
         else:
             parser.print_help()
-    elif args.turnover == True:
-        analyze_staff_turnover(args.pattern[0])
     elif args.finger == True:
         finger_print(args.pattern[0])
     elif args.team == True:
-        analyze_team(args.pattern[0], 1)
+        analyze_team(args.pattern[0], 0, 1)
     elif args.alias == True:
         query_alias(args.pattern[0])
     elif args.r == True:
         show_history_information(args.pattern[0])
     elif args.name == True:
         anlysis_name_en(int(args.pattern[0]))
+    elif args.passwd == True:
+	change_password(args.pattern[0])
+
     else:
-        query_ext_info(args.pattern[0].decode('utf8'), args.verbose)
+        query_ext_info(args.pattern[0].decode('utf8'))
         flush_output_queue()
 
 if __name__ == "__main__":
