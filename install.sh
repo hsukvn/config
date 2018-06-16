@@ -34,7 +34,7 @@ fi
 shift $((OPTIND - 1))
 
 PWD=`pwd`
-BAKDIR="/root/.config.bak"
+BAKDIR="~/.config.bak"
 DOTFILES=$(ls $PWD/dotfiles)
 
 exe() {
@@ -60,11 +60,11 @@ install_apt() {
 backup_config() {
 	echo "start to backup to $BAKDIR..."
 	[ ! -d $BAKDIR ] && exe "mkdir $BAKDIR"
-	[ -d /root/bin ] && exe "mv /root/bin $BAKDIR/bin"
+	[ -d ~/bin ] && exe "mv ~/bin $BAKDIR/bin"
 
 	[ ! -d $BAKDIR/dotfile ] && exe "mkdir $BAKDIR/dotfile"
 	for dotfile in $DOTFILES; do
-		[ -f /root/.$dotfile ] && exe "mv /root/.$dotfile $BAKDIR/dotfile/$dotfile"
+		[ -f ~/.$dotfile ] && exe "mv ~/.$dotfile $BAKDIR/dotfile/$dotfile"
 	done
 }
 
@@ -72,20 +72,20 @@ install_config() {
 	backup_config
 
 	echo "start to install..."
-	exe "ln -s $PWD/bin /root/bin"
+	exe "ln -s $PWD/bin ~/bin"
 
 	for dotfile in $DOTFILES; do
-		exe "ln -s $PWD/dotfiles/$dotfile /root/.$dotfile"
+		exe "ln -s $PWD/dotfiles/$dotfile ~/.$dotfile"
 	done
 
-	source /root/.bashrc
+	source ~/.bashrc
 }
 
 backup_vim() {
 	echo "start to backup vim to $BAKDIR..."
 	[ ! -d $BAKDIR ] && exe "mkdir $BAKDIR"
-	[ -d /root/.vim ] && exe "mv /root/.vim $BAKDIR/vim"
-	[ -f /root/.vimrc ] && exe "mv /root/.vimrc $BAKDIR/vimrc"
+	[ -d ~/.vim ] && exe "mv ~/.vim $BAKDIR/vim"
+	[ -f ~/.vimrc ] && exe "mv ~/.vimrc $BAKDIR/vimrc"
 }
 
 install_vim() {
@@ -94,8 +94,8 @@ install_vim() {
 	exe "git clone https://github.com/ilcic/dotvim.git vim"
 
 	echo "start to setup vim..."
-	exe "ln -s $PWD/vim /root/.vim"
-	exe "ln -s /root/.vim/vimrc /root/.vimrc"
+	exe "ln -s $PWD/vim ~/.vim"
+	exe "ln -s ~/.vim/vimrc ~/.vimrc"
 }
 
 install_syno_build_tags() {
