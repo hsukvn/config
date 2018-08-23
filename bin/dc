@@ -1,0 +1,47 @@
+#!/bin/bash
+
+show-usage() {
+    cat << EOF
+Usage: $(basename $0) [options]
+Options:
+    docker-run
+    docker-exec
+EOF
+
+}
+
+if [ $# == 0 ]; then
+    show-usage
+    exit 1
+fi
+
+case $1 in
+    run)
+        Name=${2:-ubuntu}
+        Image=${3:-ubuntu}
+        CMD=${4:-}
+        docker run -dit --privileged \
+            -v /root/:/root/ -v /source/:/source/ \
+            --name $Name $Image $CMD
+    ;;
+    exec)
+        Name=${2:-ubuntu}
+        CMD=${3:-/bin/bash}
+        docker exec -it \
+        -e COLUMNS="`tput cols`" -e LINES="`tput lines`" \
+        $Name $CMD
+    ;;
+    rm)
+        Name=${2:-ubuntu}
+        docker stop $Name
+        docker rm $Name
+    ;;
+    help)
+        show-usage
+        exit 0
+    ;;
+    *)
+        show-usage
+        exit 1
+    ;;
+esac
