@@ -5,7 +5,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export PATH=~/bin":$PATH"
-export PYTHONPATH="$HOME/config/pythonlib/${PYTHONPATH+:}$PYTHONPATH"
 
 export EDITOR=vim
 export PAGER=less
@@ -19,10 +18,15 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export TERM=xterm-256color
-# for cscope and vim temp dir
+
+# For cscope and vim temp dir
 export TMPDIR=$HOME/.tmp
 [ -d "$HOME" -a ! -d "$TMPDIR" ] && mkdir "$TMPDIR"
 
+# For golang
 export GOPATH=~/go
 export PATH=$PATH:~/go/bin
 
+# For debian
+export DEBEMAIL="kevin.hsu@ubnt.com"
+export DEBFULLNAME="Kevin Hsu"
