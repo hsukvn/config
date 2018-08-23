@@ -1,6 +1,6 @@
 [user]
 	name = kevinhsu
-	email = kevinhsu@synology.com
+	email = kevin.hsu@ubnt.com
 [core]
 	filemode = true
 	editor = vim
