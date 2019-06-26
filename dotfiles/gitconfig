@@ -1,8 +1,8 @@
 [user]
-	name = kevinhsu
-	email = kevin.hsu@ubnt.com
+	name = Kevin Hsu
+	email = hsukvn@gmail.com
 [core]
-	filemode = true
+	fileMode = true
 	editor = vim
 [alias]
 	st = status
