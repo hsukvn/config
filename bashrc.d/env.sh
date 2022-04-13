@@ -29,5 +29,5 @@ export GOPATH=~/go
 export PATH=$PATH:~/go/bin
 
 # For debian
-export DEBEMAIL="kevin.hsu@ubnt.com"
-export DEBFULLNAME="Kevin Hsu"
+# export DEBEMAIL="kevin.hsu@ubnt.com"
+# export DEBFULLNAME="Kevin Hsu"
